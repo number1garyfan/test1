@@ -116,6 +116,18 @@
     }
     
     
+    // If attempt is considered brute force, start 30mins timer, 30mins end, reset brute force counts
+    function set_brute_force_counter($db_email, $mysqli) {
+        $str=rand(); 
+        $randomResult = md5($str);
+        $event_name = $randomResult;
+        
+        $stmt = "CREATE EVENT $event_name ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 60 second DO UPDATE Account SET FailLoginCount = 0 WHERE Email = '$db_email' "; 
+        $mysqli->query($stmt);
+        $mysqli->close();
+    }
+    
+    
     
     // Check userid and password against the database
     // XSS protection
@@ -133,7 +145,7 @@
                 // Check if account is locked from too many login attempts
                 if (checkbrute($db_email, $mysqli) == true) {
                         // Account is locked
-                        $stmt->close();
+                        //$stmt->close();
                         return false;
                 } else {
                         // Check if password in database matches the password the user submitted
@@ -153,12 +165,13 @@
                             return false;
                         }
                         else {
-                                // Password is not correct, we record this attempt in the database
-                                if ($stmt = $mysqli->prepare("UPDATE Account SET (FailLoginCount = ?, LastAttemptedLogin = NOW()) WHERE Email = ?")) {
-                                        $stmt->bind_param('ss', $db_failedLoginCount+1, $email);
-                                        $stmt->execute();
-                                        $stmt->close();
-                                }
+//                                // Password is not correct, we record this attempt in the database
+//                                if ($stmt = $mysqli->prepare("UPDATE Account SET (FailLoginCount = ?, LastAttemptedLogin = NOW()) WHERE Email = ?")) {
+//                                        $stmt->bind_param('ss', $db_failedLoginCount+1, $email);
+//                                        $stmt->execute();
+//                                        //$stmt->close();
+//                                }
+                                set_brute_force_counter($db_email, $mysqli);
                                 return false;
                         }
                 }
