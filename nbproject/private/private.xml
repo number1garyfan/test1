@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ICT3103Busbly/login.php</file>
+            <file>file:/C:/xampp/htdocs/ICT3103Busbly/HelperClass/EmailHelper.php</file>
             <file>file:/C:/xampp/htdocs/ICT3103Busbly/Server/ServerFunction.php</file>
+            <file>file:/C:/xampp/htdocs/ICT3103Busbly/Server/CreateAccountServer.php</file>
             <file>file:/C:/xampp/htdocs/ICT3103Busbly/Server/LoginServer.php</file>
         </group>
     </open-files>

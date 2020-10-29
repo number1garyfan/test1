@@ -2,6 +2,7 @@
 require_once('C:/xampp/htdocs/ICT3103Busbly/Connections/dbconnect.php');
 require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/SaltHashingHelper.php");
 require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/PasswordHelper.php");
+require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/EmailHelper.php");
 require_once("C:/xampp/htdocs/ICT3103Busbly/Server/ServerFunction.php");
 
 session_start();
@@ -19,7 +20,7 @@ if (isset($_POST['reg_user'])) {
   //Create class objects
   $passwordHelperObj = new PasswordHelper();
   $saltedHashingHelperObj = new SaltHashingHelper();
-
+  $emailHelperObj = new EmailHelper();
 
   // receive all input values from the form
   $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -48,11 +49,21 @@ if (isset($_POST['reg_user'])) {
     // Finally, register user if there are no errors in the form
     if (count($errors) == 0) {
         //Assign Variables
+        $activationID = substr(md5(mt_rand()), 0, 7);
         $salt = $saltedHashingHelperObj->generate_password_salt();
         $saltedHashedPw = $saltedHashingHelperObj->salted_hashing_password($salt, $password_1);
         $roleID = 2;
         
-        insertUser($username, $saltedHashedPw, $salt, $email, $roleID, $mysqli);
+        //Register user into database
+        insertUser($username, $saltedHashedPw, $salt, $email, $roleID, $activationID, $mysqli);
+        
+        //Send activation email
+        $returnMail = $emailHelperObj->generate_activation_email($email, $activationID);
+        
+        //Store mail log
+        if ($emailHelperObj->save_mail($returnMail)){
+
+        }
     }
   } 
 }

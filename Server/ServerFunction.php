@@ -39,10 +39,10 @@
     }
     
     //For Registration
-    function insertUser($username, $password, $salt, $email, $roleID, $mysqli)
+    function insertUser($username, $password, $salt, $email, $roleID, $activationID, $mysqli)
     {
-        $stmt = $mysqli->prepare ("INSERT INTO Account (Username, Password, Salt, CreationDate, Sessions, Email, Roles_idRoles) VALUES (?, ?, ?, NOW(), 1, ?, ?)");
-        $stmt->bind_param("ssssi", $username, $password, $salt, $email, $roleID); // Bind param $userid to query parameter (?)
+        $stmt = $mysqli->prepare ("INSERT INTO Account (Username, Password, Salt, CreationDate, Sessions, Email, ActivationID, Roles_idRoles) VALUES (?, ?, ?, NOW(), 1, ?, ?, ?)");
+        $stmt->bind_param("sssssi", $username, $password, $salt, $email, $activationID, $roleID); // Bind param $userid to query parameter (?)
         $stmt->execute(); // Execute the prepared query
         $stmt -> close();
     }
@@ -52,6 +52,14 @@
     {
         $stmt = $mysqli->prepare("UPDATE Account SET (LastLogin = NOW(), FailLoginCount = 0, LastAttemptedLogin = NOW()) WHERE Email = ?");
         $stmt->bind_param("s", $email); // Bind param $userid to query parameter (?)
+        $stmt->execute(); // Execute the prepared query
+        $stmt -> close();
+    }
+    
+    function account_activation($activationCode, $mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE Account SET (Verified = 1) WHERE ActivationID = ?");
+        $stmt->bind_param("s", $activationCode); // Bind param $userid to query parameter (?)
         $stmt->execute(); // Execute the prepared query
         $stmt -> close();
     }
@@ -123,8 +131,8 @@
         $event_name = $randomResult;
         
         $stmt = "CREATE EVENT $event_name ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 60 second DO UPDATE Account SET FailLoginCount = 0 WHERE Email = '$db_email' "; 
-        $mysqli->query($stmt);
-        $mysqli->close();
+        //$mysqli->query($stmt);
+        //$mysqli->close();
     }
     
     
