@@ -22,8 +22,8 @@ if (isset($_POST['login_user'])) {
   $saltedHashingHelperObj = new SaltHashingHelper();
   $emailHelperObj = new EmailHelper();
   
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $password = mysqli_real_escape_string($conn, $_POST['password_1']);
+  $email = mysqli_real_escape_string($conn, htmlentities($_POST['email']));
+  $password = mysqli_real_escape_string($conn, htmlentities($_POST['password_1']));
   
   //Process password with salt and hash (fetch salt from DB)
   $salting = get_salt($email, $mysqli);
@@ -53,6 +53,7 @@ if (isset($_POST['login_user'])) {
         store_otp($otp, $email, $mysqli);
         
         //Send email to next page using Session
+        $_SESSION["forget_password"] = 0;
         $_SESSION["email_address_otp"] = $email;
         
         //Redirect to next page

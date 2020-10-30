@@ -23,7 +23,7 @@ if (isset($_POST['enter_otp'])) {
   $emailHelperObj = new EmailHelper();
 
   // receive all input values from the form
-  $inputted_otp = mysqli_real_escape_string($conn, $_POST['otp']);
+  $inputted_otp = mysqli_real_escape_string($conn, htmlentities($_POST['otp']));
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -56,8 +56,8 @@ if (isset($_POST['enter_otp'])) {
             //Redirect to reset passwrod Page
             header("Location: resetPassword.php");
         }else{     
-            //Redirect to OTP Page
-            header("Location: enterOTP.php");
+            //Redirect to index Page
+            header("Location: index.php");
         }
   } 
  }

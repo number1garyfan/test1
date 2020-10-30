@@ -19,7 +19,7 @@ if (isset($_POST['forget_password'])) {
   //Create class objects
   $emailHelperObj = new EmailHelper();
   
-  $email = mysqli_real_escape_string($conn, $_POST['email']); 
+  $email = mysqli_real_escape_string($conn, htmlentities($_POST['email'])); 
   
   //Form Input Validation
   if (empty($email)) {
