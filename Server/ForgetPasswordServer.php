@@ -35,12 +35,21 @@ if (isset($_POST['forget_password'])) {
     if (count($errors) == 0) {
         
         //Generate OTP for Email
-        $emailOTP = $emailHelperObj->generate_email_otp(); 
-        //Send Email
-        $emailHelperObj->generate_email($email, $emailOTP);
+        $otp = $emailHelperObj->generate_email_otp(); 
+        //Send OTP Email
+        $emailHelperObj->generate_forget_password_email($email, $otp);
         
-        //Redirect to Home Page
-        header("Location: index.php");
+        //Start OTP Timer
+        store_otp($otp, $email, $mysqli);
+        
+        //Send email to next page using Session
+        $_SESSION["email_address_otp"] = $email;
+        
+        //Send forget password to next page using Session
+        $_SESSION["forget_password"] = 1;
+         
+        //Redirect to OTP Page
+        header("Location: enterOTP.php");
     }
   } 
 }

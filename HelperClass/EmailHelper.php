@@ -27,6 +27,77 @@ class EmailHelper {
         }
     }
     
+    function generate_otp_email($email, $otp)
+    {
+      try{
+
+        //Create a new PHPMailer instance
+        $mail = new PHPMailer();
+
+        //Tell PHPMailer to use SMTP
+        $mail->isSMTP();
+        
+        //Set the hostname of the mail server
+        $mail->Host = 'smtp.gmail.com';
+        // use
+        // $mail->Host = gethostbyname('smtp.gmail.com');
+        // if your network does not support SMTP over IPv6
+        
+        //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+        $mail->Port = 587;
+
+        //Set the encryption mechanism to use - STARTTLS or SMTPS
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+        //Whether to use SMTP authentication
+        $mail->SMTPAuth = true;
+        
+        //Username to use for SMTP authentication - use full email address for gmail
+        $mail->Username = 'busbly12345@gmail.com';
+
+        //Password to use for SMTP authentication
+        $mail->Password = 'Haha1234';
+
+        //Set who the message is to be sent from
+        $mail->setFrom('busbly12345@gmail.com', 'Busbly Crews');
+
+        //Set an alternative reply-to address
+        $mail->addReplyTo('replyto@example.com', 'Busbly Crews');
+
+        //Set who the message is to be sent to
+        $mail->addAddress($email, 'John Doe');
+
+        //Set the subject line
+        $mail->Subject = 'PHPMailer GMail SMTP test';
+
+        //Send HTML or Plain Text email
+        $mail->isHTML(true);
+        
+        //Setup Mail Content
+        $mail->Subject = "OTP for Busbly Login";
+        $mail->Body = "<p> Here is your OTP for login, it will expires within 5 minutes</p><p>$otp</p>";
+        $mail->AltBody = "This is the plain text version of the email content";
+        
+
+        //Replace the plain text body with one created manually
+        $mail->AltBody = 'This is a plain-text message body';
+
+        //send the message, check for errors
+        if (!$mail->send()) {
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            return $mail;
+        } else {
+            echo '<script type="text/javascript">
+            window.onload = function () { alert("OTP Email has been sent!"); }
+            </script>';
+            return $mail;
+        }
+
+        } catch (Exception $ex) {
+
+        }
+    }
+    
     function generate_activation_email($email, $activationID)
     {
       try{
@@ -77,6 +148,78 @@ class EmailHelper {
         $actual_link = "http://localhost/ICT3103Busbly/accountActivation.php?id=" . $activationID;
         $mail->Subject = "Account Activation for Busbly Registration";
         $mail->Body = "<p>Thank you for signing up with us!</p><p>Click this link to activate your account. <a href='" . $actual_link . "'>" . $actual_link . "</a></p>";
+        $mail->AltBody = "This is the plain text version of the email content";
+        
+
+        //Replace the plain text body with one created manually
+        $mail->AltBody = 'This is a plain-text message body';
+
+        //send the message, check for errors
+        if (!$mail->send()) {
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            return $mail;
+        } else {
+            echo '<script type="text/javascript">
+            window.onload = function () { alert("Account Activation Email has been sent!"); }
+            </script>';
+            return $mail;
+        }
+
+        } catch (Exception $ex) {
+
+        }
+    }
+    
+    function generate_forget_password_email($email, $otp)
+    {
+      try{
+
+        //Create a new PHPMailer instance
+        $mail = new PHPMailer();
+
+        //Tell PHPMailer to use SMTP
+        $mail->isSMTP();
+        
+        //Set the hostname of the mail server
+        $mail->Host = 'smtp.gmail.com';
+        // use
+        // $mail->Host = gethostbyname('smtp.gmail.com');
+        // if your network does not support SMTP over IPv6
+        
+        //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+        $mail->Port = 587;
+
+        //Set the encryption mechanism to use - STARTTLS or SMTPS
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+        //Whether to use SMTP authentication
+        $mail->SMTPAuth = true;
+        
+        //Username to use for SMTP authentication - use full email address for gmail
+        $mail->Username = 'busbly12345@gmail.com';
+
+        //Password to use for SMTP authentication
+        $mail->Password = 'Haha1234';
+
+        //Set who the message is to be sent from
+        $mail->setFrom('busbly12345@gmail.com', 'Busbly Crews');
+
+        //Set an alternative reply-to address
+        $mail->addReplyTo('replyto@example.com', 'Busbly Crews');
+
+        //Set who the message is to be sent to
+        $mail->addAddress($email, 'John Doe');
+
+        //Set the subject line
+        $mail->Subject = 'PHPMailer GMail SMTP test';
+
+        //Send HTML or Plain Text email
+        $mail->isHTML(true);
+        
+        //Setup Mail Content
+        $actual_link = "http://localhost/ICT3103Busbly/accountActivation.php?id=" . $activationID;
+        $mail->Subject = "Forget Password OTP for Busbly";
+        $mail->Body = "<p> Here is your OTP for Forget Password, it will expires within 5 minutes</p><p>$otp</p>";
         $mail->AltBody = "This is the plain text version of the email content";
         
 

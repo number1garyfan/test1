@@ -1,4 +1,4 @@
-<?php include('Server/AccountActivationServer.php') ?>
+<?php include('Server/OTPServer.php') ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Busbly Account Activation</title>
+    <title>Busbly Enter OTP</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -17,10 +17,13 @@
     <link href="css/busbly-login.css" rel="stylesheet">
   </head>
   <body class="text-center">
-      <form class="form-signin">
+    <form class="form-signin" method="post" action="enterOTP.php">
+        <?php include('Server/Errors.php'); ?>
         <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
-  <h2>Account Has Been Activated !</h2>
-  <?php include('Server/AccountActivationServer.php'); ?>
+  <h1 class="h3 mb-3 font-weight-normal">Enter OTP</h1>
+  <h6>An OTP email has been sent to your email</h6>
+  <input name="otp" type="password" class="form-control" id="exampleInputPassword1">
+  <button name="enter_otp" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
 </form>
 </body>

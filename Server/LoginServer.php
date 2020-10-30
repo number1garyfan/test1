@@ -2,6 +2,7 @@
 require_once('C:/xampp/htdocs/ICT3103Busbly/Connections/dbconnect.php');
 require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/SaltHashingHelper.php");
 require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/PasswordHelper.php");
+require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/EmailHelper.php");
 require_once("C:/xampp/htdocs/ICT3103Busbly/Server/ServerFunction.php");
 
 
@@ -19,7 +20,7 @@ if (isset($_POST['login_user'])) {
     
   //Create class objects
   $saltedHashingHelperObj = new SaltHashingHelper();
-  
+  $emailHelperObj = new EmailHelper();
   
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $password = mysqli_real_escape_string($conn, $_POST['password_1']);
@@ -43,12 +44,20 @@ if (isset($_POST['login_user'])) {
   else{      
     // Finally, login user if there are no errors in the form and database
     if (count($errors) == 0) {
+
+        //Send OTP Email
+        $otp = $emailHelperObj->generate_email_otp();
+        $returnMail = $emailHelperObj->generate_otp_email($email, $otp);
         
-        //Call Login Function
-        login($email, $mysqli);
+        //Start OTP Timer
+        store_otp($otp, $email, $mysqli);
         
-        //Redirect to Home Page
-        header("Location: index.php");
+        //Send email to next page using Session
+        $_SESSION["email_address_otp"] = $email;
+        
+        //Redirect to next page
+        header("Location: enterOTP.php");
+       
     }
   } 
 }

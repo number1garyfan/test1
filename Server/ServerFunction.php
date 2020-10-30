@@ -41,7 +41,7 @@
     //For Registration
     function insertUser($username, $password, $salt, $email, $roleID, $activationID, $mysqli)
     {
-        $stmt = $mysqli->prepare ("INSERT INTO Account (Username, Password, Salt, CreationDate, Sessions, Email, ActivationID, Roles_idRoles) VALUES (?, ?, ?, NOW(), 1, ?, ?, ?)");
+        $stmt = $mysqli->prepare ("INSERT INTO Account (Username, Password, Salt, CreationDate, Email, ActivationID, Roles_idRoles) VALUES (?, ?, ?, NOW(), ?, ?, ?)");
         $stmt->bind_param("sssssi", $username, $password, $salt, $email, $activationID, $roleID); // Bind param $userid to query parameter (?)
         $stmt->execute(); // Execute the prepared query
         $stmt -> close();
@@ -50,7 +50,7 @@
 
     function login($email, $mysqli)
     {
-        $stmt = $mysqli->prepare("UPDATE Account SET (LastLogin = NOW(), FailLoginCount = 0, LastAttemptedLogin = NOW()) WHERE Email = ?");
+        $stmt = $mysqli->prepare("UPDATE Account SET LastLogin = NOW(), FailLoginCount = 0, Sessions = 1 WHERE Email = ? ");
         $stmt->bind_param("s", $email); // Bind param $userid to query parameter (?)
         $stmt->execute(); // Execute the prepared query
         $stmt -> close();
@@ -58,12 +58,87 @@
     
     function account_activation($activationCode, $mysqli)
     {
-        $stmt = $mysqli->prepare("UPDATE Account SET (Verified = 1) WHERE ActivationID = ?");
+        $stmt = $mysqli->prepare("UPDATE Account SET Verified = 1 WHERE ActivationID = ?");
         $stmt->bind_param("s", $activationCode); // Bind param $userid to query parameter (?)
         $stmt->execute(); // Execute the prepared query
         $stmt -> close();
     }
     
+    function store_otp($otp, $email, $mysqli)
+    {
+        $stmt = $mysqli->prepare ("INSERT INTO OTP (OneTimePassword, StartTime, Account_Id, ValidationOTP) VALUES (?, NOW(), (SELECT idAccount from Account WHERE Email = ?), 1)");
+        $stmt->bind_param("ss", $otp, $email); // Bind param $userid to query parameter (?)
+        $stmt->execute(); // Execute the prepared query
+        $stmt -> close();
+    }
+       
+    function checkValidOTP($otp, $mysqli)
+    {
+            $stmt = $mysqli->prepare("SELECT OneTimePassword FROM OTP WHERE OneTimePassword = ? LIMIT 1");
+            $stmt->bind_param("i", $otp); // Bind param $userid to query parameter (?)
+            $stmt->execute(); // Execute the prepared query
+            $stmt->store_result();
+            $stmt->bind_result($db_otp); // Get variables from result
+            $stmt->fetch();
+            if ($stmt->num_rows == 1)
+            {	
+                    $stmt->close();
+                    return true;
+            } else {
+                    $stmt->close();
+                    return false;
+            }
+    }
+    
+    function checkOTPExpired($otp, $mysqli)
+    {
+            $stmt = $mysqli->prepare("SELECT OneTimePassword FROM OTP WHERE OneTimePassword = ? AND NOW()>DATE_ADD(StartTime, INTERVAL 5 MINUTE) LIMIT 1");
+            $stmt->bind_param("i", $otp); // Bind param $userid to query parameter (?)
+            $stmt->execute(); // Execute the prepared query
+            $stmt->store_result();
+            $stmt->bind_result($db_start_time); // Get variables from result
+            $stmt->fetch();
+            
+            if ($stmt->num_rows == 1)
+            {	
+                    $stmt->close();
+                    return true;
+            } else {
+                    $stmt->close();
+                    return false;
+            }
+    }
+    
+    function checkUsedOTP($otp, $mysqli)
+    {
+            $stmt = $mysqli->prepare("SELECT ValidationOTP FROM OTP WHERE OneTimePassword = ? AND ValidationOTP = 0 LIMIT 1");
+            $stmt->bind_param("i", $otp); // Bind param $userid to query parameter (?)
+            $stmt->execute(); // Execute the prepared query
+            $stmt->store_result();
+            $stmt->bind_result($db_start_time); // Get variables from result
+            $stmt->fetch();
+            
+            if ($stmt->num_rows == 1)
+            {	
+                    $stmt->close();
+                    return true;
+            } else {
+                    $stmt->close();
+                    return false;
+            }
+    }
+    
+    // Delete OTP from table once used
+    function update_otp($otp, $mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE OTP SET ValidationOTP = 0 WHERE OneTimePassword = ? "); 
+        $stmt->bind_param("i", $otp); 
+        $stmt->execute(); // Execute the prepared query
+        $stmt -> close();
+    }
+    
+   
+
      // Start a php session in a secure way
     // Prevent XSS attack and session hijacking
     function sec_session_start()
@@ -106,7 +181,7 @@
             $now = time(); // Get timestamp of current time
             $valid_attempts = $now - (1 * 60 * 30); // All login attempts from the past 30min
 
-            $stmt = $mysqli->prepare("SELECT FailLoginCount FROM Account WHERE Email = ? AND LastLogin > '$valid_attempts' AND LastLogin IS NOT NULL AND FailLoginCount IS NOT NULL");
+            $stmt = $mysqli->prepare("SELECT FailLoginCount FROM Account WHERE Email = ? AND FailLoginCount IS NOT NULL");
             $stmt->bind_param("s", $db_email);
             $stmt->execute();
             $stmt->store_result();
@@ -114,7 +189,7 @@
             $stmt->fetch();
 
             // If there has been more than 3 failed login from the past 1 hour
-            if ($stmt->num_rows > 3) {
+            if ($wot > 3) {
                     $stmt->close();
                     return true;
             } else {
@@ -135,7 +210,7 @@
         //$mysqli->close();
     }
     
-    
+   
     
     // Check userid and password against the database
     // XSS protection
@@ -149,15 +224,14 @@
         $stmt->fetch();
         // If user exists
         if ($stmt->num_rows == 1) {
-                $password = password_verify($password,$db_password);
                 // Check if account is locked from too many login attempts
                 if (checkbrute($db_email, $mysqli) == true) {
                         // Account is locked
                         //$stmt->close();
                         return false;
                 } else {
-                        // Check if password in database matches the password the user submitted
-                        if ($db_password == $password && $db_verified == '1') {
+                        // Check if password in database matches the password the user submitted                 
+                        if ($db_password == $password && $db_verified == 1) {
                             //Store DB variables to Session Variables
                             $_SESSION["Roles"] = $db_roles;
                             $_SESSION["Username"] = $db_username;
@@ -173,14 +247,24 @@
                             return false;
                         }
                         else {
-//                                // Password is not correct, we record this attempt in the database
-//                                if ($stmt = $mysqli->prepare("UPDATE Account SET (FailLoginCount = ?, LastAttemptedLogin = NOW()) WHERE Email = ?")) {
-//                                        $stmt->bind_param('ss', $db_failedLoginCount+1, $email);
-//                                        $stmt->execute();
-//                                        //$stmt->close();
-//                                }
-                                set_brute_force_counter($db_email, $mysqli);
-                                return false;
+                            // Password is not correct, we record this attempt in the database
+                            if($db_failedLoginCount >= 0){
+                                $value = $db_failedLoginCount + 1;
+                                $stmt = $mysqli->prepare("UPDATE Account SET FailLoginCount = ? WHERE Email = ?");
+                                $stmt->bind_param('is', $value, $email);
+                                $stmt->execute();
+                                $stmt->close();
+                            }
+                            else{
+                                $value = 0;
+                                $stmt = $mysqli->prepare("UPDATE Account SET FailLoginCount = ? WHERE Email = ?");
+                                $stmt->bind_param('is', $value, $email);
+                                $stmt->execute();
+                                $stmt->close();
+                            }
+                                     
+                             //set_brute_force_counter($db_email, $mysqli);
+                            return false;
                         }
                 }
 
@@ -190,6 +274,15 @@
 	    return false;
         }
     }
+    
+    function reset_password($password, $salt, $email, $mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE Account SET Password = ?, Salt = ? WHERE Email = ?");
+        $stmt->bind_param("sss", $password, $salt, $email); // Bind param $userid to query parameter (?)
+        $stmt->execute(); // Execute the prepared query
+        $stmt -> close();
+    }
+    
     
 ?>
 
