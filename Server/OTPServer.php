@@ -1,9 +1,9 @@
 <?php
-require_once('C:/xampp/htdocs/ICT3103Busbly/Connections/dbconnect.php');
-require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/SaltHashingHelper.php");
-require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/PasswordHelper.php");
-require_once("C:/xampp/htdocs/ICT3103Busbly/HelperClass/EmailHelper.php");
-require_once("C:/xampp/htdocs/ICT3103Busbly/Server/ServerFunction.php");
+require_once('Connections/dbconnect.php');
+require_once("HelperClass/SaltHashingHelper.php");
+require_once("HelperClass/PasswordHelper.php");
+require_once("HelperClass/EmailHelper.php");
+require_once("Server/ServerFunction.php");
 
 sec_session_start();
 

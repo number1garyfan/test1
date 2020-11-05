@@ -216,11 +216,11 @@
     // XSS protection
     // Using prepared statements means that SQL injection is not possible
     function check_login($email, $password, $mysqli) {
-        $stmt = $mysqli->prepare("SELECT Username, Password, Salt, Sessions, FailLoginCount, Email, Roles_idRoles, Verified FROM Account WHERE Email = ? LIMIT 1"); 
+        $stmt = $mysqli->prepare("SELECT idAccount, Username, Password, Salt, Sessions, FailLoginCount, Email, Roles_idRoles, Verified FROM Account WHERE Email = ? LIMIT 1"); 
         $stmt->bind_param("s", $email); // Bind param $email to query parameter (?)
         $stmt->execute(); // Execute the prepared query
         $stmt->store_result();
-        $stmt->bind_result($db_username, $db_password, $db_salt, $db_sessions, $db_failedLoginCount, $db_email, $db_roles, $db_verified); // Get variables from result
+        $stmt->bind_result($db_accountid, $db_username, $db_password, $db_salt, $db_sessions, $db_failedLoginCount, $db_email, $db_roles, $db_verified); // Get variables from result
         $stmt->fetch();
         // If user exists
         if ($stmt->num_rows == 1) {
@@ -233,9 +233,11 @@
                         // Check if password in database matches the password the user submitted                 
                         if ($db_password == $password && $db_verified == 1) {
                             //Store DB variables to Session Variables
+                            $_SESSION["AccountId"] = $db_accountid;
                             $_SESSION["Roles"] = $db_roles;
                             $_SESSION["Username"] = $db_username;
                             $_SESSION["Email"] = $db_email;
+                           
                             return true;
                         } 
                         else if($db_sessions == 1){
