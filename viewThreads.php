@@ -7,10 +7,7 @@ require_once ('Functions/sessionManagement.php');
 if (isset($_POST["TopicID"])) {
     $topicid = filter_input(INPUT_POST, 'TopicID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("SELECT idThread, ThreadTitle ,count(distinct idPost) as PostNo,td.Created_By_AccountId FROM Topic tp , Thread td left join Post p on p.Thread_idThread = td.idThread and p.deleted <> 1 or p.deleted is null where tp.idTopic = td.Topic_idTopic and idTopic = 49 and td.deleted <> 1 or td.deleted is null GROUP BY idThread;");
-    $stmt->bind_param("i", $topicid);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $result = read_thread($topicid,$mysqli);
 }
 
 if (isset($_POST["Topic"])) {

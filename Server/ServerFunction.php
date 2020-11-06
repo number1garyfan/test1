@@ -285,6 +285,108 @@
         $stmt -> close();
     }
     
+    function read_topic($mysqli)
+    {
+        $stmt = $mysqli->prepare("SELECT idTopic,TopicTitle,count(distinct idThread) as ThreadNo,count(distinct idPost) as PostNo,tp.Created_By_AccountId FROM Topic tp LEFT JOIN Thread td ON td.deleted <> 1 or td.deleted is null and tp.idTopic = td.Topic_idTopic LEFT JOIN Post p ON p.deleted <> 1 or p.deleted is null and p.Thread_idThread = td.idThread WHERE tp.deleted <> 1 or tp.deleted is null GROUP BY idTopic;");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt -> close();
+        
+        return $result;
+    }
     
+    function read_thread($topicid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("SELECT idThread, ThreadTitle ,count(distinct idPost) as PostNo,td.Created_By_AccountId FROM Topic tp , Thread td left join Post p on p.deleted <> 1 or p.deleted is null and p.Thread_idThread = td.idThread where td.deleted <> 1 or td.deleted is null and tp.idTopic = td.Topic_idTopic and idTopic = ? GROUP BY idThread;");
+        $stmt->bind_param("i", $topicid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt -> close();
+        
+        return $result;
+    }
+    
+    function read_post($threadid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("SELECT idPost, CommentPost, Username , p.Created_By_AccountId FROM Thread td, Post p,Account a where p.deleted <> 1 or p.deleted is null and p.Thread_idThread = td.idThread and a.idAccount = p.Created_By_AccountId and idThread = ? ;");
+        $stmt->bind_param("i", $threadid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt -> close();
+        
+        return $result;
+    }
+    
+    function insert_topic($TopicName,$accountID,$mysqli)
+    {
+        $stmt = $mysqli->prepare("insert into Topic (TopicTitle,CreationDate,Created_By_AccountId) Values (?,NOW(),?);");
+        $stmt->bind_param("si", $TopicName,$accountID);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function insert_thread($ThreadName,$accountID,$topicid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("INSERT INTO Thread (ThreadTitle,CreationDate,Created_By_AccountId,Topic_idTopic) Values (?,NOW(),?,?);");
+        $stmt->bind_param("sii", $ThreadName,$accountID,$topicid); 
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function insert_post($Postcomment,$accountID,$threadid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("insert into Post(CommentPost, CreationDate,Created_By_AccountId,Thread_idThread) Values (?,NOW(),?,?);");
+        $stmt->bind_param("sii", $Postcomment,$accountID,$threadid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function delete_topic($accountID,$topicid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE Topic tp, Thread td, Post p SET tp.Deleted = true,tp.DeletionDate = Now(),tp.Deleted_By_AccountId = ? , td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where tp.idTopic = td.Topic_idTopic and td.idThread = p.Thread_idThread and tp.idTopic = ? ;");
+        $stmt->bind_param("iiii", $accountID,$accountID,$accountID,$topicid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function delete_thread($accountID,$threadid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE Thread td, Post p SET td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where td.idThread = p.Thread_idThread and td.idThread = ? ;");
+        $stmt->bind_param("iii", $accountID,$accountID,$threadid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function delete_post($accountID,$postid,$mysqli)
+    {   
+        $stmt = $mysqli->prepare("UPDATE Post SET Deleted = true,DeletionDate = Now(),Deleted_By_AccountId = ? Where idPost = ? ;");
+        $stmt->bind_param("ii", $accountID,$postid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
 ?>
 

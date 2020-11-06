@@ -8,10 +8,8 @@
 
 if(isset($_POST['ThreadID'])){
     $threadid = filter_input(INPUT_POST, 'ThreadID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    
-    $stmt = $mysqli->prepare("UPDATE Thread SET Deleted = true,DeletionDate = Now(),Deleted_By_AccountId = ? Where idThread = ? ;");
-    $stmt->bind_param("ii", $accountID,$threadid);
-    if($stmt->execute()){
+
+    if(delete_thread($accountID,$threadid,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Thread deleted successfully","","success");';
     echo '}, 100);</script>';

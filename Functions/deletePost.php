@@ -9,9 +9,7 @@
 if(isset($_POST['PostID'])){
     $postid = filter_input(INPUT_POST, 'PostID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("UPDATE Post SET Deleted = true,DeletionDate = Now(),Deleted_By_AccountId = ? Where idPost = ? ;");
-    $stmt->bind_param("ii", $accountID,$postid);
-    if($stmt->execute()){
+    if(delete_post($accountID,$postid,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Post deleted successfully","","success");';
     echo '}, 100);</script>';

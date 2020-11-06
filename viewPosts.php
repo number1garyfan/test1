@@ -6,10 +6,7 @@ require_once ('Functions/sessionManagement.php');
 if (isset($_POST["ThreadID"])) {
     $threadid = filter_input(INPUT_POST, 'ThreadID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("SELECT idPost, CommentPost, Username , p.Created_By_AccountId FROM Thread td, Post p,Account a where p.deleted <> 1 or p.deleted is null and p.Thread_idThread = td.idThread and a.idAccount = p.Created_By_AccountId and idThread = ? ;");
-    $stmt->bind_param("i", $threadid);
-    $stmt->execute();
-    $result = $stmt->get_result();  
+    $result = read_post($threadid,$mysqli);
 }
 
 if (isset($_POST['Thread'])) {

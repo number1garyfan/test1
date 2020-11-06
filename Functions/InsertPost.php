@@ -12,10 +12,7 @@ if ($_POST['PostComment'] != "" && isset($_POST['ThreadID'])) {
     $Postcomment = filter_input(INPUT_POST, 'PostComment',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("insert into Post(CommentPost, CreationDate,Created_By_AccountId,Thread_idThread) Values (?,NOW(),?,?);");
-    $stmt->bind_param("sii", $Postcomment,$accountID,$threadid);
-    
-    if($stmt->execute()){
+    if(insert_post($Postcomment,$accountID,$threadid,$mysqli)){
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal("Post created successfully","","success");';
         echo '}, 100);</script>';
@@ -27,7 +24,7 @@ if ($_POST['PostComment'] != "" && isset($_POST['ThreadID'])) {
         echo '}, 100);</script>';
         //$msg = "Topic failed to create";
         }
-    $stmt->close();
+    //$stmt->close();
     }
     
 if (isset($_POST['ThreadID'])) {

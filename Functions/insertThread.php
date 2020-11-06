@@ -12,10 +12,7 @@ if ($_POST['ThreadName'] != "" && isset($_POST['TopicID'])) {
     $ThreadName = filter_input(INPUT_POST, 'ThreadName',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $topicid = filter_input(INPUT_POST, 'TopicID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("INSERT INTO Thread (ThreadTitle,CreationDate,Created_By_AccountId,Topic_idTopic) Values (?,NOW(),?,?);");
-    $stmt->bind_param("sii", $ThreadName,$accountID,$topicid);
-    
-    if($stmt->execute()){
+    if(insert_thread($ThreadName,$accountID,$topicid,$mysqli)){
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal("Thread created successfully","","success");';
         echo '}, 100);</script>';
@@ -27,7 +24,7 @@ if ($_POST['ThreadName'] != "" && isset($_POST['TopicID'])) {
         echo '}, 100);</script>';
         //$msg = "Topic failed to create";
         }
-    $stmt->close();
+    //$stmt->close();
     }
     
 if (isset($_POST['TopicID'])) {

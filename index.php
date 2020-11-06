@@ -4,10 +4,7 @@ require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
 
 
-
-$stmt = $mysqli->prepare("SELECT idTopic,TopicTitle,count(distinct idThread) as ThreadNo,count(distinct idPost) as PostNo,tp.Created_By_AccountId FROM Topic tp LEFT JOIN Thread td ON tp.idTopic = td.Topic_idTopic and td.deleted <> 1 or td.deleted is null LEFT JOIN Post p ON p.Thread_idThread = td.idThread and p.deleted <> 1 or p.deleted is null WHERE tp.deleted <> 1 or tp.deleted is null GROUP BY idTopic;");
-$stmt->execute();
-$result = $stmt->get_result();
+$result = read_topic($mysqli);
 
 
 require_once('Functions/deleteTopic.php')
