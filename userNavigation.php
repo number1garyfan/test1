@@ -12,7 +12,7 @@
     </ul>
     <ul class="nav-item nav navbar-nav navbar-right">
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">BusloverXOXO</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['Username'] ?></a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="#">View Profile</a>
           <a class="dropdown-item" href="updateProfile.php">Update Profile</a>
