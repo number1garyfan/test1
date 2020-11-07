@@ -1,8 +1,3 @@
-<?php 
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
-require_once ('Functions/insertTopic.php');
-?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -43,10 +38,10 @@ and open the template in the editor.
 
                 <h3>Create Topic</h3>
 
-                <form name="myForm" action="createTopic.php" method="post" onsubmit="return validateForm()">
+                <form>
                 <div class="form-group">
-                  <label for="TopicName">Topic</label>
-                  <textarea class="form-control" id="TopicName" name="TopicName" rows="3" required></textarea>
+                  <label for="TopicName">TopicName</label>
+                  <textarea class="form-control" id="TopicName" rows="3"></textarea>
                 </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -59,13 +54,11 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-        
-        
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
@@ -73,18 +66,7 @@ and open the template in the editor.
                     searching: false// false to disable pagination (or any other option)
                 });
                 $('.dataTables_length').addClass('bs-select');
-                
             });
         </script>
-<script>
-function validateForm() {
-  var topic = document.forms["myForm"]["TopicName"].value;
-  if (topic === "") {
-    alert("Topic must not be empty");
-    return false;
-  }
-}
-</script>
-
 </html>
 

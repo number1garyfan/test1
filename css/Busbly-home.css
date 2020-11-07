@@ -46,13 +46,3 @@ and open the template in the editor.
     font-family: inherit;
     font-size: inherit;
 }
-
-
-.button-container{
-    display: flex;
-}
-
-.button-container button {
-    display: inline;
-    vertical-align: middle;
-}

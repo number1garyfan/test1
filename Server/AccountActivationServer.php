@@ -1,6 +1,9 @@
 <?php 
-     require_once('Connections/dbconnect.php');
-     require_once("Server/ServerFunction.php");
+     require_once('C:/xampp/htdocs/ICT3103Busbly/Connections/dbconnect.php');
+     require_once("C:/xampp/htdocs/ICT3103Busbly/Server/ServerFunction.php");
+     
+     sec_session_start();
+     
      // connect to the database
      $conn = $mysqli;
      //Get variables from URL

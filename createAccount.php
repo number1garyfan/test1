@@ -1,4 +1,4 @@
-<?php include('Server/CreateAccountServer.php'); ?>
+<?php include('Server/CreateAccountServer.php') ?>
 <!doctype html>
 <html lang="en">
     <head>

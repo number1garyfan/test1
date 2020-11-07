@@ -28,12 +28,18 @@ class SaltHashingHelper {
         
     function salted_hashing_password($salt, $password)
     {
-      try{
-          //Concatenate salt with password
-          $concatenateString = $salt.$password;
-          //Hash with SHA256
-          $securePassword = hash('sha256', $concatenateString);
-          return $securePassword; 
+       try{
+          if((strlen($password)>= 65) || (strlen($salt)>= 65)){
+            //SHA256 only takes in at most 64 characters
+            return "";
+          }
+          else{
+            //Concatenate salt with password
+            $concatenateString = $salt.$password;
+            //Hash with SHA256
+            $securePassword = hash('sha256', $concatenateString);
+            return $securePassword; 
+          }
         } catch (Exception $ex) {
 
         }
