@@ -1,9 +1,3 @@
-<?php
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
-require_once ('Functions/insertThread.php');
-
-?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -44,12 +38,11 @@ and open the template in the editor.
 
                 <h3>Create Thread</h3>
 
-                 <form name="myForm" action="createThread.php" method="post" onsubmit="return validateForm()">
+                <form>
                 <div class="form-group">
-                  <label for="ThreadName">Thread</label>
-                  <textarea class="form-control" id="ThreadName" name="ThreadName" rows="3" required></textarea>
+                  <label for="ThreadName">Thread name</label>
+                  <textarea class="form-control" id="ThreadName" rows="3"></textarea>
                 </div>
-                    <input type="hidden" name="TopicID" value="<?php echo $topicid ?>" />
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
@@ -66,7 +59,6 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
@@ -75,15 +67,6 @@ and open the template in the editor.
                 });
                 $('.dataTables_length').addClass('bs-select');
             });
-        </script>
-        <script>
-function validateForm() {
-  var topic = document.forms["myForm"]["ThreadName"].value;
-  if (topic === "") {
-    alert("Thread must not be empty");
-    return false;
-  }
-}
         </script>
 </html>
 

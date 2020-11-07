@@ -16,9 +16,15 @@ class HashingHelper {
     function hash_email($email)
     {
       try{
-          //Hash with SHA256
-          $hashEmail = hash('sha256', $email);
-          return $hashEmail; 
+          if(strlen($email)>= 65){
+            //SHA256 only takes in at most 64 characters
+            return "";
+          }
+          else{
+            //Hash with SHA256
+            $hashEmail = hash('sha256', $email);
+            return $hashEmail; 
+          }
         } catch (Exception $ex) {
 
         }
@@ -26,13 +32,18 @@ class HashingHelper {
     
     function hash_username($username)
     {
-      try{
-          //Hash with SHA256
-          $hashUserName = hash('sha256', $username);
-          return $hashUserName; 
-        } catch (Exception $ex) {
+        try{
+         if(strlen($username)>= 65){
+           //SHA256 only takes in at most 64 characters
+           return "";
+         }
+         else{
+           //Hash with SHA256
+           $hashUserName = hash('sha256', $username);
+           return $hashUserName;  
+         }
+       } catch (Exception $ex) {
 
-        }
+       }
     }
-    
 }
