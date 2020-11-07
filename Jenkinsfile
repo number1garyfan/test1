@@ -1,16 +1,19 @@
 pipeline {
-	agent any
+	agent {
+		docker {
+			image 'composer:latest'
+		}
+	}
 	stages {
-
-		stage('OWASP DependencyCheck') {
+		stage('Build') {
 			steps {
-				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
+				sh 'composer install'
 			}
 		}
-	}	
-	post {
-		success {
-			dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+		stage('Test') {
+			steps {
+                sh './vendor/bin/phpunit tests'
+            }
 		}
 	}
 }
