@@ -6,16 +6,17 @@ require_once ('Functions/sessionManagement.php');
 
 if (isset($_POST["TopicID"])) {
     $topicid = filter_input(INPUT_POST, 'TopicID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    
-    $result = read_thread($topicid,$mysqli);
+
+    $result = read_thread($topicid, $mysqli);
 }
 
 if (isset($_POST["Topic"])) {
     $topic = filter_input(INPUT_POST, 'Topic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 
-require_once('Functions/deleteThread.php');
 
+require_once('Functions/deleteThread.php');
+require_once('Functions/reportThread.php');
 ?>
 
 <!DOCTYPE html>
@@ -83,28 +84,55 @@ and open the template in the editor.
                                                 </form>
                                             </td>
                                             <td>' . $row["PostNo"] . '</td>';
-                                            
 
-                                            if($row['Created_By_AccountId'] == $accountID){
-                                                echo   '<td>
+
+                                if ($row['Created_By_AccountId'] == $accountID || $_SESSION['Roles'] == 1) {
+                                    echo '<td>
                                                 <div style="display: flex;">
                                                     <form action="editThread.php" method="post">
-                                                        <button type="submit" name="ThreadID" value= '.$row["idThread"].' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                        <button type="submit" name="ThreadID" value= ' . $row["idThread"] . ' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
                                                     </form>
                                                     <form action="viewThreads.php" method="post">
+                                                        <input type="hidden" name="Delete" value="Delete" />
                                                         <input type="hidden" name="Topic" value="' . $topic . '" />
                                                         <input type="hidden" name="TopicID" value="' . $topicid . '" />
-                                                        <button type="submit" name="ThreadID" value= '.$row["idThread"].' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                        <button type="submit" name="ThreadID" value= ' . $row["idThread"] . ' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
                                                     </form>
                                                 </div>
                                                 
                                                 </td>
                                             </tr>';
-                                                
-                                            }else{
-                                                echo '<td></td> 
-                                                    </tr>';
-                                            }
+                                } else if ($_SESSION['Roles'] == 4) {
+                                    echo '<td>
+                                                    <div style="display: flex;">
+                                                        <form action="editThread.php" method="post">
+                                                            <button type="submit" name="ThreadID" value= ' . $row["idThread"] . ' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                        </form>
+                                                        <form action="viewThreads.php" method="post">
+                                                            <input type="hidden" name="Delete" value="Delete" />
+                                                            <input type="hidden" name="Topic" value="' . $topic . '" />
+                                                            <input type="hidden" name="TopicID" value="' . $topicid . '" />
+                                                            <button type="submit" name="ThreadID" value= ' . $row["idThread"] . ' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                        </form>
+                                                        <form action="viewThreads.php" method="post">
+                                                            <input type="hidden" name="Report" value="Report" />
+                                                            <input type="hidden" name="Topic" value="' . $topic . '" />
+                                                            <input type="hidden" name="TopicID" value="' . $topicid . '" />
+                                                            <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
+                                                        </form>
+                                                    </div>
+
+                                                    </td>
+                                                </tr>';
+                                } else {
+                                    echo '<td>
+                                            <form action="viewThreads.php" method="post">
+                                                <input type="hidden" name="Report" value="Report" />
+                                                <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
+                                            </form>
+                                         </td> 
+                                    </tr>';
+                                }
                             }
                         } else {
                             echo '                       
@@ -120,9 +148,9 @@ and open the template in the editor.
 
                 </table>
                 <form action="createThread.php" method="post">
-                    <button type="submit" name="TopicID" value= "<?php echo $topicid  ?>" class="btn btn-primary">New Thread</button>
+                    <button type="submit" name="TopicID" value= "<?php echo $topicid ?>" class="btn btn-primary">New Thread</button>
                 </form>
-              
+
             </div> <!-- /container -->
 
         </main>
@@ -131,7 +159,7 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+  </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>

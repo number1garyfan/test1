@@ -143,17 +143,17 @@
     // Prevent XSS attack and session hijacking
     function sec_session_start()
     {
-            $session_name = "sec_session_id"; // Set a custom session name, rename for every new project
-            $secure = false; // set to true if using https
-            $httponly = true; // This stop javascript being able to access the session id
-
-            ini_set("session.use_only_cookies", 1); // Forces sessions to only use cookies
-            ini_set("session.cookie_lifetime", 60 * 60 * 0.15); //15minutes Life time
-
-            $cookieParams = session_get_cookie_params(); // Gets current cookies param
-
-            session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
-            session_name($session_name); // Sets the session name to the one above
+//            $session_name = "sec_session_id"; // Set a custom session name, rename for every new project
+//            $secure = false; // set to true if using https
+//            $httponly = true; // This stop javascript being able to access the session id
+//
+//            ini_set("session.use_only_cookies", 1); // Forces sessions to only use cookies
+//            ini_set("session.cookie_lifetime", 60 * 60 * 0.15); //15minutes Life time
+//
+//            $cookieParams = session_get_cookie_params(); // Gets current cookies param
+//
+//            session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
+//            session_name($session_name); // Sets the session name to the one above
             session_start(); // Start the php session
     }
     
@@ -355,7 +355,7 @@
     
     function delete_topic($accountID,$topicid,$mysqli)
     {
-        $stmt = $mysqli->prepare("UPDATE Topic tp, Thread td, Post p SET tp.Deleted = true,tp.DeletionDate = Now(),tp.Deleted_By_AccountId = ? , td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where tp.idTopic = td.Topic_idTopic and td.idThread = p.Thread_idThread and tp.idTopic = ? ;");
+        $stmt = $mysqli->prepare("UPDATE Topic tp left join Thread td On tp.idTopic = td.Topic_idTopic left join Post p on td.idThread = p.Thread_idThread Set tp.Deleted = true,tp.DeletionDate = Now(),tp.Deleted_By_AccountId = ? , td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where tp.idTopic = ? ;");
         $stmt->bind_param("iiii", $accountID,$accountID,$accountID,$topicid);
         if ($stmt->execute()){
             return true;
@@ -367,7 +367,7 @@
     
     function delete_thread($accountID,$threadid,$mysqli)
     {
-        $stmt = $mysqli->prepare("UPDATE Thread td, Post p SET td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where td.idThread = p.Thread_idThread and td.idThread = ? ;");
+        $stmt = $mysqli->prepare("UPDATE Thread td left join  Post p on td.idThread = p.Thread_idThread SET td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where td.idThread = ? ;");
         $stmt->bind_param("iii", $accountID,$accountID,$threadid);
         if ($stmt->execute()){
             return true;
@@ -388,5 +388,95 @@
         }
         $stmt -> close();
     }
+    
+    function report_thread($accountid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE Account Set ReportCounter = ReportCounter + 1 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function report_post($accountid,$mysqli)
+    {
+        $stmt = $mysqli->prepare("UPDATE Account Set ReportCounter = ReportCounter + 1 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function read_user($mysqli)
+    {
+        $stmt = $mysqli->prepare("SELECT idAccount,Username,Roles,Banned,ReportCounter FROM Account a, Roles r Where a.Roles_idRoles = r.idRoles;");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt -> close();
+        
+        return $result;
+    }
+    
+    function promote_user_admin($accountid,$mysqli){
+        $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 1 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function promote_user_mod($accountid,$mysqli){
+        $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 4 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function demote_user_user($accountid,$mysqli){
+        $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 2 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+    function ban_user($accountid,$mysqli){
+        $stmt = $mysqli->prepare("UPDATE Account SET Banned = 1 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
+        function unban_user($accountid,$mysqli){
+        $stmt = $mysqli->prepare("UPDATE Account SET Banned = 0 Where idAccount = ? ;");
+        $stmt->bind_param("i", $accountid);
+        if ($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        $stmt -> close();
+    }
+    
 ?>
 

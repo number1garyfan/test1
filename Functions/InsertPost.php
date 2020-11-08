@@ -8,7 +8,7 @@
 
 require_once('Connections/dbconnect.php');
 
-if ($_POST['PostComment'] != "" && isset($_POST['ThreadID'])) {   
+if (!empty($_POST['PostComment']) && isset($_POST['ThreadID'])) {   
     $Postcomment = filter_input(INPUT_POST, 'PostComment',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     

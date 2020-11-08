@@ -5,6 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//include_once ('CSRF-Protector-PHP/libs/csrf/csrfprotector.php');
+//
+////Initialise CSRFGuard library
+//csrfProtector::init();
 
 sec_session_start();
 

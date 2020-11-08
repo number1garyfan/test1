@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-if(isset($_POST['ThreadID'])){
+if(isset($_POST['ThreadID']) && isset($_POST['Delete'])){
     $threadid = filter_input(INPUT_POST, 'ThreadID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if(delete_thread($accountID,$threadid,$mysqli)){

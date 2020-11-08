@@ -74,8 +74,8 @@ and open the template in the editor.
                                             </td>
                                             <td>'.$row["ThreadNo"].'</td>
                                             <td>'.$row["PostNo"].'</td>';
-                                
-                                            if($row['Created_By_AccountId'] == $accountID){
+                                            //user that created and admin (able to delete and edit all topic,thread,post)
+                                            if($row['Created_By_AccountId'] == $accountID || $_SESSION['Roles'] == 1){
                                                 echo   '<td>
                                                 <div style="display: flex;">
                                                     <form action="editTopic.php" method="post">
@@ -88,7 +88,6 @@ and open the template in the editor.
                                                 
                                                 </td>
                                             </tr>';
-                                                
                                             }else{
                                                 echo '<td></td> 
                                                     </tr>';
@@ -107,7 +106,10 @@ and open the template in the editor.
                         }
                         ?>
                 </table>
-                <a class="btn btn-primary" href="createTopic.php" role="button">New Topic</a>
+                <?php 
+                if($_SESSION['Roles'] == 1){
+                echo '<a class="btn btn-primary" href="createTopic.php" role="button">New Topic</a>';
+                }?>
             </div> <!-- /container -->
 
         </main>
@@ -116,7 +118,7 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+  </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>

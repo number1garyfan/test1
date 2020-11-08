@@ -2,11 +2,11 @@
 require_once('Connections/dbconnect.php');
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
-        
+
 if (isset($_POST["ThreadID"])) {
-    $threadid = filter_input(INPUT_POST, 'ThreadID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    
-    $result = read_post($threadid,$mysqli);
+    $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $result = read_post($threadid, $mysqli);
 }
 
 if (isset($_POST['Thread'])) {
@@ -14,7 +14,7 @@ if (isset($_POST['Thread'])) {
 }
 
 require_once('Functions/deletePost.php');
-
+require_once('Functions/reportPost.php');
 ?>
 <!DOCTYPE html>
 <!--
@@ -68,40 +68,69 @@ and open the template in the editor.
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                         if ($result->num_rows > 0) {
+                        <?php
+                        if ($result->num_rows > 0) {
                             // output data of each row
                             while ($row = $result->fetch_assoc()) {
                                 echo '  <tr>
                                             <td>
-                                                  '.$row["CommentPost"].'
+                                                  ' . $row["CommentPost"] . '
                                             </td>
                                             <td>
                                                 <form action="your_url" method="post">
-                                                    <button type="submit" name="your_name" value="your_value" class="btn-link">'.$row["Username"].'</button>
+                                                    <button type="submit" name="your_name" value="your_value" class="btn-link">' . $row["Username"] . '</button>
                                                 </form>
                                             </td>';
-                                
-                                            if($row['Created_By_AccountId'] == $accountID){
-                                                echo   '<td>
+
+                                if ($row['Created_By_AccountId'] == $accountID || $_SESSION['Roles'] == 1) {
+                                    echo '<td>
                                                 <div style="display: flex;">
                                                     <form action="editPost.php" method="post">
-                                                        <button type="submit" name="PostID" value= '.$row["idPost"].' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
                                                     </form>
                                                     <form action="viewPosts.php" method="post">
+                                                        <input type="hidden" name="Delete" value="Delete" />
                                                         <input type="hidden" name="Thread" value="' . $thread . '" />
                                                         <input type="hidden" name="ThreadID" value="' . $threadid . '" />
-                                                        <button type="submit" name="PostID" value= '.$row["idPost"].' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
                                                     </form>
                                                 </div>
                                                 
                                                 </td>
                                             </tr>';
+                                } else if ($_SESSION['Roles'] == 4) {
+                                    echo '<td>
+                                                <div style="display: flex;">
+                                                    <form action="editPost.php" method="post">
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                    </form>
+                                                    <form action="viewPosts.php" method="post">
+                                                        <input type="hidden" name="Delete" value="Delete" />
+                                                        <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                        <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                    </form>
+                                                    <form action="viewPosts.php" method="post">
+                                                        <input type="hidden" name="Report" value="Report" />
+                                                        <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                        <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                        <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
+                                                    </form>
+                                                </div>
                                                 
-                                            }else{
-                                                echo '<td></td> 
+                                                </td>
+                                            </tr>';
+                                } else {
+                                    echo '<td>
+                                                        <form action="viewPosts.php" method="post">
+                                                            <input type="hidden" name="Report" value="Report" />
+                                                            <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                            <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                            <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
+                                                        </form>
+                                                      </td> 
                                                     </tr>';
-                                            }
+                                }
                             }
                         } else {
                             echo '                       
@@ -113,13 +142,11 @@ and open the template in the editor.
                                 <td></td>
                             </tr>';
                         }
-                        
-                        
                         ?>
-                        
+
                 </table>
                 <form action="createPost.php" method="post">
-                    <button type="submit" name="ThreadID" value= "<?php echo $threadid  ?>" class="btn btn-primary">New Post</button>
+                    <button type="submit" name="ThreadID" value= "<?php echo $threadid ?>" class="btn btn-primary">New Post</button>
                 </form>
             </div>
 
@@ -129,7 +156,7 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+    </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>

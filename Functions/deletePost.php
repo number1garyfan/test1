@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-if(isset($_POST['PostID'])){
+if(isset($_POST['PostID']) && isset($_POST['Delete'])){
     $postid = filter_input(INPUT_POST, 'PostID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
     if(delete_post($accountID,$postid,$mysqli)){

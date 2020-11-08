@@ -63,7 +63,7 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-        
+    </body>
         
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -81,10 +81,19 @@ and open the template in the editor.
             });
         </script>
 <script>
+<script>
 function validateForm() {
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      
   var topic = document.forms["myForm"]["TopicName"].value;
   if (topic === "") {
     alert("Topic must not be empty");
+    return false;
+  }else if (format.test(topic)){
+    alert("Topic must not contain special characters");  
+    return false;
+  }else if (topic.length >= 255){
+    alert("Topic exceeded max length");   
     return false;
   }
 }

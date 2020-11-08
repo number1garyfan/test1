@@ -8,7 +8,7 @@
 
 require_once('Connections/dbconnect.php');
 
-if ($_POST['ThreadName'] != "" && isset($_POST['TopicID'])) {
+if (!empty($_POST['ThreadName']) && isset($_POST['TopicID'])) {
     $ThreadName = filter_input(INPUT_POST, 'ThreadName',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $topicid = filter_input(INPUT_POST, 'TopicID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     

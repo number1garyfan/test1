@@ -61,7 +61,7 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+   </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -78,9 +78,17 @@ and open the template in the editor.
         </script>
                 <script>
 function validateForm() {
-  var topic = document.forms["myForm"]["PostComment"].value;
-  if (topic === "") {
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      
+  var post = document.forms["myForm"]["PostComment"].value;
+  if (post === "") {
     alert("Post must not be empty");
+    return false;
+  }else if (format.test(post)){
+    alert("Post must not contain special characters");  
+    return false;
+  }else if (post.length >= 255){
+    alert("Post exceeded max length");   
     return false;
   }
 }
