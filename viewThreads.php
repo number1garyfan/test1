@@ -171,7 +171,7 @@ and open the template in the editor.
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
                     paging: true,
-                    searching: false// false to disable pagination (or any other option)
+                    searching: true// false to disable pagination (or any other option)
                 });
                 $('.dataTables_length').addClass('bs-select');
             });
