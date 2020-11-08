@@ -16,7 +16,7 @@ class PasswordHelper {
     function check_password_strength($password)
     {
       try{
-            if( preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,16}$/", $password) ) 
+            if( preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{10,128}$/", $password) ) 
             { 
                 return true; 
             } else {

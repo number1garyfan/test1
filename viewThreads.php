@@ -128,6 +128,8 @@ and open the template in the editor.
                                     echo '<td>
                                             <form action="viewThreads.php" method="post">
                                                 <input type="hidden" name="Report" value="Report" />
+                                                <input type="hidden" name="Topic" value="' . $topic . '" />
+                                                <input type="hidden" name="TopicID" value="' . $topicid . '" />
                                                 <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
                                             </form>
                                          </td> 

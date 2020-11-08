@@ -53,6 +53,7 @@ if (isset($_POST['enter_otp'])) {
         update_otp(intval($inputted_otp), $mysqli);
        
         if($_SESSION["forget_password"]==1){
+            $_SESSION["forget_password"] = 0;
             //Redirect to reset passwrod Page
             header("Location: resetPassword.php");
         }else{     
