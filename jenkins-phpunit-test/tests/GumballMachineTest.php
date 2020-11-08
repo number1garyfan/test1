@@ -1,6 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require 'GumballMachine.php';
+__DIR__."/../GumballMachine.php";
+
 
 class GumballMachineTest extends TestCase {
 
