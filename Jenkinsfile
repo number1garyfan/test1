@@ -12,7 +12,7 @@ pipeline {
 		}
 		stage('Test') {
 			steps {
-              		     sh './vendor/bin/phpunit --log-junit logs/unitreport.xml -c jenkins-phpunit-test/tests/phpunit.xml jenkins-phpunit-test/tests'
+              		     sh './vendor/bin/phpunit --log-junit logs/unitreport.xml -c Tests/UnitTest/phpunit.xml Tests/UnitTest'
 			}
 		}
 	}
