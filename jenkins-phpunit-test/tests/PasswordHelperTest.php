@@ -22,20 +22,6 @@ final class PasswordHelperTest extends TestCase
         $this->assertEquals(false,$result);
     }
     
-    //Purpose: Test for password length (65) less than requirements (64)
-    //Expected Result: false 
-    public function test_passwordStrengthMoreThan64_invalidStrength(): void
-    {
-        //Setup 
-        $pwHelperObj = new PasswordHelper();
-        $password = "12345612345678911234567891123456789112345678911234567891111111Aa@";
-    
-        //Actions
-        $result = $pwHelperObj->check_password_strength($password); 
-         
-        //Assertions
-        $this->assertEquals(false,$result);
-    }
     
     //Expected Result: false 
     public function test_passwordContainNoLowerCaseAlphabet_invalidStrength(): void
