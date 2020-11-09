@@ -16,23 +16,23 @@ class HashingHelper {
     function hash_email($email)
     {
       try{
-          //Hash with SHA256
-          $hashEmail = hash('sha256', $email);
-          return $hashEmail; 
-        } catch (Exception $ex) {
+            //Hash with SHA256
+            $hashEmail = hash('sha256', $email);
+            return $hashEmail; 
+          }
+      catch (Exception $ex) {
 
         }
     }
     
     function hash_username($username)
     {
-      try{
-          //Hash with SHA256
-          $hashUserName = hash('sha256', $username);
-          return $hashUserName; 
-        } catch (Exception $ex) {
+        try{
+           //Hash with SHA256
+           $hashUserName = hash('sha256', $username);
+           return $hashUserName;  
+       } catch (Exception $ex) {
 
-        }
+       }
     }
-    
 }

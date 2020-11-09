@@ -2,7 +2,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'C:\xampp\composer\vendor\autoload.php';
+require 'composer\vendor\autoload.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -145,7 +145,7 @@ class EmailHelper {
         $mail->isHTML(true);
         
         //Setup Mail Content
-        $actual_link = "http://localhost/ICT3103Busbly/accountActivation.php?id=" . $activationID;
+        $actual_link = "http://localhost/Team-01/accountActivation.php?id=" . $activationID;
         $mail->Subject = "Account Activation for Busbly Registration";
         $mail->Body = "<p>Thank you for signing up with us!</p><p>Click this link to activate your account. <a href='" . $actual_link . "'>" . $actual_link . "</a></p>";
         $mail->AltBody = "This is the plain text version of the email content";

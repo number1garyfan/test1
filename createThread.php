@@ -1,3 +1,9 @@
+<?php
+require_once ('Server/ServerFunction.php');
+require_once ('Functions/sessionManagement.php');
+require_once ('Functions/insertThread.php');
+
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -38,11 +44,12 @@ and open the template in the editor.
 
                 <h3>Create Thread</h3>
 
-                <form>
+                 <form name="myForm" action="createThread.php" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
-                  <label for="ThreadName">Thread name</label>
-                  <textarea class="form-control" id="ThreadName" rows="3"></textarea>
+                  <label for="ThreadName">Thread</label>
+                  <textarea class="form-control" id="ThreadName" name="ThreadName" rows="3" required></textarea>
                 </div>
+                    <input type="hidden" name="TopicID" value="<?php echo $topicid ?>" />
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
@@ -54,11 +61,12 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+   </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
@@ -67,6 +75,23 @@ and open the template in the editor.
                 });
                 $('.dataTables_length').addClass('bs-select');
             });
+        </script>
+        <script>
+function validateForm() {
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    
+  var thread = document.forms["myForm"]["ThreadName"].value;
+  if (thread === "") {
+    alert("Thread must not be empty");
+    return false;
+  }else if (format.test(thread)){
+    alert("Thread must not contain special characters");  
+    return false;
+  }else if (thread.length >= 255){
+    alert("Thread exceeded max length");   
+    return false;
+  }
+}
         </script>
 </html>
 

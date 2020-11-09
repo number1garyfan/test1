@@ -1,3 +1,9 @@
+<?php
+require_once ('Server/ServerFunction.php');
+require_once ('Functions/sessionManagement.php');
+require_once ('Functions/insertPost.php');
+
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -38,11 +44,12 @@ and open the template in the editor.
 
                 <h3>Create Post</h3>
 
-                <form>
+                <form name="myForm" action="createPost.php" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
-                  <label for="PostContent">Post content</label>
-                  <textarea class="form-control" id="PostContent" rows="3"></textarea>
+                  <label for="PostContent">Post</label>
+                  <textarea class="form-control" id="PostContent" name="PostComment" rows="3" required></textarea>
                 </div>
+                    <input type="hidden" name="ThreadID" value="<?php echo $threadid ?>" />
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
@@ -54,11 +61,12 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+   </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
@@ -68,5 +76,23 @@ and open the template in the editor.
                 $('.dataTables_length').addClass('bs-select');
             });
         </script>
+                <script>
+function validateForm() {
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      
+  var post = document.forms["myForm"]["PostComment"].value;
+  if (post === "") {
+    alert("Post must not be empty");
+    return false;
+  }else if (format.test(post)){
+    alert("Post must not contain special characters");  
+    return false;
+  }else if (post.length >= 255){
+    alert("Post exceeded max length");   
+    return false;
+  }
+}
+        </script>
+        
 </html>
 

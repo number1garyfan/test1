@@ -1,4 +1,6 @@
-<?php include('Server/ForgetPasswordServer.php') ?>
+<?php include('Server/ForgetPasswordServer.php');
+?>
+
 <!doctype html>
 <html lang="en">
   <head>

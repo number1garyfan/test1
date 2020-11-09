@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
+<?php include('Server/updateProfileServer.php'); ?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -38,25 +38,26 @@ and open the template in the editor.
 
                 <h3>Update Profile</h3>
 
-                <form>
+                <form method="post" action="updateProfile.php">
+                <?php include('Server/Errors.php'); ?>
                 <div class="form-group">   
                 <label for="InputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="form-group">   
                 <label for="InputUsername">Username</label>
-                <input type="text" class="form-control">
+                <input name="username" type="text" class="form-control">
              
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password_1" type="password" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password_2" type="password" class="form-control" id="exampleInputPassword1">
             </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button name="update_profile" type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div> <!-- /container -->
@@ -67,7 +68,7 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+    </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>

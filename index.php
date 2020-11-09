@@ -1,8 +1,13 @@
 <?php
-require_once('Connections/dbconnect.php');
+require_once ('Connections/dbconnect.php');
+require_once ('Server/ServerFunction.php');
+require_once ('Functions/sessionManagement.php');
 
-$sql = "SELECT Roles FROM Roles";
-$result = $mysqli->query($sql);
+
+$result = read_topic($mysqli);
+
+
+require_once('Functions/deleteTopic.php')
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +30,12 @@ and open the template in the editor.
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
         <link href="css/busbly-home.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Custom styles for this template -->
 
     </head>
     <body>
-<?php include './userNavigation.php' ?>
+        <?php include './userNavigation.php' ?>
 
         <main role="main">
 
@@ -44,60 +50,66 @@ and open the template in the editor.
             <div class="container">
 
                 <h3>Topics</h3>
-                <h2>
-                    <?php
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo $row["Roles"];
-                        }
-                    } else {
-                        echo "no";
-                    }
-                    ?>
 
-
-                </h2>
                 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th class="th-sm">Topic</th>
-                            <th class="th-sm">Last Post</th>
                             <th class="th-sm">Threads</th>
-                            <th class="th-sm">Post
+                            <th class="th-sm">Post</th>
+                            <th class="th-sm">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <form action="viewThreads.php" method="post">
-                                    <button type="submit" name="Topic" value="Bus Lover Topic 1" class="btn-link">Bus Lover Topic 1</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="your_url" method="post">
-                                    <button type="submit" name="Post" value="Why I love Bus" class="btn-link">Why I love Bus By Yap Yong Sheng</button>
-                                </form>
-                            </td>
-                            <td>100,000</td>
-                            <td>1,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form action="viewThreads.php" method="post">
-                                    <button type="submit" name="Topic" value="Bus Lover Topic 2" class="btn-link">Bus Lover Topic 2</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="your_url" method="post">
-                                    <button type="submit" name="Post" value="Why I love Bus" class="btn-link">Why I love Bus By Yap Yong Sheng</button>
-                                </form>
-                            </td>
-                            <td>100,000</td>
-                            <td>1,000,000</td>
-                        </tr>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while ($row = $result->fetch_assoc()) {
+                                echo '  <tr>
+                                            <td>
+                                                <form action="viewThreads.php" method="post">
+                                                    <input type="hidden" name="TopicID" value="'.$row["idTopic"].'" />
+                                                    <button type="submit" name="Topic" value="'.$row["TopicTitle"].'" class="btn-link">'.$row["TopicTitle"].'</button>
+                                                </form>
+                                            </td>
+                                            <td>'.$row["ThreadNo"].'</td>
+                                            <td>'.$row["PostNo"].'</td>';
+                                            //user that created and admin (able to delete and edit all topic,thread,post)
+                                            if($row['Created_By_AccountId'] == $accountID || $_SESSION['Roles'] == 1){
+                                                echo   '<td>
+                                                <div style="display: flex;">
+                                                    <form action="editTopic.php" method="post">
+                                                        <button type="submit" name="TopicID" value= '.$row["idTopic"].' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                    </form>
+                                                    <form action="index.php" method="post">
+                                                        <button type="submit" name="TopicID" value= '.$row["idTopic"].' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                    </form>
+                                                </div>
+                                                
+                                                </td>
+                                            </tr>';
+                                            }else{
+                                                echo '<td></td> 
+                                                    </tr>';
+                                            }
+                            }
+                        } else {
+                            echo '                       
+                            <tr>
+                                <td>
+                                No Topic Available
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>';
+                        }
+                        ?>
                 </table>
-                <a class="btn btn-primary" href="createTopic.php" role="button">New Topic</a>
+                <?php 
+                if($_SESSION['Roles'] == 1){
+                echo '<a class="btn btn-primary" href="createTopic.php" role="button">New Topic</a>';
+                }?>
             </div> <!-- /container -->
 
         </main>
@@ -106,16 +118,17 @@ and open the template in the editor.
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+  </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
                     paging: true,
-                    searching: false// false to disable pagination (or any other option)
+                    searching: true// false to disable pagination (or any other option)
                 });
                 $('.dataTables_length').addClass('bs-select');
             });

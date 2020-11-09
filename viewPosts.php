@@ -1,14 +1,28 @@
+<?php
+require_once('Connections/dbconnect.php');
+require_once ('Server/ServerFunction.php');
+require_once ('Functions/sessionManagement.php');
+
+if (isset($_POST["ThreadID"])) {
+    $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $result = read_post($threadid, $mysqli);
+}
+
+if (isset($_POST['Thread'])) {
+    $thread = filter_input(INPUT_POST, 'Thread', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+}
+
+require_once('Functions/deletePost.php');
+require_once('Functions/reportPost.php');
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<?php
-if (null !== (filter_input(INPUT_POST, 'Thread'))) {
-    $thread = filter_input(INPUT_POST, 'Thread');
-}
-?>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -22,6 +36,7 @@ if (null !== (filter_input(INPUT_POST, 'Thread'))) {
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
         <link href="css/busbly-home.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Custom styles for this template -->
 
     </head>
@@ -49,31 +64,90 @@ if (null !== (filter_input(INPUT_POST, 'Thread'))) {
                         <tr>
                             <th class="th-sm">Post</th>
                             <th class="th-sm">By</th>
+                            <th class="th-sm">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                  I have  joined other enthusiasts at Woodlands Interchange at about 11am to wait for a Mercedes-Benz O405 bus to arrive. The group then went up the bus and rode the service from Woodlands to its terminal stop at HarbourFront — a journey that took 50 minutes
-                            </td>
-                            <td>
-                                <form action="your_url" method="post">
-                                    <button type="submit" name="your_name" value="your_value" class="btn-link">Yap Yong Sheng</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                would hop on a bus and then hop off after travelling for a distance, before getting onto another service and getting off again
-                            </td>
-                            <td>
-                                <form action="your_url" method="post">
-                                    <button type="submit" name="your_name" value="your_value" class="btn-link">Yap Yong Sheng</button>
-                                </form>
-                            </td>
-                        </tr>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while ($row = $result->fetch_assoc()) {
+                                echo '  <tr>
+                                            <td>
+                                                  ' . $row["CommentPost"] . '
+                                            </td>
+                                            <td>
+                                                <form action="your_url" method="post">
+                                                    <button type="submit" name="your_name" value="your_value" class="btn-link">' . $row["Username"] . '</button>
+                                                </form>
+                                            </td>';
+
+                                if ($row['Created_By_AccountId'] == $accountID || $_SESSION['Roles'] == 1) {
+                                    echo '<td>
+                                                <div style="display: flex;">
+                                                    <form action="editPost.php" method="post">
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                    </form>
+                                                    <form action="viewPosts.php" method="post">
+                                                        <input type="hidden" name="Delete" value="Delete" />
+                                                        <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                        <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                    </form>
+                                                </div>
+                                                
+                                                </td>
+                                            </tr>';
+                                } else if ($_SESSION['Roles'] == 4) {
+                                    echo '<td>
+                                                <div style="display: flex;">
+                                                    <form action="editPost.php" method="post">
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE254;</i></button>
+                                                    </form>
+                                                    <form action="viewPosts.php" method="post">
+                                                        <input type="hidden" name="Delete" value="Delete" />
+                                                        <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                        <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                        <button type="submit" name="PostID" value= ' . $row["idPost"] . ' class="btn btn-light"> <i class="material-icons">&#xE872;</i></button>
+                                                    </form>
+                                                    <form action="viewPosts.php" method="post">
+                                                        <input type="hidden" name="Report" value="Report" />
+                                                        <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                        <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                        <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
+                                                    </form>
+                                                </div>
+                                                
+                                                </td>
+                                            </tr>';
+                                } else {
+                                    echo '<td>
+                                                        <form action="viewPosts.php" method="post">
+                                                            <input type="hidden" name="Report" value="Report" />
+                                                            <input type="hidden" name="Thread" value="' . $thread . '" />
+                                                            <input type="hidden" name="ThreadID" value="' . $threadid . '" />
+                                                            <button type="submit" name="AccountID" value= ' . $row["Created_By_AccountId"] . ' class="btn btn-light"> <i class="material-icons">&#xe8b2;</i></button>
+                                                        </form>
+                                                      </td> 
+                                                    </tr>';
+                                }
+                            }
+                        } else {
+                            echo '                       
+                            <tr>
+                                <td>
+                                No Post Available
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>';
+                        }
+                        ?>
+
                 </table>
-                <a class="btn btn-primary" href="createPost.php" role="button">New Post</a>
+                <form action="createPost.php" method="post">
+                    <button type="submit" name="ThreadID" value= "<?php echo $threadid ?>" class="btn btn-primary">New Post</button>
+                </form>
             </div>
 
         </main>
@@ -82,10 +156,11 @@ if (null !== (filter_input(INPUT_POST, 'Thread'))) {
         <footer class="container">
             <p>&copy; Company 2017-2020</p>
         </footer>
-
+    </body>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
