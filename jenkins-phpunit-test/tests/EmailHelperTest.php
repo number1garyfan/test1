@@ -2,7 +2,7 @@
 declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 require_once("HelperClass/EmailHelper.php");
-require_once ("PHPUnit/Autoload.php");
+
    
 
 final class EmailHelperTest extends TestCase
