@@ -7,7 +7,7 @@ require_once("HelperClass/EmailHelper.php");
 require_once ("PHPUnit/Autoload.php");
    
 
-final class EmailHelperTest extends PHPUnit_Framework_TestCase
+final class EmailHelperTest extends TestCase
 {
     //Purpose: Test if OTP Generated has 8 digits
     public function test_generate_email_otp_8digit(): void
