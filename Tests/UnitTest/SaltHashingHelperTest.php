@@ -32,7 +32,7 @@ final class SaltHashingHelperTest extends PHPUnit_Framework_TestCase
         $result = $hashHelperObj->salted_hashing_password($salt, $password); 
          
         //Assertions
-        $this->assertEquals("",$result);
+        $this->assertEquals("aa65a5ddba4b3dd7a5ae206a7753b5b150ec78f67a590b8bd5986b12adf6c088",$result);
     }
     
     
