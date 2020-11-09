@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 require_once("HelperClass/HashingHelper.php");
-require_once ("PHPUnit/Autoload.php");
+
    
 
 final class HashingHelperTest extends PHPUnit_Framework_TestCase
