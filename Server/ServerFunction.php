@@ -164,9 +164,6 @@
     }
     
    
-
-     // Start a php session in a secure way
-    // Prevent XSS attack and session hijacking
     function sec_session_start()
     {
 //            $session_name = "sec_session_id"; // Set a custom session name, rename for every new project
@@ -180,7 +177,11 @@
 //
 //            session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
 //            session_name($session_name); // Sets the session name to the one above
-            session_start(); // Start the php session
+//            session_start(); // Start the php session
+//                $_SESSION["user_id"] = 1001;
+//		$_SESSION["user_name"] = $_POST["user_name"];
+//		$_SESSION['loggedin_time'] = time();
+//		$message = "Invalid Username or Password!";
     }
     
     //Retrieve the salt
