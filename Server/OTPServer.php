@@ -5,7 +5,7 @@ require_once("HelperClass/PasswordHelper.php");
 require_once("HelperClass/EmailHelper.php");
 require_once("Server/ServerFunction.php");
 
-sec_session_start();
+//sec_session_start();
 
 // initializing variables
 $username = "";
@@ -51,7 +51,9 @@ if (isset($_POST['enter_otp'])) {
 
         //update OTP to used
         update_otp(intval($inputted_otp), $mysqli);
-       
+        
+        $_SESSION["OTPVerified"] = "verified";
+        
         if($_SESSION["forget_password"]==1){
             $_SESSION["forget_password"] = 0;
             //Redirect to reset passwrod Page

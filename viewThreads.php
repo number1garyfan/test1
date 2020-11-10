@@ -1,4 +1,7 @@
 <?php
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
 require_once('Connections/dbconnect.php');
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');

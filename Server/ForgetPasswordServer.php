@@ -4,7 +4,7 @@ require_once("Server/ServerFunction.php");
 require_once("HelperClass/EmailHelper.php");
 
 
-sec_session_start();
+//sec_session_start();
 
 // initializing variables
 $errors = array(); 

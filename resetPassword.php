@@ -1,4 +1,8 @@
-<?php include('Server/ResetPasswordServer.php') ?>
+<?php
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
+include('Server/ResetPasswordServer.php') ?>
 <!doctype html>
 <html lang="en">
     <head>

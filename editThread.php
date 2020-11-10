@@ -1,4 +1,7 @@
 <?php
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
 require_once('Functions/updateThread.php');
@@ -78,7 +81,7 @@ and open the template in the editor.
         </script>
         <script>
 function validateForm() {
-  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     
   var thread = document.forms["myForm"]["ThreadName"].value;
   if (thread === "") {

@@ -10,9 +10,9 @@
 ////Initialise CSRFGuard library
 //csrfProtector::init();
 
-sec_session_start();
+//sec_session_start();
 
-if(!isset($_SESSION['Username'])){
+if(!isset($_SESSION['AccountId']) && !isset($_SESSION['OTPVerified'])){
     header('Location: login.php');
 }else{
    $accountID = $_SESSION['AccountId']; 

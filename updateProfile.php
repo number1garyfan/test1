@@ -4,6 +4,14 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php 
+
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
+include ('Server/ServerFunction.php');
+include('Server/updateProfileServer.php');?>
+
 
 <html lang="en">
     <head>
@@ -38,25 +46,33 @@ and open the template in the editor.
 
                 <h3>Update Profile</h3>
 
-                <form>
+                <form method="post" action="updateProfile.php">
+                <?php include('Server/Errors.php'); ?>
+                <?php
+                    //Retrieve account details
+                    $result = getAccountDetailsForUpdate($_SESSION["Email"], $mysqli);
+                    if ($result->num_rows > 0) {
+                            // output data of each row
+                            while ($row = $result->fetch_assoc()) { ?>
                 <div class="form-group">   
                 <label for="InputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="email" value=<?php echo $row["Email"];?> type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="form-group">   
                 <label for="InputUsername">Username</label>
-                <input type="text" class="form-control">
+                <input name="username" value=<?php echo $row["Username"];?> type="text" class="form-control">
              
             </div>
             <div class="form-group">
+                <input type="hidden" value=<?php echo $row["Password"];?> name="hidden" for="hiddenField" ></label>
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password_1" value=<?php echo $row["Password"];?> type="password" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password_2" value=<?php echo $row["Password"]; }}?> type="password" class="form-control" id="exampleInputPassword1">
             </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button name="update_profile" type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div> <!-- /container -->

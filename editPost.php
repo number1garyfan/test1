@@ -1,4 +1,7 @@
 <?php
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
 require_once ('Functions/updatePost.php');
@@ -80,7 +83,7 @@ and open the template in the editor.
         </script>
                 <script>
 function validateForm() {
-  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
       
   var post = document.forms["myForm"]["PostComment"].value;
   if (post === "") {

@@ -1,5 +1,31 @@
 <?php
-
+    function getAccountDetailsForUpdate($email, $mysqli)
+    {
+            $stmt = $mysqli->prepare("SELECT Email, Username, Password FROM Account WHERE Email = ? LIMIT 1");
+            $stmt->bind_param("s", $email); // Bind param $userid to query parameter (?)
+            $stmt->execute(); // Execute the prepared query
+            $result = $stmt->get_result();
+            $stmt -> close();
+        
+            return $result;
+    }
+    
+    function updateProfile($email, $username, $password, $salt, $mysqli)
+    {
+            $stmt = $mysqli->prepare("UPDATE Account SET Email = ?, Username = ?, Password = ?, Salt = ? WHERE Email = ?");
+            $stmt->bind_param("sssss", $email, $username, $password, $salt, $email); // Bind param $userid to query parameter (?)
+            $stmt->execute(); // Execute the prepared query
+            $stmt -> close();
+    }
+    
+    function updateProfileWithoutSalt($email, $username, $password, $mysqli)
+    {
+            $stmt = $mysqli->prepare("UPDATE Account SET Email = ?, Username = ?, Password = ? WHERE Email = ?");
+            $stmt->bind_param("ssss", $email, $username, $password, $email); // Bind param $userid to query parameter (?)
+            $stmt->execute(); // Execute the prepared query
+            $stmt -> close();
+    }
+    
     //For Registration
     function checkUserExist($username, $mysqli)
     {
@@ -489,6 +515,26 @@
         $stmt->bind_param("i", $accountid);
         $stmt->execute();
         $stmt -> close();
+    }
+    
+    function view_profile_thread($accountid,$mysqli){
+        $stmt = $mysqli->prepare("SELECT idThread, ThreadTitle,Created_By_AccountId From Thread where deleted <> 1 or deleted is null and Created_By_AccountId = ?;");
+        $stmt->bind_param("i", $accountid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt -> close();
+        
+        return $result;
+    }
+    
+    function view_profile_post($accountid,$mysqli){
+        $stmt = $mysqli->prepare("SELECT idPost, CommentPost,Created_By_AccountId From Post where deleted <> 1 or deleted is null and Created_By_AccountId = ?;");
+        $stmt->bind_param("i", $accountid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt -> close();
+        
+        return $result;
     }
     
 ?>

@@ -1,4 +1,8 @@
-<?php include('Server/AccountActivationServer.php') ?>
+<?php 
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
+include('Server/AccountActivationServer.php') ?>
 <!doctype html>
 <html lang="en">
   <head>

@@ -1,4 +1,7 @@
 <?php
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
 require_once('Connections/dbconnect.php');
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
@@ -77,8 +80,8 @@ and open the template in the editor.
                                                   ' . $row["CommentPost"] . '
                                             </td>
                                             <td>
-                                                <form action="your_url" method="post">
-                                                    <button type="submit" name="your_name" value="your_value" class="btn-link">' . $row["Username"] . '</button>
+                                                <form action="viewProfile.php" method="post">
+                                                    <button type="submit" name="accountID" value='.$row["Created_By_AccountId"].' class="btn-link">' . $row["Username"] . '</button>
                                                 </form>
                                             </td>';
 
