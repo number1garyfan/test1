@@ -96,7 +96,7 @@ final class InputValidationTest extends TestCase
     public function test_FILTER_VALIDATE_EMAIL_dangerousChar(): void
     {
         //Setup 
-        $email = "'pheeboonleo96@gmail.com";
+        $email = "\"pheeboonleo96@gmail.com";
         //Actions
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
