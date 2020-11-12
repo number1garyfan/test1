@@ -56,7 +56,7 @@ final class OTPHelperTest extends PHPUnit_Framework_TestCase
         $result = $OTPHelperObj->valid_otp_datatype($otp); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals(true,$result);
     }
     
     //Purpose: Test if OTP input is integer datatype
@@ -70,6 +70,6 @@ final class OTPHelperTest extends PHPUnit_Framework_TestCase
         $result = $OTPHelperObj->valid_otp_datatype($otp); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals(true,$result);
     }
 }

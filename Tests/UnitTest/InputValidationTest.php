@@ -88,7 +88,7 @@ final class InputValidationTest extends PHPUnit_Framework_TestCase
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals("pheeboonleo96gmail.com",$result);
     }
     
     //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The email address does not contain dangerous characters" guideline
@@ -114,20 +114,20 @@ final class InputValidationTest extends PHPUnit_Framework_TestCase
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals("",$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The local part (before the @) should be no more than 63 characters." guideline
-    //Expected Result: false
-    public function test_FILTER_VALIDATE_EMAIL_63charsBeforeAt(): void
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The local part (before the @) should be no more than 65 characters." guideline
+    //Expected Result: empty string
+    public function test_FILTER_VALIDATE_EMAIL_65charsBeforeAt(): void
     {
         //Setup 
-        $email = "sKzaj3nD6Mu9UOv3xZEDIiNOTUOL8ANWPF6c2UZpEreHzF6htCYNDk903i5yFack@gmail.com";
+        $email = "sKzaj3nD6Mu9UOv3xZEDIiNOTUOL8ANWPF6c2UZfpEreHzF6htCYNDk903i5yFack@gmail.com"; //66chars
         //Actions
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals("",$result);
     }
     
     //Purpose: Test if FILTER_VALIDATE_EMAIL function take in normal email address format
@@ -140,6 +140,6 @@ final class InputValidationTest extends PHPUnit_Framework_TestCase
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals("pheeboonleo96@gmail.com",$result);
     }
 }
