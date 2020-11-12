@@ -88,7 +88,7 @@ final class InputValidationTest extends TestCase
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
         //Assertions
-        $this->assertEquals("pheeboonleo96gmail.com",$result);
+        $this->assertEquals("",$result);
     }
     
     //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The email address does not contain dangerous characters" guideline
@@ -101,7 +101,7 @@ final class InputValidationTest extends TestCase
         $result = filter_var($email, FILTER_VALIDATE_EMAIL); 
          
         //Assertions
-        $this->assertEquals(false,$result);
+        $this->assertEquals("",$result);
     }
     
     //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The domain part contains only letters, numbers, hyphens (-) and periods (.)." guideline
