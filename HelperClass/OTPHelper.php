@@ -23,5 +23,33 @@ class OTPHelper {
 
         }
     }
-      
+    
+    function invalid_otp_range($otp)
+    {
+      try{
+          $checklength = strlen((string)$otp);
+          if($checklength!=8){
+              return true;
+          }
+          else{
+              return false;
+          }
+        } catch (Exception $ex) {
+
+        }
+    }
+    
+    function valid_otp_datatype($otp)
+    {
+      try{
+        # Check if your variable is an integer
+        if (strval($otp) !== strval(intval($otp))) {
+            //not integer
+            return false;
+        }
+        else{
+            return true;
+        }
+     } catch (Exception $ex) {}
+    }   
 }

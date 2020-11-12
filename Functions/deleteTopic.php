@@ -9,7 +9,7 @@
 if(isset($_POST['TopicID'])){
     $topicid = filter_input(INPUT_POST, 'TopicID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    if(delete_topic($accountID,$topicid,$mysqli)){
+    if(delete_topic($accountID,$topicid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Topic deleted successfully","","success");';
     echo '}, 100);</script>';

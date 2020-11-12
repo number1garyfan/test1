@@ -9,7 +9,7 @@
 if(isset($_POST['AccountID']) && isset($_POST['promoteMod'])){
     $accountid = filter_input(INPUT_POST, 'AccountID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-     if(promote_user_mod($accountid,$mysqli)){
+    if(promote_user_mod($accountid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User promoted to moderator successfully","","success");';
     echo '}, 100);</script>';
@@ -27,7 +27,7 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteMod'])){
 if(isset($_POST['AccountID']) && isset($_POST['promoteAdmin'])){
     $accountid = filter_input(INPUT_POST, 'AccountID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-     if(promote_user_admin($accountid,$mysqli)){
+    if(promote_user_admin($accountid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User promoted to admin successfully","","success");';
     echo '}, 100);</script>';
@@ -45,17 +45,16 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteAdmin'])){
 if(isset($_POST['AccountID']) && isset($_POST['demoteUser'])){
     $accountid = filter_input(INPUT_POST, 'AccountID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-     if(demote_user_user($accountid,$mysqli)){
+     if(demote_user_user($accountid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User demoted successfully","","success");';
     echo '}, 100);</script>';
-    //$msg = "Topic created successfully.";
+
     Header('Refresh:1; url=manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User failed to demote","","error");';
     echo '}, 100);</script>';
-    //$msg = "Topic failed to create";
     }
 }

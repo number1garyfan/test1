@@ -12,10 +12,7 @@ if ($_POST['ThreadName'] != "" && isset($_POST['ThreadID'])) {
     $ThreadName = filter_input(INPUT_POST, 'ThreadName',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("UPDATE Thread SET ThreadTitle = ? Where idThread = ?;");
-    $stmt->bind_param("si", $ThreadName,$threadid);
-    
-    if($stmt->execute()){
+    if(update_thread($ThreadName,$threadid,$accountID,$roles,$mysqli)){
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal("Thread updated successfully","","success");';
         echo '}, 100);</script>';
@@ -27,7 +24,7 @@ if ($_POST['ThreadName'] != "" && isset($_POST['ThreadID'])) {
         echo '}, 100);</script>';
         //$msg = "Topic failed to create";
         }
-    $stmt->close();
+
     }
     
     if(isset($_POST['ThreadID'])){

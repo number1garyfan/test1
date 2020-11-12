@@ -12,22 +12,19 @@ if ($_POST['PostComment'] != "" && isset($_POST['PostID'])) {
     $PostComment = filter_input(INPUT_POST, 'PostComment',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $postid = filter_input(INPUT_POST, 'PostID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("UPDATE Post SET CommentPost = ? Where idPost = ?;");
-    $stmt->bind_param("si", $PostComment,$postid);
-    
-    if($stmt->execute()){
+    if(update_post($PostComment,$postid,$accountID,$roles,$mysqli)){
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal("Post updated successfully","","success");';
         echo '}, 100);</script>';
-        //$msg = "Topic created successfully.";   
+ 
         
     }else{
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal("Post failed to update","","error");';
         echo '}, 100);</script>';
-        //$msg = "Topic failed to create";
+
         }
-    $stmt->close();
+
     }
     
     if(isset($_POST['PostID'])){

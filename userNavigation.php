@@ -21,7 +21,7 @@ if($_SESSION["Roles"] == 1){
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$_SESSION['Username'].'</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">View Profile</a>
+          <a class="dropdown-item" href="viewProfile.php">View Profile</a>
           <a class="dropdown-item" href="updateProfile.php">Update Profile</a>
         </div>
       </li>
@@ -49,7 +49,7 @@ if($_SESSION["Roles"] == 1){
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$_SESSION['Username'].'</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">View Profile</a>
+          <a class="dropdown-item" href="viewProfile.php">View Profile</a>
           <a class="dropdown-item" href="updateProfile.php">Update Profile</a>
         </div>
       </li>

@@ -1,6 +1,12 @@
-<?php 
+<?php
+include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+csrfProtector::init();
+
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
+if ($_SESSION['Roles'] != 1) {
+    header('Location: logout.php');
+}
 require_once ('Functions/insertTopic.php');
 ?>
 <!DOCTYPE html>
@@ -78,7 +84,7 @@ and open the template in the editor.
         </script>
 <script>
 function validateForm() {
-  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  var format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
       
   var topic = document.forms["myForm"]["TopicName"].value;
   if (topic === "") {

@@ -4,7 +4,7 @@ require_once("HelperClass/SaltHashingHelper.php");
 require_once("HelperClass/PasswordHelper.php");
 require_once("Server/ServerFunction.php");
 
-sec_session_start();
+//sec_session_start();
 
 // initializing variables
 $username = "";
