@@ -11,12 +11,9 @@ require_once('Connections/dbconnect.php');
 
 if ($_POST['TopicName'] != "" && isset($_POST['TopicID'])) {
     $TopicName = filter_input(INPUT_POST, 'TopicName',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $TopicID = filter_input(INPUT_POST, 'TopicID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $Topicid = filter_input(INPUT_POST, 'TopicID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    $stmt = $mysqli->prepare("UPDATE Topic SET TopicTitle = ? WHERE idTopic = ?");
-    $stmt->bind_param("si", $TopicName,$TopicID);
-    
-    if($stmt->execute()){
+    if(update_topic($TopicName,$Topicid,$accountID,$roles,$mysqli)){
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal("Topic updated successfully","","success");';
         echo '}, 100);</script>';
@@ -28,7 +25,7 @@ if ($_POST['TopicName'] != "" && isset($_POST['TopicID'])) {
         echo '}, 100);</script>';
         //$msg = "Topic failed to create";
         }
-    $stmt->close();
+
     }
     
     if(isset($_POST['TopicID'])){

@@ -2,7 +2,7 @@
 require_once('Connections/dbconnect.php');
 require_once("Server/ServerFunction.php");
 require_once("HelperClass/EmailHelper.php");
-
+require_once("HelperClass/EmailUsernameInputHelper.php");
 
 //sec_session_start();
 
@@ -18,16 +18,17 @@ if (isset($_POST['forget_password'])) {
     
   //Create class objects
   $emailHelperObj = new EmailHelper();
+  $emailUsernameHelperObj = new EmailUsernameInputHelper();
   
   $email = mysqli_real_escape_string($conn, htmlentities($_POST['email'])); 
   
   //Form Input Validation
   if (empty($email)) {
   	array_push($errors, "Email is required");
-  }
+  }else if (!$emailUsernameHelperObj->validate_email_input_less_than_255($email)) { array_push($errors, "Invalid Email"); }
 
   //validating with database
-  if(!checkEmailExist($email, $mysqli)) {
+  else if(!checkEmailExist($email, $mysqli)) {
       array_push($errors, "Invalid Email");
   }
   else{      

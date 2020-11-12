@@ -79,6 +79,7 @@
         $stmt = $mysqli->prepare("UPDATE Account SET LastLogin = NOW(), FailLoginCount = 0, Sessions = 1 WHERE Email = ? ");
         $stmt->bind_param("s", $email); // Bind param $userid to query parameter (?)
         $stmt->execute(); // Execute the prepared query
+          
         $stmt -> close();
     }
     
@@ -386,40 +387,231 @@
         $stmt -> close();
     }
     
-    function delete_topic($accountID,$topicid,$mysqli)
-    {
-        $stmt = $mysqli->prepare("UPDATE Topic tp left join Thread td On tp.idTopic = td.Topic_idTopic left join Post p on td.idThread = p.Thread_idThread Set tp.Deleted = true,tp.DeletionDate = Now(),tp.Deleted_By_AccountId = ? , td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where tp.idTopic = ? ;");
-        $stmt->bind_param("iiii", $accountID,$accountID,$accountID,$topicid);
-        if ($stmt->execute()){
-            return true;
-        }else{
-            return false;
+    function update_topic($TopicName,$Topicid,$accountID,$roles,$mysqli){
+        $stmt = $mysqli->prepare("SELECT Created_By_AccountId FROM Topic where idTopic = ? ;");
+        $stmt->bind_param("i", $Topicid);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($db_createdByAccountId); // Get variables from result
+        $stmt->fetch();
+        
+        if ($stmt->num_rows == 1) {
+            //admin
+            if($roles == 1){
+                $stmt = $mysqli->prepare("UPDATE Topic SET TopicTitle = ? WHERE idTopic = ?");
+                $stmt->bind_param("si", $TopicName,$Topicid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+                }
+            //owner of topic
+            else if($db_createdByAccountId == $accountID){
+                $stmt = $mysqli->prepare("UPDATE Topic SET TopicTitle = ? WHERE idTopic = ?");
+                $stmt->bind_param("si", $TopicName,$Topicid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            else{
+                return false;    
+            }
         }
         $stmt -> close();
+        
     }
     
-    function delete_thread($accountID,$threadid,$mysqli)
-    {
-        $stmt = $mysqli->prepare("UPDATE Thread td left join  Post p on td.idThread = p.Thread_idThread SET td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where td.idThread = ? ;");
-        $stmt->bind_param("iii", $accountID,$accountID,$threadid);
-        if ($stmt->execute()){
-            return true;
-        }else{
-            return false;
+    function update_thread($ThreadName,$threadid,$accountID,$roles,$mysqli){
+        $stmt = $mysqli->prepare("SELECT Created_By_AccountId FROM Thread where idThread = ? ;");
+        $stmt->bind_param("i", $threadid);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($db_createdByAccountId); // Get variables from result
+        $stmt->fetch();
+        
+        
+        if ($stmt->num_rows == 1) {
+            //admin
+            if($roles == 1){
+                $stmt = $mysqli->prepare("UPDATE Thread SET ThreadTitle = ? Where idThread = ?;");
+                $stmt->bind_param("si", $ThreadName,$threadid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+                }
+            //owner of topic
+            else if($db_createdByAccountId == $accountID){
+                $stmt = $mysqli->prepare("UPDATE Thread SET ThreadTitle = ? Where idThread = ?;");
+                $stmt->bind_param("si", $ThreadName,$threadid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            else{
+                return false;    
+            }
         }
         $stmt -> close();
+        
+
     }
     
-    function delete_post($accountID,$postid,$mysqli)
+    function update_post($PostComment,$postid,$accountID,$roles,$mysqli){
+        $stmt = $mysqli->prepare("SELECT Created_By_AccountId FROM Post where idPost = ? ;");
+        $stmt->bind_param("i", $postid);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($db_createdByAccountId); // Get variables from result
+        $stmt->fetch();
+        
+        if ($stmt->num_rows == 1) {
+            //admin
+            if($roles == 1){
+                $stmt = $mysqli->prepare("UPDATE Post SET CommentPost = ? Where idPost = ?;");
+                $stmt->bind_param("si", $PostComment,$postid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+                }
+            //owner of topic
+            else if($db_createdByAccountId == $accountID){
+                $stmt = $mysqli->prepare("UPDATE Post SET CommentPost = ? Where idPost = ?;");
+                $stmt->bind_param("si", $PostComment,$postid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            else{
+                return false;    
+            }
+        }
+        $stmt -> close();
+        
+    }
+    
+    function delete_topic($accountID,$topicid,$roles,$mysqli)
     {   
-        $stmt = $mysqli->prepare("UPDATE Post SET Deleted = true,DeletionDate = Now(),Deleted_By_AccountId = ? Where idPost = ? ;");
-        $stmt->bind_param("ii", $accountID,$postid);
-        if ($stmt->execute()){
-            return true;
-        }else{
-            return false;
+        
+        $stmt = $mysqli->prepare("SELECT Created_By_AccountId FROM Topic where idTopic = ? ;");
+        $stmt->bind_param("i", $topicid);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($db_createdByAccountId); // Get variables from result
+        $stmt->fetch();
+        
+        if ($stmt->num_rows == 1) {
+            //admin
+            if($roles == 1){
+                $stmt = $mysqli->prepare("UPDATE Topic tp left join Thread td On tp.idTopic = td.Topic_idTopic left join Post p on td.idThread = p.Thread_idThread Set tp.Deleted = true,tp.DeletionDate = Now(),tp.Deleted_By_AccountId = ? , td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where tp.idTopic = ? ;");
+                $stmt->bind_param("iiii", $accountID,$accountID,$accountID,$topicid);
+                    if($stmt->execute()){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            //owner of topic
+            else if($db_createdByAccountId == $accountID){
+                    $stmt = $mysqli->prepare("UPDATE Topic tp left join Thread td On tp.idTopic = td.Topic_idTopic left join Post p on td.idThread = p.Thread_idThread Set tp.Deleted = true,tp.DeletionDate = Now(),tp.Deleted_By_AccountId = ? , td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where tp.idTopic = ? ;");
+                    $stmt->bind_param("iiii", $accountID,$accountID,$accountID,$topicid);
+                        if($stmt->execute()){
+                            return true;
+                        }else{
+                            return false;
+                        }
+            }
+            else{
+                return false;    
+            }
         }
         $stmt -> close();
+    }
+    
+    function delete_thread($accountID,$threadid,$roles,$mysqli)
+    {           
+        $stmt = $mysqli->prepare("SELECT Created_By_AccountId FROM Thread where idThread = ? ;");
+        $stmt->bind_param("i", $threadid);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($db_createdByAccountId); // Get variables from result
+        $stmt->fetch();
+        
+        if ($stmt->num_rows == 1) {
+            //admin
+            if($roles == 1){
+                    $stmt = $mysqli->prepare("UPDATE Thread td left join  Post p on td.idThread = p.Thread_idThread SET td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where td.idThread = ? ;");
+                    $stmt->bind_param("iii", $accountID,$accountID,$threadid);
+                    if($stmt->execute()){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            //owner of thread
+            else if($db_createdByAccountId == $accountID){
+                    $stmt = $mysqli->prepare("UPDATE Thread td left join  Post p on td.idThread = p.Thread_idThread SET td.Deleted = true,td.DeletionDate = Now(),td.Deleted_By_AccountId = ? ,p.Deleted = true,p.DeletionDate = Now(),p.Deleted_By_AccountId = ? where td.idThread = ? ;");
+                    $stmt->bind_param("iii", $accountID,$accountID,$threadid);
+                    if($stmt->execute()){
+                        return true;
+                    }else{
+                        return false;
+                    }
+            }
+            else{
+                return false;    
+            }
+        }
+        $stmt -> close();
+        
+    }
+    
+    function delete_post($accountID,$postid,$roles,$mysqli)
+    {   
+        $stmt = $mysqli->prepare("SELECT Created_By_AccountId FROM Post where idPost = ? ;");
+        $stmt->bind_param("i", $postid);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($db_createdByAccountId); // Get variables from result
+        $stmt->fetch();
+        
+        if ($stmt->num_rows == 1) {
+            //admin
+            if($roles == 1){
+                    $stmt = $mysqli->prepare("UPDATE Post SET Deleted = true,DeletionDate = Now(),Deleted_By_AccountId = ? Where idPost = ? ;");
+                    $stmt->bind_param("ii", $accountID,$postid);
+                    if ($stmt->execute()){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            //owner of post
+            else if($db_createdByAccountId == $accountID){
+                $stmt = $mysqli->prepare("UPDATE Post SET Deleted = true,DeletionDate = Now(),Deleted_By_AccountId = ? Where idPost = ? ;");
+                $stmt->bind_param("ii", $accountID,$postid);
+                if ($stmt->execute()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            else{
+                return false;    
+            }
+        }
+        $stmt -> close();
+        
     }
     
     function report_thread($accountid,$mysqli)
@@ -456,55 +648,80 @@
         return $result;
     }
     
-    function promote_user_admin($accountid,$mysqli){
-        $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 1 Where idAccount = ? ;");
-        $stmt->bind_param("i", $accountid);
-        if ($stmt->execute()){
-            return true;
+    function promote_user_admin($accountid,$roles,$mysqli){
+        //admin
+        if($roles == 1){
+            $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 1 Where idAccount = ? ;");
+            $stmt->bind_param("i", $accountid);
+            if ($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
         $stmt -> close();
     }
     
-    function promote_user_mod($accountid,$mysqli){
-        $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 4 Where idAccount = ? ;");
-        $stmt->bind_param("i", $accountid);
-        if ($stmt->execute()){
-            return true;
+    function promote_user_mod($accountid,$roles,$mysqli){
+        //admin
+        if($roles == 1){
+            $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 4 Where idAccount = ? ;");
+            $stmt->bind_param("i", $accountid);
+            if ($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
         $stmt -> close();
     }
     
-    function demote_user_user($accountid,$mysqli){
-        $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 2 Where idAccount = ? ;");
-        $stmt->bind_param("i", $accountid);
-        if ($stmt->execute()){
-            return true;
+    function demote_user_user($accountid,$roles,$mysqli){
+        //admin
+        if($roles == 1){
+            $stmt = $mysqli->prepare("UPDATE Account SET Roles_idRoles = 2 Where idAccount = ? ;");
+            $stmt->bind_param("i", $accountid);
+            if ($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
         $stmt -> close();
     }
     
-    function ban_user($accountid,$mysqli){
-        $stmt = $mysqli->prepare("UPDATE Account SET Banned = 1 Where idAccount = ? ;");
-        $stmt->bind_param("i", $accountid);
-        if ($stmt->execute()){
-            return true;
+    function ban_user($accountid,$roles,$mysqli){
+        //admin
+        if($roles == 1){
+            $stmt = $mysqli->prepare("UPDATE Account SET Banned = 1 Where idAccount = ? ;");
+            $stmt->bind_param("i", $accountid);
+            if ($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
         $stmt -> close();
     }
     
-        function unban_user($accountid,$mysqli){
-        $stmt = $mysqli->prepare("UPDATE Account SET Banned = 0 Where idAccount = ? ;");
-        $stmt->bind_param("i", $accountid);
-        if ($stmt->execute()){
-            return true;
+        function unban_user($accountid,$roles,$mysqli){
+        //admin
+        if($roles == 1){
+            $stmt = $mysqli->prepare("UPDATE Account SET Banned = 0 Where idAccount = ? ;");
+            $stmt->bind_param("i", $accountid);
+            if ($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
@@ -537,6 +754,8 @@
         
         return $result;
     }
+    
+
     
 ?>
 

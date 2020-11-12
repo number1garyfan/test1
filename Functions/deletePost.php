@@ -9,7 +9,7 @@
 if(isset($_POST['PostID']) && isset($_POST['Delete'])){
     $postid = filter_input(INPUT_POST, 'PostID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-    if(delete_post($accountID,$postid,$mysqli)){
+    if(delete_post($accountID,$postid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Post deleted successfully","","success");';
     echo '}, 100);</script>';

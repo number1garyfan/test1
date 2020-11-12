@@ -9,7 +9,7 @@
 if(isset($_POST['ThreadID']) && isset($_POST['Delete'])){
     $threadid = filter_input(INPUT_POST, 'ThreadID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if(delete_thread($accountID,$threadid,$mysqli)){
+    if(delete_thread($accountID,$threadid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Thread deleted successfully","","success");';
     echo '}, 100);</script>';

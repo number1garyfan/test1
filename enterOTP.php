@@ -4,11 +4,11 @@ csrfProtector::init();
 
 include('Server/OTPServer.php');
 
-if(!isset($_SESSION['AccountId']) && !isset($_SESSION['OTPVerified'])){
-    header('Location: login.php');
-}else{
-   $accountID = $_SESSION['AccountId']; 
-}
+//if(!isset($_SESSION['AccountId']) && !isset($_SESSION['OTPVerified'])){
+//    header('Location: login.php');
+//}else{
+//   $accountID = $_SESSION['AccountId']; 
+//}
 ?>
 <!doctype html>
 <html lang="en">

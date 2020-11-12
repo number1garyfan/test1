@@ -12,8 +12,15 @@
 
 //sec_session_start();
 
-if(!isset($_SESSION['AccountId']) && !isset($_SESSION['OTPVerified'])){
+if(!isset($_SESSION['AccountId']) || ($_SESSION['OTPVerified']==null)){
     header('Location: login.php');
 }else{
-   $accountID = $_SESSION['AccountId']; 
+    if(time()-$_SESSION["login_time_stamp"] >60)   
+    { 
+        header("Location:logout.php"); 
+    } 
+    else{
+         $accountID = $_SESSION['AccountId']; 
+    }
+  
 }

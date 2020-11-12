@@ -3,6 +3,7 @@ require_once('Connections/dbconnect.php');
 require_once("HelperClass/SaltHashingHelper.php");
 require_once("HelperClass/PasswordHelper.php");
 require_once("HelperClass/EmailHelper.php");
+require_once("HelperClass/EmailUsernameInputHelper.php");
 require_once("Server/ServerFunction.php");
 
 //session_start();
@@ -21,6 +22,7 @@ if (isset($_POST['reg_user'])) {
   $passwordHelperObj = new PasswordHelper();
   $saltedHashingHelperObj = new SaltHashingHelper();
   $emailHelperObj = new EmailHelper();
+  $emailUsernameHelperObj = new EmailUsernameInputHelper();
 
   // receive all input values from the form
   $username = mysqli_real_escape_string($conn, htmlentities($_POST['username']));
@@ -32,6 +34,8 @@ if (isset($_POST['reg_user'])) {
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "Username is required"); }
   else if (empty($email)) { array_push($errors, "Email is required"); }
+  else if (!$emailUsernameHelperObj->validate_email_input_less_than_255($email)) { array_push($errors, "Invalid Email"); }
+  else if (!$emailUsernameHelperObj->validate_username_input_less_than_255($username)) { array_push($errors, "Invalid Username"); }
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){array_push($errors, "Invalid Email");}
   else if (empty($password_1)) { array_push($errors, "Password is required"); }
   else if ($password_1 != $password_2) {array_push($errors, "The two passwords do not match");}

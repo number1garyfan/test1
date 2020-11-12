@@ -27,10 +27,6 @@ require_once("HelperClass/PasswordHelper.php");
 require_once("HelperClass/EmailHelper.php");
 require_once("Server/ServerFunction.php");
 
-
-//sec_session_start();
-
-
 // connect to the database
 $conn = $mysqli;
 

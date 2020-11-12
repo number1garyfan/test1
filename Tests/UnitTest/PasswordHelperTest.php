@@ -20,13 +20,13 @@ final class PasswordHelperTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(false,$result);
     }
     
-    //Purpose: Test for password length (65) less than requirements (64)
+    //Purpose: Test for password length (129) less than requirements (128)
     //Expected Result: false 
-    public function test_passwordStrengthMoreThan64_invalidStrength(): void
+    public function test_passwordStrengthMoreThan128_invalidStrength(): void
     {
         //Setup 
         $pwHelperObj = new PasswordHelper();
-        $password = "12345612345678911234567891123456789112345678911234567891111111Aa@";
+        $password = "12345612345678911234567891123456789112345678911234567891111111Aa@1234561234567891123456789112345678911234567891123456789111111166";
     
         //Actions
         $result = $pwHelperObj->check_password_strength($password); 

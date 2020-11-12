@@ -9,7 +9,7 @@
 if(isset($_POST['AccountID']) && isset($_POST['banUser'])){
     $accountid = filter_input(INPUT_POST, 'AccountID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-     if(ban_user($accountid,$mysqli)){
+    if(ban_user($accountid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User banned successfully","","success");';
     echo '}, 100);</script>';
@@ -27,7 +27,7 @@ if(isset($_POST['AccountID']) && isset($_POST['banUser'])){
 if(isset($_POST['AccountID']) && isset($_POST['unbanUser'])){
     $accountid = filter_input(INPUT_POST, 'AccountID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     
-     if(unban_user($accountid,$mysqli)){
+     if(unban_user($accountid,$roles,$mysqli)){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User unbanned successfully","","success");';
     echo '}, 100);</script>';
