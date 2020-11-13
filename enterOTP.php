@@ -3,12 +3,14 @@ include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
 include('Server/OTPServer.php');
-
+//|| $_SESSION["forget_otp_page"] != true
 if($_SESSION["otp_page"] == true || $_SESSION["forget_otp_page"] == true){
    
 }else{
     header('Location: login.php'); 
 }
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,7 +22,8 @@ if($_SESSION["otp_page"] == true || $_SESSION["forget_otp_page"] == true){
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Busbly Enter OTP</title>
 
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,8 +37,28 @@ if($_SESSION["otp_page"] == true || $_SESSION["forget_otp_page"] == true){
   <h1 class="h3 mb-3 font-weight-normal">Enter OTP</h1>
   <h6>An OTP email has been sent to your email</h6>
   <input name="otp" type="password" class="form-control" id="exampleInputPassword1">
+  <div class="g-recaptcha" data-sitekey="6Lft5OAZAAAAAJKeApMUowCQoKjNS7H69YLen0KP" data-callback="enableBtn"></div>
   <button name="enter_otp" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
 </form>
 </body>
+ <script type="text/javascript">
+    function validateRecaptcha() {
+    var response = grecaptcha.getResponse();
+    if (response.length === 0) {
+        document.getElementById("enter_otp").disabled = true;
+        alert("Please validate on the reCaptcha");
+        return false;
+    } else {
+        document.getElementById("enter_otp").disabled = false;
+        //alert("validated");
+        return true;
+    }
+}
+    </script>
+    <script type="text/javascript">
+     function enableBtn(){
+        document.getElementById("enter_otp").disabled = false;
+    }
+    </script>
 </html>
