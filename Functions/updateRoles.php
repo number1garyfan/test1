@@ -14,7 +14,7 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteMod'])){
     echo 'setTimeout(function () { swal("User promoted to moderator successfully","","success");';
     echo '}, 100);</script>';
 
-    Header('Refresh:1; url=manageAccount.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
