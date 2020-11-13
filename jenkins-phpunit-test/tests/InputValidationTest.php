@@ -4,7 +4,9 @@ require_once("HelperClass/EmailUsernameInputHelper.php");
 
 final class InputValidationTest extends TestCase
 {
-    //Purpose: Test if html entities php function (Input field validation helps to convert special characters to HTML entities. This can prevent any form of XSS.) 
+    //Purpose: Test if html entities php function 
+	//(Input field validation helps to convert special characters to HTML entities. 
+	//This can prevent any form of XSS.) 
     //Expected Result: 
     public function test_valid_htmlentities(): void
     {
