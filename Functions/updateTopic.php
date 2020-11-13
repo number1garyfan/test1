@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-require_once('Connections/dbconnect.php');
+require_once('/var/www/html/Connections/dbconnect.php');
 
 
 if ($_POST['TopicName'] != "" && isset($_POST['TopicID'])) {
@@ -43,7 +43,7 @@ if ($_POST['TopicName'] != "" && isset($_POST['TopicID'])) {
     }
     $stmt->close();
 }else{
-      header('Location: index.php');
+      header('Location: https://teamname.sitict.net/index.php');
 }
 
 
