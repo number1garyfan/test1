@@ -37,7 +37,7 @@ final class SaltHashingHelperTest extends TestCase
     }
     
     
-    //Expected Result: if salt input more than 64 characters, which is the maximum for SHA256, an empty string will returned
+    //Expected Result: if salt input more than 64 characters, SHA256 PHP Function can still take in and return a 64 char string
     public function test_saltedHashingSalt_invalidSHALength(): void
     {
         //Setup 
