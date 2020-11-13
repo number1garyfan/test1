@@ -108,7 +108,7 @@ final class InputValidationTest extends TestCase
         $this->assertEquals("",$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful 
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function fulfil 
 	//"The domain part contains only letters, numbers, hyphens (-) and periods (.)." guideline
     //Expected Result: false
     public function test_FILTER_VALIDATE_EMAIL_domainChars(): void
@@ -122,7 +122,7 @@ final class InputValidationTest extends TestCase
         $this->assertEquals("",$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful 
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function fulfil 
 	//"The local part (before the @) should be no more than 65 characters." guideline
     //Expected Result: empty string
     public function test_FILTER_VALIDATE_EMAIL_65charsBeforeAt(): void
