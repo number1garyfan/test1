@@ -40,9 +40,9 @@ and open the template in the editor.
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="/var/www/html/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="/var/www/html/css/busbly-home.css" rel="stylesheet">
+        <link href="css/busbly-home.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Custom styles for this template -->
 
@@ -168,7 +168,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="/var/www/html/js/bootstrap.bundle.js"></script>
+        <script src="js/bootstrap.bundle.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({

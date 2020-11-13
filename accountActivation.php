@@ -15,14 +15,14 @@ include('/var/www/html/Server/AccountActivationServer.php') ?>
 
 
     <!-- Bootstrap core CSS -->
-    <link href="/var/www/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/var/www/html/css/busbly-login.css" rel="stylesheet">
+    <link href="css/busbly-login.css" rel="stylesheet">
   </head>
   <body class="text-center">
       <form class="form-signin">
-        <img class="mb-4" src="/var/www/html/img/busbly.png" alt="" width="100" height="100">
+        <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
   <h2>Account Has Been Activated !</h2>
   <?php include('/var/www/html/Server/AccountActivationServer.php'); ?>
   <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>

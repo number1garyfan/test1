@@ -24,9 +24,9 @@ require_once ('/var/www/html/Functions/sessionManagement.php');?>
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="/var/www/html/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="/var/www/html/css/busbly-home.css" rel="stylesheet">
+        <link href="css/busbly-home.css" rel="stylesheet">
         <!-- Custom styles for this template -->
 
     </head>
@@ -75,9 +75,9 @@ require_once ('/var/www/html/Functions/sessionManagement.php');?>
             </div>
                     <button name="update_profile" type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                <?php       }
+                <?php }
                 
-                        } ?>
+                            } ?>
             </div> <!-- /container -->
 
         </main>
@@ -90,7 +90,7 @@ require_once ('/var/www/html/Functions/sessionManagement.php');?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-        <script src="/var/www/html/js/bootstrap.bundle.js"></script>
+        <script src="js/bootstrap.bundle.js"></script>
         <script type="text/javascript">// Basic example
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
