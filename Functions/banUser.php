@@ -14,7 +14,7 @@ if(isset($_POST['AccountID']) && isset($_POST['banUser'])){
     echo 'setTimeout(function () { swal("User banned successfully","","success");';
     echo '}, 100);</script>';
 
-    Header('Refresh:1; url=manageAccount.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
@@ -32,7 +32,7 @@ if(isset($_POST['AccountID']) && isset($_POST['unbanUser'])){
     echo 'setTimeout(function () { swal("User unbanned successfully","","success");';
     echo '}, 100);</script>';
 
-    Header('Refresh:1; url=manageAccount.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
