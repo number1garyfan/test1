@@ -13,7 +13,7 @@ if(isset($_POST['PostID']) && isset($_POST['Delete'])){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Post deleted successfully","","success");';
     echo '}, 100);</script>';
-    Header('Refresh:1; url=index.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/index.php');
 
 }else{
     echo '<script type="text/javascript">';
