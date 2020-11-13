@@ -71,11 +71,13 @@ require_once ('/var/www/html/Functions/sessionManagement.php');?>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Confirm Password</label>
-                <input name="password_2" value=<?php echo $row["Password"]; }}?> type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password_2" value=<?php echo $row["Password"];?> type="password" class="form-control" id="exampleInputPassword1">
             </div>
                     <button name="update_profile" type="submit" class="btn btn-primary">Submit</button>
                 </form>
-
+                <?php       }
+                
+                        } ?>
             </div> <!-- /container -->
 
         </main>
