@@ -80,7 +80,8 @@ final class InputValidationTest extends TestCase
         $this->assertEquals(true,$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The email address contains two parts, separated with an @ symbol." guideline
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function fulfil 
+	//"The email address contains two parts, separated with an @ symbol." guideline
     //Expected Result: false
     public function test_FILTER_VALIDATE_EMAIL_containsTwoParts(): void
     {
@@ -93,7 +94,8 @@ final class InputValidationTest extends TestCase
         $this->assertEquals("",$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The email address does not contain dangerous characters" guideline
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function fulfil 
+	//"The email address does not contain dangerous characters" guideline
     //Expected Result: false
     public function test_FILTER_VALIDATE_EMAIL_dangerousChar(): void
     {
@@ -106,7 +108,8 @@ final class InputValidationTest extends TestCase
         $this->assertEquals("",$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The domain part contains only letters, numbers, hyphens (-) and periods (.)." guideline
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful 
+	//"The domain part contains only letters, numbers, hyphens (-) and periods (.)." guideline
     //Expected Result: false
     public function test_FILTER_VALIDATE_EMAIL_domainChars(): void
     {
@@ -119,7 +122,8 @@ final class InputValidationTest extends TestCase
         $this->assertEquals("",$result);
     }
     
-    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful "The local part (before the @) should be no more than 65 characters." guideline
+    //Purpose: Test if FILTER_VALIDATE_EMAIL function filful 
+	//"The local part (before the @) should be no more than 65 characters." guideline
     //Expected Result: empty string
     public function test_FILTER_VALIDATE_EMAIL_65charsBeforeAt(): void
     {
