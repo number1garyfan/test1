@@ -4,6 +4,9 @@ csrfProtector::init();
 
 require_once ('Server/ServerFunction.php');
 require_once ('Functions/sessionManagement.php');
+if ($_SESSION['Roles'] != 1) {
+    header('Location: logout.php');
+}
 require_once('Functions/updateTopic.php');
 
 

@@ -11,10 +11,14 @@ if (isset($_POST["TopicID"])) {
     $topicid = filter_input(INPUT_POST, 'TopicID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $result = read_thread($topicid, $mysqli);
+}else{
+      header('Location: index.php');
 }
 
 if (isset($_POST["Topic"])) {
     $topic = filter_input(INPUT_POST, 'Topic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+}else{
+      header('Location: index.php');
 }
 
 

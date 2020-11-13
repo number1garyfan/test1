@@ -10,7 +10,8 @@ include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
 include ('Server/ServerFunction.php');
-include('Server/updateProfileServer.php');?>
+include('Server/updateProfileServer.php');
+require_once ('Functions/sessionManagement.php');?>
 
 
 <html lang="en">

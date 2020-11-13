@@ -41,4 +41,6 @@ if ($_POST['PostComment'] != "" && isset($_POST['PostID'])) {
         $CommentPost = $row['CommentPost'] ;}
     }
     $stmt->close();
+}else{
+      header('Location: index.php');
 }

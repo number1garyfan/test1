@@ -48,9 +48,14 @@ if (isset($_POST['forget_password'])) {
         
         //Send forget password to next page using Session
         $_SESSION["forget_password"] = 1;
-         
+        
+        $_SESSION["otp_page"] = true;
+        
         //Redirect to OTP Page
         header("Location: enterOTP.php");
     }
   } 
+}
+else{
+     $_SESSION["otp_page"] = false;
 }

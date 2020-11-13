@@ -13,14 +13,12 @@ if(isset($_POST['PostID']) && isset($_POST['Delete'])){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Post deleted successfully","","success");';
     echo '}, 100);</script>';
-    //$msg = "Topic created successfully.";
     Header('Refresh:1; url=index.php');
 
 }else{
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("Post failed to delete","","error");';
     echo '}, 100);</script>';
-    //$msg = "Topic failed to create";
     }
    
 }

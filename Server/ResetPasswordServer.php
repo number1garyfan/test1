@@ -38,6 +38,7 @@ if (isset($_POST['reset_password'])) {
         
         //Send email to next page using Session
         $email = $_SESSION["email_address_otp"];
+        $_SESSION["login_page"] = true;
         
         //Reset Password 
         reset_password($saltedHashedPw, $salt, $email, $mysqli);
@@ -48,6 +49,8 @@ if (isset($_POST['reset_password'])) {
     }
   } 
 }
+
+
 
   
   

@@ -12,15 +12,16 @@
 
 //sec_session_start();
 
-if(!isset($_SESSION['AccountId']) || ($_SESSION['OTPVerified']==null)){
+if($_SESSION["login_page"]!=true ){
     header('Location: login.php');
 }else{
-    if(time()-$_SESSION["login_time_stamp"] >60)   
+    if(time()-$_SESSION["login_time_stamp"] >900)   
     { 
         header("Location:logout.php"); 
     } 
     else{
-         $accountID = $_SESSION['AccountId']; 
+        $accountID = $_SESSION['AccountId']; 
+        $roles = $_SESSION['Roles'];
     }
   
 }

@@ -13,6 +13,24 @@ $username = "";
 $email    = "";
 $errors = array(); 
 
+    if(isset($_POST["g-recaptcha-response"])){
+	$captcha = $_POST["g-recaptcha-response"];
+
+	$secretKey = "6Lft5OAZAAAAAPyuMvPvtfme46pulkZGzj4nMsNC";
+        $ip = $_SERVER['REMOTE_ADDR'];
+        // post request to server
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+        $response = file_get_contents($url);
+        $responseKeys = json_decode($response,true);
+        // should return JSON with success as true
+        if($responseKeys["success"]) {
+                //echo '<h2>Thanks for posting comment</h2>';
+        } else {
+            array_push($errors, "You are spammer ! Get the @$%K out");
+        }
+    }
+
+
 // connect to the database
 $conn = $mysqli;
 
@@ -53,6 +71,7 @@ if (isset($_POST['enter_otp'])) {
             
         if($_SESSION["forget_password"]==1){
             $_SESSION["forget_password"] = 0;
+            $_SESSION["reset_password_page"] = true;
             //Redirect to reset passwrod Page
             header("Location: resetPassword.php");
         }else{     
@@ -60,7 +79,11 @@ if (isset($_POST['enter_otp'])) {
             login($email, $mysqli);
             $_SESSION["OTPVerified"] = "verified";
             // Login time is stored in a session variable 
-            $_SESSION["login_time_stamp"] = time();   
+            $_SESSION["login_time_stamp"] = time(); 
+            //session
+            $_SESSION["login_page"] = true;
+            //Populate Session Variables 
+            populate_session_variables($email, $mysqli);
             //Redirect to index Page
             header("Location: index.php");
         }
@@ -69,5 +92,9 @@ if (isset($_POST['enter_otp'])) {
   } 
  }
 }
+else{
+    $_SESSION["reset_password_page"] = false;
+}
+
 
 

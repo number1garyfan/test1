@@ -6,10 +6,6 @@ require_once("HelperClass/EmailHelper.php");
 require_once("Server/ServerFunction.php");
 require_once("HelperClass/EmailUsernameInputHelper.php");
 
-
-sec_session_start();
-//session_start();
-
 // initializing variables
 $username = "";
 $email    = "";
@@ -51,10 +47,10 @@ if (isset($_POST['update_profile'])) {
   
   //validating with database
   if($username != $_SESSION["Username"] && checkUserExist($username, $mysqli)) {
-      array_push($errors, "Username already exists");
+      array_push($errors, "Invalid Email/Username");
   }
   else if($email != $_SESSION["Email"] && checkEmailExist($email, $mysqli)){
-      array_push($errors, "Email already exists");
+      array_push($errors, "Invalid Email/Username");
   }
   else{      
     // Finally, register user if there are no errors in the form

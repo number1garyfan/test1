@@ -42,6 +42,8 @@ if ($_POST['TopicName'] != "" && isset($_POST['TopicID'])) {
         $TopicTitle = $row['TopicTitle'] ;}
     }
     $stmt->close();
+}else{
+      header('Location: index.php');
 }
 
 

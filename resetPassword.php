@@ -2,7 +2,14 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('Server/ResetPasswordServer.php') ?>
+include('Server/ResetPasswordServer.php');
+
+if($_SESSION["reset_password_page"] != true){
+    header('Location: login.php');
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
     <head>

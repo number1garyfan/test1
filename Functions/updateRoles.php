@@ -13,14 +13,14 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteMod'])){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User promoted to moderator successfully","","success");';
     echo '}, 100);</script>';
-    //$msg = "Topic created successfully.";
+
     Header('Refresh:1; url=manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User failed to promote","","error");';
     echo '}, 100);</script>';
-    //$msg = "Topic failed to create";
+  
     }
 }
 
@@ -31,14 +31,14 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteAdmin'])){
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User promoted to admin successfully","","success");';
     echo '}, 100);</script>';
-    //$msg = "Topic created successfully.";
+  
     Header('Refresh:1; url=manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
     echo 'setTimeout(function () { swal("User failed to promote","","error");';
     echo '}, 100);</script>';
-    //$msg = "Topic failed to create";
+
     }
 }
 

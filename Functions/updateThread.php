@@ -41,4 +41,6 @@ if ($_POST['ThreadName'] != "" && isset($_POST['ThreadID'])) {
         $ThreadTitle = $row['ThreadTitle'] ;}
     }
     $stmt->close();
+}else{
+      header('Location: index.php');
 }

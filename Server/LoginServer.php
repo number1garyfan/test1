@@ -33,7 +33,7 @@ $conn = $mysqli;
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
-
+    
     //Create class objects
     $saltedHashingHelperObj = new SaltHashingHelper();
     $emailHelperObj = new EmailHelper();
@@ -70,13 +70,16 @@ if (isset($_POST['login_user'])) {
             //Send email to next page using Session
             $_SESSION["forget_password"] = 0;
             $_SESSION["email_address_otp"] = $email;
+            $_SESSION["otp_page"] = true;
 
             //Redirect to next page
             header("Location: enterOTP.php");
         }
     }
 }
-
+else{
+    $_SESSION["otp_page"] = false;
+}
   
   
  

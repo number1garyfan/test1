@@ -10,10 +10,14 @@ if (isset($_POST["ThreadID"])) {
     $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $result = read_post($threadid, $mysqli);
+}else{
+      header('Location: index.php');
 }
 
 if (isset($_POST['Thread'])) {
     $thread = filter_input(INPUT_POST, 'Thread', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+}else{
+      header('Location: index.php');
 }
 
 require_once('Functions/deletePost.php');
