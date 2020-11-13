@@ -16,15 +16,15 @@ include('/var/www/html/Server/LoginServer.php') ?>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="/var/www/html/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/busbly-login.css" rel="stylesheet">
+        <link href="/var/www/html/css/busbly-login.css" rel="stylesheet">
     </head>
     <body class="text-center">
         <form class="form-signin"  method="post" action="login.php" onsubmit="return validateRecaptcha()">
              <?php include('/var/www/html/Server/Errors.php'); ?>
-            <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
+            <img class="mb-4" src="/var/www/html/img/busbly.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address">

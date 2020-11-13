@@ -15,15 +15,15 @@ include('/var/www/html/Server/CreateAccountServer.php'); ?>
 
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="/var/www/html/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/busbly-login.css" rel="stylesheet">
+        <link href="/var/www/html/css/busbly-login.css" rel="stylesheet">
     </head>
     <body class="text-center">
         <form class="form-signin" method="post" action="createAccount.php">
             <?php include('/var/www/html/Server/Errors.php'); ?>
-            <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
+            <img class="mb-4" src="/var/www/html/img/busbly.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Create New Account</h1>
             <div class="form-group">   
                 <label for="InputEmail1">Email address</label>
