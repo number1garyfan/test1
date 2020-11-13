@@ -2,9 +2,9 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
-require_once ('Functions/updatePost.php');
+require_once ('/var/www/html/Server/ServerFunction.php');
+require_once ('/var/www/html/Functions/sessionManagement.php');
+require_once ('/var/www/html/Functions/updatePost.php');
 
 
 
@@ -33,7 +33,7 @@ and open the template in the editor.
 
     </head>
     <body>
-        <?php include './userNavigation.php' ?>
+        <?php include '/var/www/html/userNavigation.php' ?>
 
         <main role="main">
 

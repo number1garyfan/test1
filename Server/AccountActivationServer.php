@@ -1,6 +1,6 @@
 <?php 
-     require_once('Connections/dbconnect.php');
-     require_once("Server/ServerFunction.php");
+     require_once('/var/www/html/Connections/dbconnect.php');
+     require_once("/var/www/html/Server/ServerFunction.php");
      // connect to the database
      $conn = $mysqli;
      //Get variables from URL

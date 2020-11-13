@@ -1,10 +1,10 @@
 <?php
-require_once('Connections/dbconnect.php');
-require_once("HelperClass/SaltHashingHelper.php");
-require_once("HelperClass/PasswordHelper.php");
-require_once("HelperClass/EmailHelper.php");
-require_once("HelperClass/EmailUsernameInputHelper.php");
-require_once("Server/ServerFunction.php");
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once("/var/www/html/HelperClass/SaltHashingHelper.php");
+require_once("/var/www/html/HelperClass/PasswordHelper.php");
+require_once("/var/www/html/HelperClass/EmailHelper.php");
+require_once("/var/www/html/HelperClass/EmailUsernameInputHelper.php");
+require_once("/var/www/html/Server/ServerFunction.php");
 
 //session_start();
 

@@ -2,12 +2,12 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('Server/OTPServer.php');
+include('/var/www/html/Server/OTPServer.php');
 //|| $_SESSION["forget_otp_page"] != true
 if($_SESSION["otp_page"] == true || $_SESSION["forget_otp_page"] == true){
    
 }else{
-    header('Location: login.php'); 
+    header('Location: https://teamname.sitict.net/login.php'); 
 }
 
 
@@ -32,7 +32,7 @@ if($_SESSION["otp_page"] == true || $_SESSION["forget_otp_page"] == true){
   </head>
   <body class="text-center">
     <form class="form-signin" method="post" action="enterOTP.php">
-        <?php include('Server/Errors.php'); ?>
+        <?php include('/var/www/html/Server/Errors.php'); ?>
         <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
   <h1 class="h3 mb-3 font-weight-normal">Enter OTP</h1>
   <h6>An OTP email has been sent to your email</h6>

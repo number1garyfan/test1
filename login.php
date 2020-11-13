@@ -2,7 +2,7 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('Server/LoginServer.php') ?>
+include('/var/www/html/Server/LoginServer.php') ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -23,7 +23,7 @@ include('Server/LoginServer.php') ?>
     </head>
     <body class="text-center">
         <form class="form-signin"  method="post" action="login.php" onsubmit="return validateRecaptcha()">
-             <?php include('Server/Errors.php'); ?>
+             <?php include('/var/www/html/Server/Errors.php'); ?>
             <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="inputEmail" class="sr-only">Email address</label>

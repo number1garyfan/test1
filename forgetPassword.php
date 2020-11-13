@@ -2,7 +2,7 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('Server/ForgetPasswordServer.php');
+include('/var/www/html/Server/ForgetPasswordServer.php');
 ?>
 
 <!doctype html>
@@ -24,7 +24,7 @@ include('Server/ForgetPasswordServer.php');
   </head>
   <body class="text-center">
     <form class="form-signin" method="post" action="forgetPassword.php">
-        <?php include('Server/Errors.php'); ?>
+        <?php include('/var/www/html/Server/Errors.php'); ?>
         <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
   <h1 class="h3 mb-3 font-weight-normal">Forget Password?</h1>
   <h6>Do not worry! Just enter your email address and we will send you the one-time password</h6>

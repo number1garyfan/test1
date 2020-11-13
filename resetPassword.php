@@ -2,10 +2,10 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('Server/ResetPasswordServer.php');
+include('/var/www/html/Server/ResetPasswordServer.php');
 
 if($_SESSION["reset_password_page"] != true){
-    header('Location: login.php');
+    header('Location: https://teamname.sitict.net/login.php');
 }
 ?>
 
@@ -29,7 +29,7 @@ if($_SESSION["reset_password_page"] != true){
     </head>
     <body class="text-center">
         <form class="form-signin" method="post" action="resetPassword.php">
-            <?php include('Server/Errors.php'); ?>
+            <?php include('/var/www/html/Server/Errors.php'); ?>
             <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Reset Password</h1>
             <div class="form-group">

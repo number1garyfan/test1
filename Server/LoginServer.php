@@ -21,11 +21,11 @@ $errors = array();
         }
     }
 
-require_once('Connections/dbconnect.php');
-require_once("HelperClass/SaltHashingHelper.php");
-require_once("HelperClass/PasswordHelper.php");
-require_once("HelperClass/EmailHelper.php");
-require_once("Server/ServerFunction.php");
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once("/var/www/html/HelperClass/SaltHashingHelper.php");
+require_once("/var/www/html/HelperClass/PasswordHelper.php");
+require_once("/var/www/html/HelperClass/EmailHelper.php");
+require_once("/var/www/html/Server/ServerFunction.php");
 
 // connect to the database
 $conn = $mysqli;
@@ -73,7 +73,7 @@ if (isset($_POST['login_user'])) {
             $_SESSION["otp_page"] = true;
 
             //Redirect to next page
-            header("Location: enterOTP.php");
+            header("Location: https://teamname.sitict.net/enterOTP.php");
         }
     }
 }

@@ -9,9 +9,9 @@ and open the template in the editor.
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include ('Server/ServerFunction.php');
-include('Server/updateProfileServer.php');
-require_once ('Functions/sessionManagement.php');?>
+include ('/var/www/html/Server/ServerFunction.php');
+include('/var/www/html/Server/updateProfileServer.php');
+require_once ('/var/www/html/Functions/sessionManagement.php');?>
 
 
 <html lang="en">
@@ -31,7 +31,7 @@ require_once ('Functions/sessionManagement.php');?>
 
     </head>
     <body>
-        <?php include './userNavigation.php' ?>
+        <?php include '/var/www/html/userNavigation.php' ?>
 
         <main role="main">
 
@@ -48,7 +48,7 @@ require_once ('Functions/sessionManagement.php');?>
                 <h3>Update Profile</h3>
 
                 <form method="post" action="updateProfile.php">
-                <?php include('Server/Errors.php'); ?>
+                <?php include('/var/www/html/Server/Errors.php'); ?>
                 <?php
                     //Retrieve account details
                     $result = getAccountDetailsForUpdate($_SESSION["Email"], $mysqli);

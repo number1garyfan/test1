@@ -2,26 +2,26 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once('Connections/dbconnect.php');
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once ('/var/www/html/Server/ServerFunction.php');
+require_once ('/var/www/html/Functions/sessionManagement.php');
 
 if (isset($_POST["ThreadID"])) {
     $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $result = read_post($threadid, $mysqli);
 }else{
-      header('Location: index.php');
+      header('Location: https://teamname.sitict.net/index.php');
 }
 
 if (isset($_POST['Thread'])) {
     $thread = filter_input(INPUT_POST, 'Thread', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }else{
-      header('Location: index.php');
+      header('Location: https://teamname.sitict.net/index.php');
 }
 
-require_once('Functions/deletePost.php');
-require_once('Functions/reportPost.php');
+require_once('/var/www/html/Functions/deletePost.php');
+require_once('/var/www/html/Functions/reportPost.php');
 ?>
 <!DOCTYPE html>
 <!--
@@ -48,7 +48,7 @@ and open the template in the editor.
 
     </head>
     <body>
-        <?php include './userNavigation.php' ?>
+        <?php include '/var/www/html/userNavigation.php' ?>
 
         <main role="main">
 

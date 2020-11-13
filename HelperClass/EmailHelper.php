@@ -2,7 +2,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'composer\vendor\autoload.php';
+require '/var/www/html/composer/vendor/autoload.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.

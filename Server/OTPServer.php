@@ -1,10 +1,10 @@
 <?php
-require_once('Connections/dbconnect.php');
-require_once("HelperClass/SaltHashingHelper.php");
-require_once("HelperClass/PasswordHelper.php");
-require_once("HelperClass/EmailHelper.php");
-require_once("HelperClass/OTPHelper.php");
-require_once("Server/ServerFunction.php");
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once("/var/www/html/HelperClass/SaltHashingHelper.php");
+require_once("/var/www/html/HelperClass/PasswordHelper.php");
+require_once("/var/www/html/HelperClass/EmailHelper.php");
+require_once("/var/www/html/HelperClass/OTPHelper.php");
+require_once("/var/www/html/Server/ServerFunction.php");
 
 //sec_session_start();
 
@@ -73,7 +73,7 @@ if (isset($_POST['enter_otp'])) {
             $_SESSION["forget_password"] = 0;
             $_SESSION["reset_password_page"] = true;
             //Redirect to reset passwrod Page
-            header("Location: resetPassword.php");
+            header("Location: https://teamname.sitict.net/resetPassword.php");
         }else{     
             //Call Login Function
             login($email, $mysqli);
@@ -85,7 +85,7 @@ if (isset($_POST['enter_otp'])) {
             //Populate Session Variables 
             populate_session_variables($email, $mysqli);
             //Redirect to index Page
-            header("Location: index.php");
+            header("Location: https://teamname.sitict.net/index.php");
         }
         //update OTP to used
         update_otp(intval($inputted_otp), $mysqli);

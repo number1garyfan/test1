@@ -2,7 +2,7 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('Server/AccountActivationServer.php') ?>
+include('/var/www/html/Server/AccountActivationServer.php') ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,7 +24,7 @@ include('Server/AccountActivationServer.php') ?>
       <form class="form-signin">
         <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
   <h2>Account Has Been Activated !</h2>
-  <?php include('Server/AccountActivationServer.php'); ?>
+  <?php include('/var/www/html/Server/AccountActivationServer.php'); ?>
   <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
 </form>
 </body>

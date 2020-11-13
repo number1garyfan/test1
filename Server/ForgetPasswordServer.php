@@ -1,8 +1,8 @@
 <?php
-require_once('Connections/dbconnect.php');
-require_once("Server/ServerFunction.php");
-require_once("HelperClass/EmailHelper.php");
-require_once("HelperClass/EmailUsernameInputHelper.php");
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once("/var/www/html/Server/ServerFunction.php");
+require_once("/var/www/html/HelperClass/EmailHelper.php");
+require_once("/var/www/html/HelperClass/EmailUsernameInputHelper.php");
 
 //sec_session_start();
 
@@ -52,7 +52,7 @@ if (isset($_POST['forget_password'])) {
         $_SESSION["otp_page"] = true;
         
         //Redirect to OTP Page
-        header("Location: enterOTP.php");
+        header("Location: https://teamname.sitict.net/enterOTP.php");
     }
   } 
 }

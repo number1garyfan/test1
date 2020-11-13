@@ -2,16 +2,16 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once ('Connections/dbconnect.php');
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
+require_once ('/var/www/html/Connections/dbconnect.php');
+require_once ('/var/www/html/Server/ServerFunction.php');
+require_once ('/var/www/html/Functions/sessionManagement.php');
 
 if ($_SESSION['Roles'] != 1) {
-    header('Location: logout.php');
+    header('Location: https://teamname.sitict.net/logout.php');
 }
 
-require_once ('Functions/updateRoles.php');
-require_once ('Functions/banUser.php');
+require_once ('/var/www/html/Functions/updateRoles.php');
+require_once ('/var/www/html/Functions/banUser.php');
 
 $result = read_user($mysqli);
 $result2 = read_user($mysqli);
@@ -40,7 +40,7 @@ and open the template in the editor.
 
     </head>
     <body>
-<?php include './userNavigation.php' ?>
+<?php include '/var/www/html/userNavigation.php' ?>
 
         <main role="main">
 

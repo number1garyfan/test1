@@ -2,9 +2,9 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once('Connections/dbconnect.php');
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once ('/var/www/html/Server/ServerFunction.php');
+require_once ('/var/www/html/Functions/sessionManagement.php');
 
 if(isset($_POST['accountID'])){
   $accountID = filter_input(INPUT_POST, 'accountID',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -19,9 +19,9 @@ if(isset($_POST['accountID'])){
 }
 
 
-require_once('Functions/deleteThread.php');
-require_once('Functions/deletePost.php');
-require_once('Functions/reportThread.php');
+require_once('/var/www/html/Functions/deleteThread.php');
+require_once('/var/www/html/Functions/deletePost.php');
+require_once('/var/www/html/Functions/reportThread.php');
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ and open the template in the editor.
 
     </head>
     <body>
-        <?php include './userNavigation.php' ?>
+        <?php include '/var/www/html/userNavigation.php' ?>
 
         <main role="main">
 

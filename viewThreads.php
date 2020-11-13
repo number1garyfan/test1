@@ -2,9 +2,9 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once('Connections/dbconnect.php');
-require_once ('Server/ServerFunction.php');
-require_once ('Functions/sessionManagement.php');
+require_once('/var/www/html/Connections/dbconnect.php');
+require_once ('/var/www/html/Server/ServerFunction.php');
+require_once ('/var/www/html/Functions/sessionManagement.php');
 
 
 if (isset($_POST["TopicID"])) {
@@ -12,18 +12,18 @@ if (isset($_POST["TopicID"])) {
 
     $result = read_thread($topicid, $mysqli);
 }else{
-      header('Location: index.php');
+      header('Location: https://teamname.sitict.net/index.php');
 }
 
 if (isset($_POST["Topic"])) {
     $topic = filter_input(INPUT_POST, 'Topic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }else{
-      header('Location: index.php');
+      header('Location: https://teamname.sitict.net/index.php');
 }
 
 
-require_once('Functions/deleteThread.php');
-require_once('Functions/reportThread.php');
+require_once('/var/www/html/Functions/deleteThread.php');
+require_once('/var/www/html/Functions/reportThread.php');
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +51,7 @@ and open the template in the editor.
 
     </head>
     <body>
-        <?php include './userNavigation.php' ?>
+        <?php include '/var/www/html/userNavigation.php' ?>
 
         <main role="main">
 
