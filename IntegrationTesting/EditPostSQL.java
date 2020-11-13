@@ -26,11 +26,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author pheeb
  */
-public class ForgetPasswordSQL {
+public class EditPostSQL {
     
 	WebDriver driver = new HtmlUnitDriver(true); 
     WebDriverWait wait; 
-    String url = "http://localhost/ICT3103Busbly/forgetPassword.php";
+    String url = "http://localhost/ICT3103Busbly/editPost.php";
     
     String sql1 = "'";
     String sql2 = "a' or 1=1--";
@@ -49,10 +49,10 @@ public class ForgetPasswordSQL {
     String sql15 = "' or 1=1";
     String sql16 = " or 1=1 --";
     String sql17 = "x' AND userid IS NULL; --";
-    String sql18 = "x' AND email IS NULL; --";
+    String sql18 = "x' AND PostComment IS NULL; --";
     String sql19 = "anything' OR 'x'='x";
     String sql20 = "x' AND 1=(SELECT COUNT(*) FROM tabname); --";
-    String sql21 = "x' AND members.email IS NULL; --";
+    String sql21 = "x' AND members.PostComment IS NULL; --";
     String sql22 = "x' OR full_name LIKE '%Bob%";
     String sql23 = "23 OR 1=1";
     String sql24 = "'; exec master..xp_cmdshell 'ping 172.10.1.255'--";
@@ -179,22 +179,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql1() 
+    public void test_edit_post_sql1() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql1);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql1);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -204,47 +204,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql2() 
+    public void test_edit_post_sql2() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql2);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql2);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
- 
-   
-    @Test
-    //Expected result: if sql injection is detected, then
-    //                 stay on same page
-    public void forget_pass_sql3() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
-
-		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql3);
-		//click submit
-		driver.findElement(By.name("forget_password")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -254,22 +229,47 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql4() 
+    public void test_edit_post_sql3() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql4);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql3);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+ 
+   
+    @Test
+    //Expected result: if sql injection is detected, then
+    //                 stay on same page
+    public void test_edit_post_sql4() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
+
+		//enter input
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql4);
+		//click submit
+		driver.findElement(By.name("submit")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -279,22 +279,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql5() 
+    public void test_edit_post_sql5() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql5);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql5);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -303,22 +303,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql6() 
+    public void test_edit_post_sql6() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql6);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql6);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -327,22 +327,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql7() 
+    public void test_edit_post_sql7() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql7);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql7);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -351,22 +351,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql8() 
+    public void test_edit_post_sql8() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql8);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql8);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -375,22 +375,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql9() 
+    public void test_edit_post_sql9() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql9);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql9);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -398,22 +398,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql10() 
+    public void test_edit_post_sql10() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql10);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql10);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -422,22 +422,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql11() 
+    public void test_edit_post_sql11() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql11);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql11);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -445,22 +445,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql12() 
+    public void test_edit_post_sql12() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql12);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql12);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -468,22 +468,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql13() 
+    public void test_edit_post_sql13() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql13);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql13);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -491,22 +491,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql14() 
+    public void test_edit_post_sql14() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql14);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql14);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -514,22 +514,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql15() 
+    public void test_edit_post_sql15() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql15);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql15);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -537,22 +537,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql16() 
+    public void test_edit_post_sql16() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql16);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql16);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -560,22 +560,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql17() 
+    public void test_edit_post_sql17() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql17);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql17);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -583,22 +583,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql18() 
+    public void test_edit_post_sql18() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql18);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql18);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -607,22 +607,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql19() 
+    public void test_edit_post_sql19() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql19);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql19);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -630,22 +630,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql20() 
+    public void test_edit_post_sql20() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql20);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql20);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -653,22 +653,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql21() 
+    public void test_edit_post_sql21() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql21);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql21);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -677,22 +677,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql22() 
+    public void test_edit_post_sql22() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql22);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql22);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -700,22 +700,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql23() 
+    public void test_edit_post_sql23() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql23);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql23);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -723,22 +723,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql24() 
+    public void test_edit_post_sql24() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql24);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql24);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -747,22 +747,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql25() 
+    public void test_edit_post_sql25() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql25);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql25);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -771,22 +771,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql26() 
+    public void test_edit_post_sql26() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql26);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql26);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -794,22 +794,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql27() 
+    public void test_edit_post_sql27() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql27);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql27);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -817,22 +817,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql28() 
+    public void test_edit_post_sql28() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql28);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql28);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -840,22 +840,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql29() 
+    public void test_edit_post_sql29() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql29);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql29);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -863,22 +863,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql30() 
+    public void test_edit_post_sql30() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql30);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql30);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -886,22 +886,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql31() 
+    public void test_edit_post_sql31() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql31);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql31);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -909,22 +909,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql32() 
+    public void test_edit_post_sql32() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql32);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql32);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -932,22 +932,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql33() 
+    public void test_edit_post_sql33() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql33);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql33);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -955,22 +955,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql34() 
+    public void test_edit_post_sql34() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql34);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql34);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -978,22 +978,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql35() 
+    public void test_edit_post_sql35() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql35);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql35);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1001,22 +1001,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql36() 
+    public void test_edit_post_sql36() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql36);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql36);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1024,22 +1024,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql37() 
+    public void test_edit_post_sql37() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql37);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql37);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1048,22 +1048,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql38() 
+    public void test_edit_post_sql38() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql38);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql38);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1072,22 +1072,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql39() 
+    public void test_edit_post_sql39() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql39);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql39);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1095,22 +1095,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql40() 
+    public void test_edit_post_sql40() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql40);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql40);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1118,22 +1118,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql41() 
+    public void test_edit_post_sql41() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql41);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql41);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1142,22 +1142,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql42() 
+    public void test_edit_post_sql42() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql42);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql42);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1166,22 +1166,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql43() 
+    public void test_edit_post_sql43() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql43);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql43);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1190,22 +1190,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql44() 
+    public void test_edit_post_sql44() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql44);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql44);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1213,22 +1213,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql45() 
+    public void test_edit_post_sql45() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql45);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql45);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1236,22 +1236,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql46() 
+    public void test_edit_post_sql46() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql46);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql46);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1260,22 +1260,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql47() 
+    public void test_edit_post_sql47() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql47);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql47);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1284,22 +1284,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql48() 
+    public void test_edit_post_sql48() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql48);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql48);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1308,22 +1308,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql49() 
+    public void test_edit_post_sql49() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql49);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql49);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1331,22 +1331,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql50() 
+    public void test_edit_post_sql50() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql50);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql50);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1354,22 +1354,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql51() 
+    public void test_edit_post_sql51() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql51);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql51);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1378,22 +1378,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql52() 
+    public void test_edit_post_sql52() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql52);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql52);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1402,22 +1402,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql53() 
+    public void test_edit_post_sql53() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql53);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql53);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1426,22 +1426,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql54() 
+    public void test_edit_post_sql54() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql54);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql54);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1450,22 +1450,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql55() 
+    public void test_edit_post_sql55() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql55);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql55);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1473,22 +1473,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql56() 
+    public void test_edit_post_sql56() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql56);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql56);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1497,22 +1497,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql57() 
+    public void test_edit_post_sql57() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql57);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql57);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1520,22 +1520,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql58() 
+    public void test_edit_post_sql58() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql58);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql58);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1544,22 +1544,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql59() 
+    public void test_edit_post_sql59() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql59);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql59);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1567,22 +1567,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql60() 
+    public void test_edit_post_sql60() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql60);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql60);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1591,22 +1591,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql61() 
+    public void test_edit_post_sql61() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql61);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql61);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1614,22 +1614,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql62() 
+    public void test_edit_post_sql62() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql62);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql62);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1638,22 +1638,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql63() 
+    public void test_edit_post_sql63() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql63);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql63);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1661,22 +1661,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql64() 
+    public void test_edit_post_sql64() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql64);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql64);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1684,22 +1684,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql65() 
+    public void test_edit_post_sql65() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql65);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql65);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1707,22 +1707,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql66() 
+    public void test_edit_post_sql66() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql66);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql66);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1730,22 +1730,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql67() 
+    public void test_edit_post_sql67() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql67);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql67);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1753,22 +1753,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql68() 
+    public void test_edit_post_sql68() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql68);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql68);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1777,22 +1777,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql69() 
+    public void test_edit_post_sql69() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql69);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql69);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1800,22 +1800,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql70() 
+    public void test_edit_post_sql70() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql70);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql70);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1824,22 +1824,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql71() 
+    public void test_edit_post_sql71() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql71);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql71);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1848,22 +1848,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql72() 
+    public void test_edit_post_sql72() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql72);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql72);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1872,22 +1872,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql73() 
+    public void test_edit_post_sql73() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql73);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql73);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1896,22 +1896,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql74() 
+    public void test_edit_post_sql74() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql74);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql74);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1921,22 +1921,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql75() 
+    public void test_edit_post_sql75() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql75);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql75);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1945,22 +1945,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql76() 
+    public void test_edit_post_sql76() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql76);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql76);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1969,22 +1969,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql77() 
+    public void test_edit_post_sql77() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql77);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql77);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -1993,22 +1993,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql78() 
+    public void test_edit_post_sql78() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql78);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql78);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2017,22 +2017,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql79() 
+    public void test_edit_post_sql79() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql79);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql79);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2040,22 +2040,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql80() 
+    public void test_edit_post_sql80() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql80);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql80);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2064,22 +2064,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql81() 
+    public void test_edit_post_sql81() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql81);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql81);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2088,22 +2088,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql82() 
+    public void test_edit_post_sql82() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql82);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql82);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2112,22 +2112,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql83() 
+    public void test_edit_post_sql83() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql83);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql83);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2135,22 +2135,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql84() 
+    public void test_edit_post_sql84() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql84);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql84);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2158,22 +2158,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql85() 
+    public void test_edit_post_sql85() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql85);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql85);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2181,22 +2181,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql86() 
+    public void test_edit_post_sql86() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql86);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql86);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2204,22 +2204,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql87() 
+    public void test_edit_post_sql87() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql87);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql87);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2228,22 +2228,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql88() 
+    public void test_edit_post_sql88() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql88);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql88);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2253,22 +2253,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql89() 
+    public void test_edit_post_sql89() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql89);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql89);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2277,22 +2277,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql90() 
+    public void test_edit_post_sql90() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql90);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql90);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2301,22 +2301,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql91() 
+    public void test_edit_post_sql91() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql91);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql91);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2325,22 +2325,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql92() 
+    public void test_edit_post_sql92() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql92);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql92);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2349,22 +2349,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql93() 
+    public void test_edit_post_sql93() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql93);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql93);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2374,22 +2374,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql94() 
+    public void test_edit_post_sql94() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql94);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql94);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2398,22 +2398,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql95() 
+    public void test_edit_post_sql95() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql95);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql95);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2421,22 +2421,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql96() 
+    public void test_edit_post_sql96() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql96);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql96);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2445,22 +2445,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql97() 
+    public void test_edit_post_sql97() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql97);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql97);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2470,22 +2470,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql98() 
+    public void test_edit_post_sql98() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql98);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql98);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2495,22 +2495,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql99() 
+    public void test_edit_post_sql99() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql99);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql99);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2520,22 +2520,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql100() 
+    public void test_edit_post_sql100() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql100);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql100);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2544,22 +2544,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql101() 
+    public void test_edit_post_sql101() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql101);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql101);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2568,22 +2568,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql102() 
+    public void test_edit_post_sql102() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql102);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql102);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2592,22 +2592,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql103() 
+    public void test_edit_post_sql103() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql103);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql103);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2617,22 +2617,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql104() 
+    public void test_edit_post_sql104() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql104);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql104);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2641,22 +2641,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql105() 
+    public void test_edit_post_sql105() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql105);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql105);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2665,22 +2665,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql106() 
+    public void test_edit_post_sql106() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql106);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql106);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2688,22 +2688,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql107() 
+    public void test_edit_post_sql107() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql107);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql107);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2712,22 +2712,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql108() 
+    public void test_edit_post_sql108() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql108);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql108);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2735,22 +2735,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql109() 
+    public void test_edit_post_sql109() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql109);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql109);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2759,22 +2759,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql110() 
+    public void test_edit_post_sql110() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql110);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql110);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2783,22 +2783,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql111() 
+    public void test_edit_post_sql111() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql111);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql111);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2806,22 +2806,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql112() 
+    public void test_edit_post_sql112() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql112);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql112);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2829,22 +2829,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql113() 
+    public void test_edit_post_sql113() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql113);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql113);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2852,22 +2852,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql114() 
+    public void test_edit_post_sql114() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql114);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql114);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2875,22 +2875,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql115() 
+    public void test_edit_post_sql115() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql115);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql115);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2899,22 +2899,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql116() 
+    public void test_edit_post_sql116() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql116);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql116);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2922,22 +2922,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql117() 
+    public void test_edit_post_sql117() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql117);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql117);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2945,22 +2945,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql118() 
+    public void test_edit_post_sql118() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql118);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql118);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2968,22 +2968,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql119() 
+    public void test_edit_post_sql119() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql119);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql119);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -2991,22 +2991,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql120() 
+    public void test_edit_post_sql120() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql120);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql120);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3015,22 +3015,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql121() 
+    public void test_edit_post_sql121() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql121);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql121);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3038,22 +3038,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql122() 
+    public void test_edit_post_sql122() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql122);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql122);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3061,22 +3061,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql123() 
+    public void test_edit_post_sql123() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql123);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql123);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3085,22 +3085,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql124() 
+    public void test_edit_post_sql124() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql124);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql124);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3108,22 +3108,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql125() 
+    public void test_edit_post_sql125() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql125);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql125);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3131,22 +3131,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql126() 
+    public void test_edit_post_sql126() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql126);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql126);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3154,22 +3154,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql127() 
+    public void test_edit_post_sql127() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql127);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql127);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
@@ -3177,22 +3177,22 @@ public class ForgetPasswordSQL {
     @Test
     //Expected result: if sql injection is detected, then
     //                 stay on same page
-    public void forget_pass_sql128() 
+    public void test_edit_post_sql128() 
 		throws InterruptedException { 
 
 		//get web page
 		driver.get(url);
 		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Forget Password")); 
+		wait.until(ExpectedConditions.titleContains("Busbly Forum")); 
 
 		//enter input
-		//use each and every possible SQL statement and inject on email field and submit
-		driver.findElement(By.name("email")).sendKeys(sql128);
+		//use each and every possible SQL statement and inject on PostComment field and submit
+		driver.findElement(By.name("PostComment")).sendKeys(sql128);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("submit")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Forget Password"; 
+		String expectedResult = "Busbly Forum"; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }

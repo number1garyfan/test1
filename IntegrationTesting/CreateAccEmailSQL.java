@@ -181,7 +181,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script1() 
+    public void test_create_email_sql_script1() 
 		throws InterruptedException { 
 
 		//get web page
@@ -208,7 +208,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script2() 
+    public void test_create_email_sql_script2() 
 		throws InterruptedException { 
 
 		//get web page
@@ -236,7 +236,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script3() 
+    public void test_create_email_sql_script3() 
 		throws InterruptedException { 
 
 		//get web page
@@ -264,7 +264,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script4() 
+    public void test_create_email_sql_script4() 
 		throws InterruptedException { 
 
 		//get web page
@@ -292,7 +292,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script5() 
+    public void test_create_email_sql_script5() 
 		throws InterruptedException { 
 
 		//get web page
@@ -320,7 +320,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script6() 
+    public void test_create_email_sql_script6() 
 		throws InterruptedException { 
 
 		//get web page
@@ -348,7 +348,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script7() 
+    public void test_create_email_sql_script7() 
 		throws InterruptedException { 
 
 		//get web page
@@ -375,7 +375,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script8() 
+    public void test_create_email_sql_script8() 
 		throws InterruptedException { 
 
 		//get web page
@@ -403,7 +403,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script9() 
+    public void test_create_email_sql_script9() 
 		throws InterruptedException { 
 
 		//get web page
@@ -431,7 +431,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script10() 
+    public void test_create_email_sql_script10() 
 		throws InterruptedException { 
 
 		//get web page
@@ -458,7 +458,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script11() 
+    public void test_create_email_sql_script11() 
 		throws InterruptedException { 
 
 		//get web page
@@ -486,7 +486,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script12() 
+    public void test_create_email_sql_script12() 
 		throws InterruptedException { 
 
 		//get web page
@@ -513,7 +513,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script13() 
+    public void test_create_email_sql_script13() 
 		throws InterruptedException { 
 
 		//get web page
@@ -540,7 +540,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script14() 
+    public void test_create_email_sql_script14() 
 		throws InterruptedException { 
 
 		//get web page
@@ -567,7 +567,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script15() 
+    public void test_create_email_sql_script15() 
 		throws InterruptedException { 
 
 		//get web page
@@ -595,7 +595,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script16() 
+    public void test_create_email_sql_script16() 
 		throws InterruptedException { 
 
 		//get web page
@@ -622,7 +622,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script17() 
+    public void test_create_email_sql_script17() 
 		throws InterruptedException { 
 
 		//get web page
@@ -650,7 +650,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script18() 
+    public void test_create_email_sql_script18() 
 		throws InterruptedException { 
 
 		//get web page
@@ -678,7 +678,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script19() 
+    public void test_create_email_sql_script19() 
 		throws InterruptedException { 
 
 		//get web page
@@ -705,7 +705,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script20() 
+    public void test_create_email_sql_script20() 
 		throws InterruptedException { 
 
 		//get web page
@@ -732,7 +732,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script21() 
+    public void test_create_email_sql_script21() 
 		throws InterruptedException { 
 
 		//get web page
@@ -760,7 +760,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script22() 
+    public void test_create_email_sql_script22() 
 		throws InterruptedException { 
 
 		//get web page
@@ -789,7 +789,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script23() 
+    public void test_create_email_sql_script23() 
 		throws InterruptedException { 
 
 		//get web page
@@ -818,7 +818,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script24() 
+    public void test_create_email_sql_script24() 
 		throws InterruptedException { 
 
 		//get web page
@@ -847,7 +847,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script25() 
+    public void test_create_email_sql_script25() 
 		throws InterruptedException { 
 
 		//get web page
@@ -876,7 +876,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script26() 
+    public void test_create_email_sql_script26() 
 		throws InterruptedException { 
 
 		//get web page
@@ -904,7 +904,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script27() 
+    public void test_create_email_sql_script27() 
 		throws InterruptedException { 
 
 		//get web page
@@ -932,7 +932,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script28() 
+    public void test_create_email_sql_script28() 
 		throws InterruptedException { 
 
 		//get web page
@@ -960,7 +960,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script29() 
+    public void test_create_email_sql_script29() 
 		throws InterruptedException { 
 
 		//get web page
@@ -988,7 +988,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script30() 
+    public void test_create_email_sql_script30() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1016,7 +1016,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script31() 
+    public void test_create_email_sql_script31() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1044,7 +1044,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script32() 
+    public void test_create_email_sql_script32() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1071,7 +1071,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script33() 
+    public void test_create_email_sql_script33() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1098,7 +1098,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script34() 
+    public void test_create_email_sql_script34() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1126,7 +1126,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script35() 
+    public void test_create_email_sql_script35() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1154,7 +1154,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script36() 
+    public void test_create_email_sql_script36() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1182,7 +1182,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script37() 
+    public void test_create_email_sql_script37() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1211,7 +1211,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script38() 
+    public void test_create_email_sql_script38() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1240,7 +1240,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script39() 
+    public void test_create_email_sql_script39() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1267,7 +1267,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script40() 
+    public void test_create_email_sql_script40() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1294,7 +1294,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script41() 
+    public void test_create_email_sql_script41() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1322,7 +1322,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script42() 
+    public void test_create_email_sql_script42() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1349,7 +1349,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script43() 
+    public void test_create_email_sql_script43() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1376,7 +1376,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script44() 
+    public void test_create_email_sql_script44() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1403,7 +1403,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script45() 
+    public void test_create_email_sql_script45() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1430,7 +1430,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script46() 
+    public void test_create_email_sql_script46() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1459,7 +1459,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script47() 
+    public void test_create_email_sql_script47() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1487,7 +1487,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script48() 
+    public void test_create_email_sql_script48() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1515,7 +1515,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script49() 
+    public void test_create_email_sql_script49() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1544,7 +1544,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script50() 
+    public void test_create_email_sql_script50() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1572,7 +1572,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script51() 
+    public void test_create_email_sql_script51() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1600,7 +1600,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script52() 
+    public void test_create_email_sql_script52() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1629,7 +1629,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script53() 
+    public void test_create_email_sql_script53() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1657,7 +1657,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script54() 
+    public void test_create_email_sql_script54() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1685,7 +1685,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script55() 
+    public void test_create_email_sql_script55() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1713,7 +1713,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script56() 
+    public void test_create_email_sql_script56() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1741,7 +1741,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script57() 
+    public void test_create_email_sql_script57() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1769,7 +1769,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script58() 
+    public void test_create_email_sql_script58() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1798,7 +1798,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script59() 
+    public void test_create_email_sql_script59() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1826,7 +1826,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script60() 
+    public void test_create_email_sql_script60() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1855,7 +1855,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script61() 
+    public void test_create_email_sql_script61() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1882,7 +1882,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script62() 
+    public void test_create_email_sql_script62() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1910,7 +1910,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script63() 
+    public void test_create_email_sql_script63() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1937,7 +1937,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script64() 
+    public void test_create_email_sql_script64() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1965,7 +1965,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script65() 
+    public void test_create_email_sql_script65() 
 		throws InterruptedException { 
 
 		//get web page
@@ -1992,7 +1992,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script66() 
+    public void test_create_email_sql_script66() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2019,7 +2019,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script67() 
+    public void test_create_email_sql_script67() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2046,7 +2046,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script68() 
+    public void test_create_email_sql_script68() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2073,7 +2073,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script69() 
+    public void test_create_email_sql_script69() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2101,7 +2101,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script70() 
+    public void test_create_email_sql_script70() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2128,7 +2128,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script71() 
+    public void test_create_email_sql_script71() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2155,7 +2155,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script72() 
+    public void test_create_email_sql_script72() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2182,7 +2182,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script73() 
+    public void test_create_email_sql_script73() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2209,7 +2209,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script74() 
+    public void test_create_email_sql_script74() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2237,7 +2237,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script75() 
+    public void test_create_email_sql_script75() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2265,7 +2265,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script76() 
+    public void test_create_email_sql_script76() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2294,7 +2294,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script77() 
+    public void test_create_email_sql_script77() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2322,7 +2322,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script78() 
+    public void test_create_email_sql_script78() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2352,7 +2352,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script79() 
+    public void test_create_email_sql_script79() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2381,7 +2381,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script80() 
+    public void test_create_email_sql_script80() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2408,7 +2408,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script81() 
+    public void test_create_email_sql_script81() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2435,7 +2435,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script82() 
+    public void test_create_email_sql_script82() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2462,7 +2462,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script83() 
+    public void test_create_email_sql_script83() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2489,7 +2489,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script84() 
+    public void test_create_email_sql_script84() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2516,7 +2516,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script85() 
+    public void test_create_email_sql_script85() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2543,7 +2543,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script86() 
+    public void test_create_email_sql_script86() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2570,7 +2570,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script87() 
+    public void test_create_email_sql_script87() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2597,7 +2597,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script88() 
+    public void test_create_email_sql_script88() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2625,7 +2625,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script89() 
+    public void test_create_email_sql_script89() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2653,7 +2653,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script90() 
+    public void test_create_email_sql_script90() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2682,7 +2682,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script91() 
+    public void test_create_email_sql_script91() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2710,7 +2710,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script92() 
+    public void test_create_email_sql_script92() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2739,7 +2739,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script93() 
+    public void test_create_email_sql_script93() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2766,7 +2766,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script94() 
+    public void test_create_email_sql_script94() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2794,7 +2794,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script95() 
+    public void test_create_email_sql_script95() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2823,7 +2823,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script96() 
+    public void test_create_email_sql_script96() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2852,7 +2852,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script97() 
+    public void test_create_email_sql_script97() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2881,7 +2881,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script98() 
+    public void test_create_email_sql_script98() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2910,7 +2910,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script99() 
+    public void test_create_email_sql_script99() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2938,7 +2938,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script100() 
+    public void test_create_email_sql_script100() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2966,7 +2966,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script101() 
+    public void test_create_email_sql_script101() 
 		throws InterruptedException { 
 
 		//get web page
@@ -2993,7 +2993,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script102() 
+    public void test_create_email_sql_script102() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3020,7 +3020,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script103() 
+    public void test_create_email_sql_script103() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3047,7 +3047,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script104() 
+    public void test_create_email_sql_script104() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3074,7 +3074,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script105() 
+    public void test_create_email_sql_script105() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3101,7 +3101,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script106() 
+    public void test_create_email_sql_script106() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3129,7 +3129,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script107() 
+    public void test_create_email_sql_script107() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3157,7 +3157,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script108() 
+    public void test_create_email_sql_script108() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3185,7 +3185,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script109() 
+    public void test_create_email_sql_script109() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3212,7 +3212,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script110() 
+    public void test_create_email_sql_script110() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3240,7 +3240,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script111() 
+    public void test_create_email_sql_script111() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3267,7 +3267,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script112() 
+    public void test_create_email_sql_script112() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3294,7 +3294,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script113() 
+    public void test_create_email_sql_script113() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3322,7 +3322,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script114() 
+    public void test_create_email_sql_script114() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3349,7 +3349,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script115() 
+    public void test_create_email_sql_script115() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3376,7 +3376,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script116() 
+    public void test_create_email_sql_script116() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3403,7 +3403,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script117() 
+    public void test_create_email_sql_script117() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3431,7 +3431,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script118() 
+    public void test_create_email_sql_script118() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3459,7 +3459,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script119() 
+    public void test_create_email_sql_script119() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3488,7 +3488,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script120() 
+    public void test_create_email_sql_script120() 
 		throws InterruptedException { 
 
 		//get web page
@@ -3516,7 +3516,7 @@ public class CreateAccEmailSQL {
     @Test
     //Expected result: if sql script is detected, then
     //                 stay on same page
-    public void test__create_email_sql_script121() 
+    public void test_create_email_sql_script121() 
 		throws InterruptedException { 
 
 		//get web page
