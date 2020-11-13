@@ -13,7 +13,7 @@ return array(
 		"POST" => 0),
 	"errorRedirectionPage" => "",
 	"customErrorMessage" => "",
-	"jsUrl" => "http://localhost/Team-01/CSRF-Protector-PHP/js/csrfprotector.js",
+	"jsUrl" => "https://teamname.sitict.net/CSRF-Protector-PHP/js/csrfprotector.js",
 	"tokenLength" => 25,
 	"cookieConfig" => array(
 		"path" => '',
