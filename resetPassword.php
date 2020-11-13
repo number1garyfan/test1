@@ -22,10 +22,10 @@ if($_SESSION["reset_password_page"] != true){
 
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/busbly-login.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/css/busbly-login.css" rel="stylesheet">
     </head>
     <body class="text-center">
         <form class="form-signin" method="post" action="resetPassword.php">

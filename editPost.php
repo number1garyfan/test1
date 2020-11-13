@@ -26,9 +26,9 @@ and open the template in the editor.
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="css/busbly-home.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/css/Busbly-home.css" rel="stylesheet">
         <!-- Custom styles for this template -->
 
     </head>
