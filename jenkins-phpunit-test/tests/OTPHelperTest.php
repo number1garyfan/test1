@@ -50,7 +50,7 @@ final class OTPHelperTest extends TestCase
     {
         //Setup 
         $OTPHelperObj = new OTPHelper();
-        $otp = 1234567891; 
+        $otp = 12345678; 
     
         //Actions
         $result = $OTPHelperObj->valid_otp_datatype($otp); 
