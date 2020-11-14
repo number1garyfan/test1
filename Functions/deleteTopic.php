@@ -14,7 +14,7 @@ if(isset($_POST['TopicID'])){
     echo 'setTimeout(function () { swal("Topic deleted successfully","","success");';
     echo '}, 100);</script>';
     //$msg = "Topic created successfully.";
-    Header('Refresh:1; url=https://teamname.sitict.net/index.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/testen/index.php');
 
 }else{
     echo '<script type="text/javascript">';

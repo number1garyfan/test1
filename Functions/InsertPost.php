@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-require_once('/var/www/html/Connections/dbconnect.php');
+require_once('/var/www/html/testen/Connections/dbconnect.php');
 
 if (!empty($_POST['PostComment']) && isset($_POST['ThreadID'])) {   
     $Postcomment = filter_input(INPUT_POST, 'PostComment',FILTER_SANITIZE_FULL_SPECIAL_CHARS);

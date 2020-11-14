@@ -2,15 +2,15 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once ('/var/www/html/Connections/dbconnect.php');
-require_once ('/var/www/html/Server/ServerFunction.php');
-require_once ('/var/www/html/Functions/sessionManagement.php');
+require_once ('/var/www/html/testen/Connections/dbconnect.php');
+require_once ('/var/www/html/testen/Server/ServerFunction.php');
+require_once ('/var/www/html/testen/Functions/sessionManagement.php');
 
 
 $result = read_topic($mysqli);
 
 
-require_once('/var/www/html/Functions/deleteTopic.php')
+require_once('/var/www/html/testen/Functions/deleteTopic.php')
 ?>
 
 <!DOCTYPE html>
@@ -30,15 +30,15 @@ and open the template in the editor.
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="https://teamname.sitict.net/css/Busbly-home.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/Busbly-home.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Custom styles for this template -->
 
     </head>
     <body>
-        <?php include '/var/www/html/userNavigation.php' ?>
+        <?php include '/var/www/html/testen/userNavigation.php' ?>
 
         <main role="main">
 

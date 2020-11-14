@@ -7,7 +7,7 @@
  */
 
 
-require_once('/var/www/html/Connections/dbconnect.php');
+require_once('/var/www/html/testen/Connections/dbconnect.php');
 
 if (!empty($_POST['ThreadName']) && isset($_POST['TopicID'])) {
     $ThreadName = filter_input(INPUT_POST, 'ThreadName',FILTER_SANITIZE_FULL_SPECIAL_CHARS);

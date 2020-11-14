@@ -9,9 +9,9 @@ and open the template in the editor.
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include ('/var/www/html/Server/ServerFunction.php');
-include('/var/www/html/Server/updateProfileServer.php');
-require_once ('/var/www/html/Functions/sessionManagement.php');?>
+include ('/var/www/html/testen/Server/ServerFunction.php');
+include('/var/www/html/testen/Server/updateProfileServer.php');
+require_once ('/var/www/html/testen/Functions/sessionManagement.php');?>
 
 
 <html lang="en">
@@ -24,14 +24,14 @@ require_once ('/var/www/html/Functions/sessionManagement.php');?>
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="https://teamname.sitict.net/css/Busbly-home.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/Busbly-home.css" rel="stylesheet">
         <!-- Custom styles for this template -->
 
     </head>
     <body>
-        <?php include '/var/www/html/userNavigation.php' ?>
+        <?php include '/var/www/html/testen/userNavigation.php' ?>
 
         <main role="main">
 
@@ -48,7 +48,7 @@ require_once ('/var/www/html/Functions/sessionManagement.php');?>
                 <h3>Update Profile</h3>
 
                 <form method="post" action="updateProfile.php">
-                <?php include('/var/www/html/Server/Errors.php'); ?>
+                <?php include('/var/www/html/testen/Server/Errors.php'); ?>
                 <?php
                     //Retrieve account details
                     $result = getAccountDetailsForUpdate($_SESSION["Email"], $mysqli);

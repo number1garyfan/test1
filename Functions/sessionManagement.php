@@ -17,7 +17,7 @@ if($_SESSION["login_page"]!=true ){
 }else{
     if(time()-$_SESSION["login_time_stamp"] >900)   
     { 
-        header("Location:https://teamname.sitict.net/logout.php"); 
+        header("Location:https://teamname.sitict.net/testen/logout.php"); 
     } 
     else{
         $accountID = $_SESSION['AccountId']; 

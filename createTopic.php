@@ -2,12 +2,12 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once ('/var/www/html/Server/ServerFunction.php');
-require_once ('/var/www/html/Functions/sessionManagement.php');
+require_once ('/var/www/html/testen/Server/ServerFunction.php');
+require_once ('/var/www/html/testen/Functions/sessionManagement.php');
 if ($_SESSION['Roles'] != 1) {
-    header('Location: https://teamname.sitict.net/logout.php');
+    header('Location: https://teamname.sitict.net/testen/logout.php');
 }
-require_once ('/var/www/html/Functions/insertTopic.php');
+require_once ('/var/www/html/testen/Functions/insertTopic.php');
 ?>
 <!DOCTYPE html>
 <!--
@@ -26,14 +26,14 @@ and open the template in the editor.
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="https://teamname.sitict.net/css/Busbly-home.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/Busbly-home.css" rel="stylesheet">
         <!-- Custom styles for this template -->
 
     </head>
     <body>
-        <?php include '/var/www/html/userNavigation.php' ?>
+        <?php include '/var/www/html/testen/userNavigation.php' ?>
 
         <main role="main">
 

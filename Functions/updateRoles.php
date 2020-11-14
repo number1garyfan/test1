@@ -14,7 +14,7 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteMod'])){
     echo 'setTimeout(function () { swal("User promoted to moderator successfully","","success");';
     echo '}, 100);</script>';
 
-    Header('Refresh:1; url=https://teamname.sitict.net/manageAccount.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/testen/manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
@@ -32,7 +32,7 @@ if(isset($_POST['AccountID']) && isset($_POST['promoteAdmin'])){
     echo 'setTimeout(function () { swal("User promoted to admin successfully","","success");';
     echo '}, 100);</script>';
   
-    Header('Refresh:1; url=https://teamname.sitict.net/manageAccount.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/testen/manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';
@@ -50,7 +50,7 @@ if(isset($_POST['AccountID']) && isset($_POST['demoteUser'])){
     echo 'setTimeout(function () { swal("User demoted successfully","","success");';
     echo '}, 100);</script>';
 
-    Header('Refresh:1; url=https://teamname.sitict.net/manageAccount.php');
+    Header('Refresh:1; url=https://teamname.sitict.net/testen/manageAccount.php');
 
 }else{
     echo '<script type="text/javascript">';

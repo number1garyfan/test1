@@ -1,8 +1,8 @@
 <?php
-require_once('/var/www/html/Connections/dbconnect.php');
-require_once("/var/www/html/Server/ServerFunction.php");
-require_once("/var/www/html/HelperClass/EmailHelper.php");
-require_once("/var/www/html/HelperClass/EmailUsernameInputHelper.php");
+require_once('/var/www/html/testen/Connections/dbconnect.php');
+require_once("/var/www/html/testen/Server/ServerFunction.php");
+require_once("/var/www/html/testen/HelperClass/EmailHelper.php");
+require_once("/var/www/html/testen/HelperClass/EmailUsernameInputHelper.php");
 
 //sec_session_start();
 
@@ -51,7 +51,7 @@ if (isset($_POST['forget_password'])) {
         
         $_SESSION["otp_page"] = true;
         
-        header("Location: https://teamname.sitict.net/resetPassword.php");
+        header("Location: https://teamname.sitict.net/testen/resetPassword.php");
         
         
         //Redirect to OTP Page

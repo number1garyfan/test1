@@ -2,7 +2,7 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('/var/www/html/Server/LoginServer.php') ?>
+include('/var/www/html/testen/Server/LoginServer.php') ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,14 +16,14 @@ include('/var/www/html/Server/LoginServer.php') ?>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         
         <!-- Bootstrap core CSS -->
-        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="https://teamname.sitict.net/css/busbly-login.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/busbly-login.css" rel="stylesheet">
     </head>
     <body class="text-center">
-        <form class="form-signin"  method="post" action="login.php" onsubmit="return validateRecaptcha()">
-             <?php include('/var/www/html/Server/Errors.php'); ?>
+        <form class="form-signin"  method="post" action="login.php" >
+             <?php include('/var/www/html/testen/Server/Errors.php'); ?>
             <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="inputEmail" class="sr-only">Email address</label>
@@ -39,28 +39,9 @@ include('/var/www/html/Server/LoginServer.php') ?>
                 </label>
             </div>
             
-            <button id="login_user" name="login_user" class="btn btn-lg btn-primary btn-block" type="submit" disabled>Sign in</button>
+            <button id="login_user" name="login_user" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
         </form>
     </body>
-    <script type="text/javascript">
-    function validateRecaptcha() {
-    var response = grecaptcha.getResponse();
-    if (response.length === 0) {
-        document.getElementById("login_user").disabled = true;
-        alert("Please validate on the reCaptcha");
-        return false;
-    } else {
-        document.getElementById("login_user").disabled = false;
-        //alert("validated");
-        return true;
-    }
-}
-    </script>
-    <script type="text/javascript">
-     function enableBtn(){
-        document.getElementById("login_user").disabled = false;
-    }
-    </script>
    
 </html>

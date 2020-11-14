@@ -4,11 +4,11 @@
 // initializing variables
 $errors = array();
 
-require_once('/var/www/html/Connections/dbconnect.php');
-require_once("/var/www/html/HelperClass/SaltHashingHelper.php");
-require_once("/var/www/html/HelperClass/PasswordHelper.php");
-require_once("/var/www/html/HelperClass/EmailHelper.php");
-require_once("/var/www/html/Server/ServerFunction.php");
+require_once('/var/www/html/testen/Connections/dbconnect.php');
+require_once("/var/www/html/testen/HelperClass/SaltHashingHelper.php");
+require_once("/var/www/html/testen/HelperClass/PasswordHelper.php");
+require_once("/var/www/html/testen/HelperClass/EmailHelper.php");
+require_once("/var/www/html/testen/Server/ServerFunction.php");
 
 // connect to the database
 $conn = $mysqli;
@@ -66,7 +66,7 @@ if (isset($_POST['login_user'])) {
             //Populate Session Variables 
             populate_session_variables($email, $mysqli);
             //Redirect to index Page
-            header("Location: https://teamname.sitict.net/index.php");
+            header("Location: https://teamname.sitict.net/testen/index.php");
          
             //Redirect to next page
             //header("Location: https://teamname.sitict.net/enterOTP.php");

@@ -1,10 +1,10 @@
 <?php
-require_once('/var/www/html/Connections/dbconnect.php');
-require_once("/var/www/html/HelperClass/SaltHashingHelper.php");
-require_once("/var/www/html/HelperClass/PasswordHelper.php");
-require_once("/var/www/html/HelperClass/EmailHelper.php");
-require_once("/var/www/html/Server/ServerFunction.php");
-require_once("/var/www/html/HelperClass/EmailUsernameInputHelper.php");
+require_once('/var/www/html/testen/Connections/dbconnect.php');
+require_once("/var/www/html/testen/HelperClass/SaltHashingHelper.php");
+require_once("/var/www/html/testen/HelperClass/PasswordHelper.php");
+require_once("/var/www/html/testen/HelperClass/EmailHelper.php");
+require_once("/var/www/html/testen/Server/ServerFunction.php");
+require_once("/var/www/html/testen/HelperClass/EmailUsernameInputHelper.php");
 
 // initializing variables
 $username = "";
@@ -71,7 +71,7 @@ if (isset($_POST['update_profile'])) {
         
         
         //Redirect to next page
-        header("Location: https://teamname.sitict.net/viewProfile.php");
+        header("Location: https://teamname.sitict.net/testen/viewProfile.php");
     }
     else if ((count($errors) == 0) && ($password_1 == $hidden)){
          //Update Account 
@@ -85,7 +85,7 @@ if (isset($_POST['update_profile'])) {
         </script>';
          
          //Redirect to next page
-        header("Location: https://teamname.sitict.net/viewProfile.php");
+        header("Location: https://teamname.sitict.net/testen/viewProfile.php");
        
     }
   } 

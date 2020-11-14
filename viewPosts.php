@@ -2,26 +2,26 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-require_once('/var/www/html/Connections/dbconnect.php');
-require_once ('/var/www/html/Server/ServerFunction.php');
-require_once ('/var/www/html/Functions/sessionManagement.php');
+require_once('/var/www/html/testen/Connections/dbconnect.php');
+require_once ('/var/www/html/testen/Server/ServerFunction.php');
+require_once ('/var/www/html/testen/Functions/sessionManagement.php');
 
 if (isset($_POST["ThreadID"])) {
     $threadid = filter_input(INPUT_POST, 'ThreadID', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     $result = read_post($threadid, $mysqli);
 }else{
-      header('Location: https://teamname.sitict.net/index.php');
+      header('Location: https://teamname.sitict.net/testen/index.php');
 }
 
 if (isset($_POST['Thread'])) {
     $thread = filter_input(INPUT_POST, 'Thread', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }else{
-      header('Location: https://teamname.sitict.net/index.php');
+      header('Location: https://teamname.sitict.net/testen/index.php');
 }
 
-require_once('/var/www/html/Functions/deletePost.php');
-require_once('/var/www/html/Functions/reportPost.php');
+require_once('/var/www/html/testen/Functions/deletePost.php');
+require_once('/var/www/html/testen/Functions/reportPost.php');
 ?>
 <!DOCTYPE html>
 <!--
@@ -40,15 +40,15 @@ and open the template in the editor.
         <title>Busbly Forum</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="https://teamname.sitict.net/css/Busbly-home.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/Busbly-home.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Custom styles for this template -->
 
     </head>
     <body>
-        <?php include '/var/www/html/userNavigation.php' ?>
+        <?php include '/var/www/html/testen/userNavigation.php' ?>
 
         <main role="main">
 

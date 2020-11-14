@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-require_once('/var/www/html/Connections/dbconnect.php');
+require_once('/var/www/html/testen/Connections/dbconnect.php');
 
 if ($_POST['ThreadName'] != "" && isset($_POST['ThreadID'])) {
     $ThreadName = filter_input(INPUT_POST, 'ThreadName',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -42,5 +42,5 @@ if ($_POST['ThreadName'] != "" && isset($_POST['ThreadID'])) {
     }
     $stmt->close();
 }else{
-      header('Location: https://teamname.sitict.net/index.php');
+      header('Location: https://teamname.sitict.net/testen/index.php');
 }
