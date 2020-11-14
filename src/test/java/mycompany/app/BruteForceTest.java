@@ -38,7 +38,7 @@ public class BruteForceTest {
 @Before
     public void setUp() { 
 		driver = new HtmlUnitDriver(); 
-		wait = new WebDriverWait(driver, 10); 
+		wait = new WebDriverWait(driver, 30); 
 	} 
 
 @After
