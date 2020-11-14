@@ -84,7 +84,7 @@ public class ForgetPasswordXSSTest {
 		//use each and every possible xss statement and inject on email field and submit
 		driver.findElement(By.name("email")).sendKeys(xss1);
 		//click submit
-		driver.findElement(By.name("forget_password")).submit();
+		driver.findElement(By.name("forget_password")).click();
                 
                 //check result 
 		String expectedResult = "Busbly Forget Password"; 
