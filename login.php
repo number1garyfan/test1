@@ -43,24 +43,6 @@ include('/var/www/html/Server/LoginServer.php') ?>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
         </form>
     </body>
-    <script type="text/javascript">
-    function validateRecaptcha() {
-    var response = grecaptcha.getResponse();
-    if (response.length === 0) {
-        document.getElementById("login_user").disabled = true;
-        alert("Please validate on the reCaptcha");
-        return false;
-    } else {
-        document.getElementById("login_user").disabled = false;
-        //alert("validated");
-        return true;
-    }
-}
-    </script>
-    <script type="text/javascript">
-     function enableBtn(){
-        document.getElementById("login_user").disabled = false;
-    }
-    </script>
+
    
 </html>
