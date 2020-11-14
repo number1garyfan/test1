@@ -26,7 +26,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author pheeb
  */
-public class ForgetPasswordXSS {
+public class ForgetPasswordXSSTest {
     
 	WebDriver driver = new HtmlUnitDriver(true); 
     WebDriverWait wait; 
