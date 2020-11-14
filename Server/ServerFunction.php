@@ -13,30 +13,28 @@
            
         }
     }
-    
-    function updateProfile($email, $username, $password, $salt, $mysqli)
+
+    function updateProfile($idAccount, $email, $username, $password, $salt, $mysqli)
     {
-        try{
-            $stmt = $mysqli->prepare("UPDATE Account SET Email = ?, Username = ?, Password = ?, Salt = ? WHERE Email = ?");
-            $stmt->bind_param("sssss", $email, $username, $password, $salt, $email); // Bind param $userid to query parameter (?)
+	    try{
+            $stmt = $mysqli->prepare("UPDATE Account SET Email = ?, Username = ?, Password = ?, Salt = ? WHERE idAccount = ?");
+            $stmt->bind_param("sssss", $email, $username, $password, $salt, $idAccount); // Bind param $userid to query parameter (?)
             $stmt->execute(); // Execute the prepared query
             $stmt -> close();
-            
-        }catch(Exception $e) {
-   
+		     }catch(Exception $e) {
+           
         }
     }
     
-    function updateProfileWithoutSalt($email, $username, $password, $mysqli)
+    function updateProfileWithoutSalt($idAccount, $email, $username, $password, $mysqli)
     {
-        try{
-            $stmt = $mysqli->prepare("UPDATE Account SET Email = ?, Username = ?, Password = ? WHERE Email = ?");
-            $stmt->bind_param("ssss", $email, $username, $password, $email); // Bind param $userid to query parameter (?)
+	     try{
+            $stmt = $mysqli->prepare("UPDATE Account SET Email = ?, Username = ?, Password = ? WHERE idAccount = ?");
+            $stmt->bind_param("ssss", $email, $username, $password, $idAccount); // Bind param $userid to query parameter (?)
             $stmt->execute(); // Execute the prepared query
             $stmt -> close();
-            
-        }catch(Exception $e) {
-   
+		      }catch(Exception $e) {
+           
         }
     }
     
