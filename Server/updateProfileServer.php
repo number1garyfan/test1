@@ -30,7 +30,7 @@ if (isset($_POST['update_profile'])) {
   $password_1 = mysqli_real_escape_string($conn, htmlentities($_POST['password_1']));
   $password_2 = mysqli_real_escape_string($conn, htmlentities($_POST['password_2']));
   $hidden = mysqli_real_escape_string($conn, htmlentities($_POST['hidden']));
-  
+  $accountId = $_SESSION['AccountId'];
   
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
