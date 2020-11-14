@@ -28,7 +28,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class ForgetPasswordXSSTest {
     
-	WebDriver driver = new HtmlUnitDriver(true); 
+	WebDriver driver;
     WebDriverWait wait; 
     String url = "https://teamname.sitict.net/forgetPassword.php";
     
@@ -84,7 +84,7 @@ public class ForgetPasswordXSSTest {
 		//use each and every possible xss statement and inject on email field and submit
 		driver.findElement(By.name("email")).sendKeys(xss1);
 		//click submit
-		driver.findElement(By.name("forget_password")).click();
+		driver.findElement(By.name("forget_password")).submit();
                 
                 //check result 
 		String expectedResult = "Busbly Forget Password"; 
