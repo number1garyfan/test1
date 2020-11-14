@@ -4,7 +4,7 @@ csrfProtector::init();
 
 require_once ('/var/www/html/Server/ServerFunction.php');
 require_once ('/var/www/html/Functions/sessionManagement.php');
-require_once ('/var/www/html/Functions/insertPost.php');
+require_once ('/var/www/html/Functions/InsertPost.php');
 
 ?>
 <!DOCTYPE html>
