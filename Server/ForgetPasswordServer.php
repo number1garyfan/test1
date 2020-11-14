@@ -50,7 +50,7 @@ if (isset($_POST['forget_password'])) {
         $_SESSION["forget_password"] = 1;
         
         $_SESSION["otp_page"] = true;
-        
+        $_SESSION["reset_password_page"] = true;
         header("Location: https://teamname.sitict.net/testen/resetPassword.php");
         
         

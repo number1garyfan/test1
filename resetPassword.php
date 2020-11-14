@@ -2,10 +2,10 @@
 include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
 csrfProtector::init();
 
-include('/var/www/html/Server/ResetPasswordServer.php');
+include('/var/www/html/testen/Server/ResetPasswordServer.php');
 
 if($_SESSION["reset_password_page"] != true){
-    header('Location: https://teamname.sitict.net/login.php');
+    header('Location: https://teamname.sitict.net/testen/login.php');
 }
 ?>
 
@@ -22,14 +22,14 @@ if($_SESSION["reset_password_page"] != true){
 
 
         <!-- Bootstrap core CSS -->
-        <link href="https://teamname.sitict.net/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="https://teamname.sitict.net/css/busbly-login.css" rel="stylesheet">
+        <link href="https://teamname.sitict.net/testen/css/busbly-login.css" rel="stylesheet">
     </head>
     <body class="text-center">
         <form class="form-signin" method="post" action="resetPassword.php">
-            <?php include('/var/www/html/Server/Errors.php'); ?>
+            <?php include('/var/www/html/testen/Server/Errors.php'); ?>
             <img class="mb-4" src="img/busbly.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Reset Password</h1>
             <div class="form-group">
