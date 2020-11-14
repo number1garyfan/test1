@@ -61,7 +61,7 @@ public class BruteForceTest {
 		driver.findElement(By.name("email")).sendKeys(BruteForceEmail);
                 driver.findElement(By.name("password_1")).sendKeys(BruteForceEmail);
 		//click submit
-		driver.findElement(By.name("login_user")).submit();
+		driver.findElement(By.name("login_user")).click();
 	
 		//check result 
 		String expectedResult = "Busbly Login"; 
@@ -84,7 +84,7 @@ public class BruteForceTest {
 		driver.findElement(By.name("email")).sendKeys(noBruteForceEmail);
                 driver.findElement(By.name("password_1")).sendKeys(noBruteForcePassword);
 		//click submit
-		driver.findElement(By.name("login_user")).submit();
+		driver.findElement(By.name("login_user")).click();
 	
 		//check result 
 		String expectedResult = "Busbly Enter OTP"; 
