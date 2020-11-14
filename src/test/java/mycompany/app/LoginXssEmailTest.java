@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.ict3103busbly;
+package com.mycompany.app;
 
 //import java.io.ByteArrayOutputStream;
 //import java.io.PrintStream;
