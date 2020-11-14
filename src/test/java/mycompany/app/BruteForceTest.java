@@ -29,7 +29,7 @@ public class BruteForceTest {
     
     WebDriver driver; 
     WebDriverWait wait; 
-    String url = " https://teamname.sitict.net/testen/login.php";
+    String url = "https://teamname.sitict.net/testen/login.php";
     String BruteForceEmail = "pheeboonleo96@gmail.com";
     String BruteForcePassword = "1234567Aa@";
     String noBruteForceEmail = "1800794@sit.singaporetech.edu.sg";
