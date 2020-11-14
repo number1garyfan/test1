@@ -105,7 +105,7 @@ public class CreateAccountTest {
 		driver.findElement(By.name("reg_user")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Login"; 
+		String expectedResult = ""; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
  
@@ -130,7 +130,7 @@ public class CreateAccountTest {
 		driver.findElement(By.name("reg_user")).click();
                 
                 //check result 
-		String expectedResult = "Busbly Login"; 
+		String expectedResult = ""; 
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
  
