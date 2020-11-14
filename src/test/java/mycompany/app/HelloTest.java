@@ -50,7 +50,7 @@ public class HelloTest
     		//use each and every possible xss statement and inject on email field and submit
     	driver.findElement(By.name("email")).sendKeys(xss1);
     		//click submit
-    	driver.findElement(By.name("forget_password")).click();
+    	driver.findElement(By.name("forget_password")).submit();
                     
                     //check result 
     	String expectedResult = "Busbly Forget "; 
