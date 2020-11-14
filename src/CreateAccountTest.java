@@ -30,7 +30,7 @@ public class CreateAccountTest {
     
     WebDriver driver; 
     WebDriverWait wait; 
-    String url = "https://teamname.sitict.net/createAccount.php";
+    String url = "https://teamname.sitict.net/testen/createAccount.php";
     String email = "pheeboon_leo@hotmail.com";
     String username = "pbtantan";
     String password_1 = "1234567Aa@";
@@ -69,7 +69,7 @@ public class CreateAccountTest {
                 driver.findElement(By.name("password_1")).sendKeys(password_1);
                 driver.findElement(By.name("password_2")).sendKeys(password_2);
 		//click submit
-		driver.findElement(By.name("reg_user")).submit();
+		driver.findElement(By.name("reg_user")).click();
 	
 		//check result 
                 boolean AlertExists;
@@ -102,7 +102,7 @@ public class CreateAccountTest {
                 driver.findElement(By.name("password_1")).sendKeys(password_12);
                 driver.findElement(By.name("password_2")).sendKeys(password_22);
 		//click submit
-		driver.findElement(By.name("reg_user")).submit();
+		driver.findElement(By.name("reg_user")).click();
                 
                 //check result 
 		String expectedResult = "Busbly Login"; 
@@ -127,7 +127,7 @@ public class CreateAccountTest {
                 driver.findElement(By.name("password_1")).sendKeys(password_12);
                 driver.findElement(By.name("password_2")).sendKeys(password_22);
 		//click submit
-		driver.findElement(By.name("reg_user")).submit();
+		driver.findElement(By.name("reg_user")).click();
                 
                 //check result 
 		String expectedResult = "Busbly Login"; 
