@@ -157,7 +157,7 @@ and open the template in the editor.
 
                 </table>
                 <form action="createThread.php" method="post">
-                    <button type="submit" name="TopicID" value= "<?php echo $topicid ?>" class="btn btn-primary">New Thread</button>
+                    <button id="submitNewThread" type="submit" name="TopicID" value= "<?php echo $topicid ?>" class="btn btn-primary">New Thread</button>
                 </form>
 
             </div> <!-- /container -->

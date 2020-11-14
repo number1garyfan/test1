@@ -58,7 +58,7 @@ and open the template in the editor.
                   <textarea class="form-control" id="TopicName" name="TopicName" rows="3" required><?php echo $TopicTitle ?></textarea>
                 </div>
                     <input type="hidden" name="TopicID" value="<?php echo $topicid ?>" />
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button name="submitEditTopic" type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div> <!-- /container -->

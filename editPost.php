@@ -55,7 +55,7 @@ and open the template in the editor.
                   <textarea class="form-control" id="PostContent" name="PostComment" rows="3" required><?php echo $CommentPost ?></textarea>
                 </div>
                     <input type="hidden" name="PostID" value="<?php echo $postid ?>" />
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button name="submitEditPost" type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div> <!-- /container -->

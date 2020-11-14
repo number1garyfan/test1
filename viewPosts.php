@@ -153,7 +153,7 @@ and open the template in the editor.
 
                 </table>
                 <form action="createPost.php" method="post">
-                    <button type="submit" name="ThreadID" value= "<?php echo $threadid ?>" class="btn btn-primary">New Post</button>
+                    <button id="submitNewPost"type="submit" name="ThreadID" value= "<?php echo $threadid ?>" class="btn btn-primary">New Post</button>
                 </form>
             </div>
 

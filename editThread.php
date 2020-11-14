@@ -53,7 +53,7 @@ and open the template in the editor.
                   <textarea class="form-control" id="ThreadName" name="ThreadName" rows="3" required><?php echo $ThreadTitle ?></textarea>
                 </div>
                     <input type="hidden" name="ThreadID" value="<?php echo $threadid ?>" />
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button name="submitEditThread" type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div> <!-- /container -->

@@ -54,7 +54,7 @@ and open the template in the editor.
                   <label for="TopicName">Topic</label>
                   <textarea class="form-control" id="TopicName" name="TopicName" rows="3" required></textarea>
                 </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button name="submitCreateTopic" type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div> <!-- /container -->

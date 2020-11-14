@@ -111,7 +111,7 @@ and open the template in the editor.
                 </table>
                 <?php 
                 if($_SESSION['Roles'] == 1){
-                echo '<a class="btn btn-primary" href="createTopic.php" role="button">New Topic</a>';
+                echo '<a id="submitNewTopic" class="btn btn-primary" href="createTopic.php" role="button">New Topic</a>';
                 }?>
             </div> <!-- /container -->
 
