@@ -15,7 +15,7 @@ $conn = $mysqli;
 
 // LOGIN USER
 if (isset($_POST['forget_password'])) {
-    
+  
   //Create class objects
   $emailHelperObj = new EmailHelper();
   $emailUsernameHelperObj = new EmailUsernameInputHelper();
@@ -51,8 +51,11 @@ if (isset($_POST['forget_password'])) {
         
         $_SESSION["otp_page"] = true;
         
+        header("Location: https://teamname.sitict.net/resetPassword.php");
+        
+        
         //Redirect to OTP Page
-        header("Location: https://teamname.sitict.net/enterOTP.php");
+        //header("Location: https://teamname.sitict.net/enterOTP.php");
     }
   } 
 }

@@ -37,7 +37,7 @@ if($_SESSION["otp_page"] == true || $_SESSION["forget_otp_page"] == true){
   <h1 class="h3 mb-3 font-weight-normal">Enter OTP</h1>
   <h6>An OTP email has been sent to your email</h6>
   <input name="otp" type="password" class="form-control" id="exampleInputPassword1">
-  <div class="g-recaptcha" data-sitekey="6Lft5OAZAAAAAJKeApMUowCQoKjNS7H69YLen0KP" data-callback="enableBtn"></div>
+
   <button name="enter_otp" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
 </form>

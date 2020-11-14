@@ -6,7 +6,7 @@
     define('servername', '127.0.0.1');
     define('username', 'user');
     define('password', 'SecureZaoan1!');
-    define('database', 'ICT3103');
+    define('database', 'ICT3103TEST');
 
     $mysqli = new mysqli(servername, username, password, database);
 
@@ -16,8 +16,7 @@
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     $mysqli->set_charset("utf8mb4");
     
-    
-    
+
     function sql_connection(){
 
         $mysqli = new mysqli(servername, username, password, database);

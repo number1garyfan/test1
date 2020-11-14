@@ -39,8 +39,6 @@ include('/var/www/html/Server/LoginServer.php') ?>
                 </label>
             </div>
             
-             <div class="g-recaptcha" data-sitekey="6Lft5OAZAAAAAJKeApMUowCQoKjNS7H69YLen0KP" data-callback="enableBtn"></div>
-            
             <button id="login_user" name="login_user" class="btn btn-lg btn-primary btn-block" type="submit" disabled>Sign in</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
         </form>
