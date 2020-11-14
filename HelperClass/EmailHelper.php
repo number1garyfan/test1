@@ -217,7 +217,7 @@ class EmailHelper {
         $mail->isHTML(true);
         
         //Setup Mail Content
-        $actual_link = "http://localhost/ICT3103Busbly/accountActivation.php?id=" . $activationID;
+        $actual_link = "https://teamname.sitict.net/accountActivation.php?id=" . $activationID;
         $mail->Subject = "Forget Password OTP for Busbly";
         $mail->Body = "<p> Here is your OTP for Forget Password, it will expires within 5 minutes</p><p>$otp</p>";
         $mail->AltBody = "This is the plain text version of the email content";
