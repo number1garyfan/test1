@@ -6,9 +6,10 @@ and open the template in the editor.
 -->
 <?php 
 
-include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
-csrfProtector::init();
+//include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+//csrfProtector::init();
 
+session_start();
 include ('/var/www/html/testen/Server/ServerFunction.php');
 include('/var/www/html/testen/Server/updateProfileServer.php');
 require_once ('/var/www/html/testen/Functions/sessionManagement.php');?>
