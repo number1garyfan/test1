@@ -1,6 +1,9 @@
 <?php 
-include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
-csrfProtector::init();
+//include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+//csrfProtector::init();
+
+
+session_start();
 
 include('/var/www/html/testen/Server/LoginServer.php') ?>
 <!doctype html>
