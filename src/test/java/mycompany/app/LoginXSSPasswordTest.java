@@ -26,12 +26,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author pheeb
  */
-public class LoginXssEmailTest {
+public class LoginXSSPasswordTest {
     
 	WebDriver driver = new HtmlUnitDriver(true); 
     WebDriverWait wait; 
-    String url = "https://teamname.sitict.net/testen/login.php";
+    String url = "https://teamname.sitict.net/login.php";
     
+    String email = "1801233@sit.singaporetech.edu.sg";
+    		
     String xss1 = "<script>alert(1)</script>";
     String xss2 = "';alert(String.fromCharCode(88,83,83))//\\';alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//\\\";alert(String.fromCharCode<script>alert('xss')</script>";
     String xss3 = "//--></SCRIPT>\">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>";
@@ -53,10 +55,6 @@ public class LoginXssEmailTest {
     String xss19 ="<DIV STYLE=\"background-image: url(javascript:alert('XSS'))\">";
     String xss20 ="<DIV STYLE=\"background-image:\\0075\\0072\\006C\\0028'\\006a\\0061\\0076\\0061\\0073\\0063\\0072\\0069\\0070\\0074\\003a\\0061\\006c\\0065\\0072\\0074\\0028.1027\\0058.1053\\0053\\0027\\0029'\\0029\">";
     String xss21 ="<DIV STYLE=\"width: expression(alert('XSS'));\">";
-    		
-    String wrong_password = "1234557Aa@";
-    
-    
     
 @Before
     public void setUp() { 
@@ -72,7 +70,7 @@ public class LoginXssEmailTest {
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script1() 
+    public void test_XSS_Password1() 
 		throws InterruptedException { 
 
 		//get web page
@@ -82,9 +80,9 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss1);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss1);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -97,7 +95,7 @@ public class LoginXssEmailTest {
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script2() 
+    public void test_XSS_Password2() 
 		throws InterruptedException { 
 
 		//get web page
@@ -107,9 +105,9 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss2);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss2);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -118,11 +116,11 @@ public class LoginXssEmailTest {
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
-    
+ 
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script3() 
+    public void test_XSS_Password3() 
 		throws InterruptedException { 
 
 		//get web page
@@ -132,359 +130,9 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss3);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script4() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss4);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script5() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss5);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script6() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss6);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script7() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss7);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script8() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss8);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script9() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss9);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script10() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss10);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script11() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss11);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script12() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss12);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script13() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss13);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script14() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss14);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script15() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss15);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script16() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss16);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
-		//click submit
-		driver.findElement(By.name("login_user")).click();
-                
-                //check result 
-		String expectedResult = "Busbly Login"; 
-		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
-		assertTrue(isResultCorrect == true); 
-   }
-    
-    @Test
-    //Expected result: if xss script is detected, then
-    //                 stay on same page
-    public void test__available_xss_script17() 
-		throws InterruptedException { 
-
-		//get web page
-		driver.get(url);
-		//wait until page is loaded or timeout error
-		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
-
-		//enter input
-		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss17);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss3);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -498,7 +146,7 @@ public class LoginXssEmailTest {
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script18() 
+    public void test_XSS_Password4() 
 		throws InterruptedException { 
 
 		//get web page
@@ -508,9 +156,113 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss18);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss4);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password5() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss5);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password6() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss6);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password7() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss7);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password8() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss8);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -523,7 +275,7 @@ public class LoginXssEmailTest {
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script19() 
+    public void test_XSS_Password9() 
 		throws InterruptedException { 
 
 		//get web page
@@ -533,9 +285,35 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss19);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss9);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password10() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss10);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -548,7 +326,7 @@ public class LoginXssEmailTest {
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script20() 
+    public void test_XSS_Password11() 
 		throws InterruptedException { 
 
 		//get web page
@@ -558,9 +336,9 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss20);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss11);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -573,7 +351,7 @@ public class LoginXssEmailTest {
     @Test
     //Expected result: if xss script is detected, then
     //                 stay on same page
-    public void test__available_xss_script21() 
+    public void test_XSS_Password12() 
 		throws InterruptedException { 
 
 		//get web page
@@ -583,9 +361,9 @@ public class LoginXssEmailTest {
 
 		//enter input
 		//use each and every possible xss statement and inject 
-		//password field regardless correct/wrong does not matter as we are testing XSS attack on email field
-		driver.findElement(By.name("email")).sendKeys(xss21);
-                driver.findElement(By.name("password_1")).sendKeys(wrong_password);
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss12);
 		//click submit
 		driver.findElement(By.name("login_user")).click();
                 
@@ -594,4 +372,242 @@ public class LoginXssEmailTest {
 		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
 		assertTrue(isResultCorrect == true); 
    }
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password13() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss13);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password14() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss14);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password15() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss15);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password16() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss16);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password17() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss17);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password18() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss18);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password19() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss19);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password20() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss20);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    @Test
+    //Expected result: if xss script is detected, then
+    //                 stay on same page
+    public void test_XSS_Password21() 
+		throws InterruptedException { 
+
+		//get web page
+		driver.get(url);
+		//wait until page is loaded or timeout error
+		wait.until(ExpectedConditions.titleContains("Busbly Login")); 
+
+		//enter input
+		//use each and every possible xss statement and inject 
+		//email is correct as we are testing XSS attack on password field
+		driver.findElement(By.name("email")).sendKeys(email);
+                driver.findElement(By.name("password_1")).sendKeys(xss21);
+		//click submit
+		driver.findElement(By.name("login_user")).click();
+                
+                //check result 
+		String expectedResult = "Busbly Login"; 
+		boolean isResultCorrect = wait.until(ExpectedConditions.titleContains(expectedResult)); 
+		assertTrue(isResultCorrect == true); 
+   }
+    
+    
+    
+    
+    
+    
+    
 }
