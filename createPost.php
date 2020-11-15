@@ -1,7 +1,9 @@
 <?php
-include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
-csrfProtector::init();
+//include_once __DIR__ .'/CSRF-Protector-PHP/libs/csrf/csrfprotector.php';
+//csrfProtector::init();
 
+
+session_start();
 require_once ('/var/www/html/testen/Server/ServerFunction.php');
 require_once ('/var/www/html/testen/Functions/sessionManagement.php');
 require_once ('/var/www/html/testen/Functions/InsertPost.php');
