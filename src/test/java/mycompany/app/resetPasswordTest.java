@@ -30,7 +30,7 @@ public class resetPasswordTest {
     
     WebDriver driver; 
     WebDriverWait wait; 
-    String url = " https://teamname.sitict.net/testen/forgetPassword.php";
+    String url = "https://teamname.sitict.net/testen/forgetPassword.php";
     String email = "pheeboon_leo@hotmail.com";
     String password_1 = "1234567Aa@";
     String password_2 = "1234567Aa@";
