@@ -60,7 +60,7 @@ if (isset($_POST['update_profile'])) {
         $saltedHashedPw = $saltedHashingHelperObj->salted_hashing_password($salt, $password_1);
         
         //Update Account 
-        updateProfile($email, $username, $saltedHashedPw, $salt, $mysqli);
+        updateProfile($accountId, $email, $username, $saltedHashedPw, $salt, $mysqli);
         
         $_SESSION["Username"] = $username;
         $_SESSION["Email"]  = $email;
@@ -75,7 +75,7 @@ if (isset($_POST['update_profile'])) {
     }
     else if ((count($errors) == 0) && ($password_1 == $hidden)){
          //Update Account 
-         updateProfileWithoutSalt($email, $username, $hidden, $mysqli);
+         updateProfileWithoutSalt($accountId, $email, $username, $hidden, $mysqli);
          
         $_SESSION["Username"] = $username;
         $_SESSION["Email"]  = $email;
